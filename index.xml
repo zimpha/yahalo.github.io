@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zimpha&#39;s blog</title>
+    <link>https://zimpha.github.io/</link>
+    <description>Recent content on zimpha&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 Aug 2020 23:36:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://zimpha.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Matroid</title>
+      <link>https://zimpha.github.io/algonotes/matroid/</link>
+      <pubDate>Fri, 07 Aug 2020 21:33:52 +0800</pubDate>
+      
+      <guid>https://zimpha.github.io/algonotes/matroid/</guid>
+      <description>&lt;p&gt;一些详细的说明和算法的证明：&lt;a href=&#34;https://zhenweiliu.gitee.io/blog/2020/02/15/combinatorial-optimization-matroid/&#34;&gt;link 1&lt;/a&gt;，&lt;a href=&#34;https://codeforces.com/blog/entry/69287&#34;&gt;link 2&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;一个拟阵可以用一对 $\langle U, \mathcal{I} \rangle$ 来表示，其中$U$被称为&lt;code&gt;groud set&lt;/code&gt;，$\mathcal{I}$是$U$所有独立集的集合，记为$\mathcal{M}=\langle U, \mathcal{I} \rangle$。一个拟阵要满足下面三个性质：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
