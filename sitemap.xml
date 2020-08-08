@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zimpha.github.io/algonotes/</loc>
-    <lastmod>2020-08-07T23:36:28+08:00</lastmod>
+    <loc>https://zimpha.github.io/algonotes/zeckendorf-arithmetic/</loc>
+    <lastmod>2020-08-08T16:35:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://zimpha.github.io/</loc>
+    <lastmod>2020-08-08T16:35:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zimpha.github.io/algonotes/</loc>
     <lastmod>2020-08-07T23:36:28+08:00</lastmod>
   </url>
   

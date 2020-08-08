@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.72.0" />
+
+
+
+<link rel="canonical" href="https://zimpha.github.io/algonotes/zeckendorf-arithmetic/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Zeckendorf Arithmetic - zimpha&#39;s blog</title>
+    
+<meta name="description" content="&lt;p&gt;本文主要介绍了如何使用斐波那契数列来表示整数，也就是 &lt;a href=&#34;https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem&#34;&gt;Zeckendorf representation&lt;/a&gt;，以及如何用 &lt;code&gt;Zeckendorf representation&lt;/code&gt; 做整数的基本运算。&lt;/p&gt;">
+
+<meta property="og:title" content="Zeckendorf Arithmetic - zimpha&#39;s blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zimpha.github.io/algonotes/zeckendorf-arithmetic/">
+<meta property="og:image" content="https://zimpha.github.io/images/default.png">
+<meta property="og:site_name" content="zimpha&#39;s blog">
+<meta property="og:description" content="&lt;p&gt;本文主要介绍了如何使用斐波那契数列来表示整数，也就是 &lt;a href=&#34;https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem&#34;&gt;Zeckendorf representation&lt;/a&gt;，以及如何用 &lt;code&gt;Zeckendorf representation&lt;/code&gt; 做整数的基本运算。&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="zimpha&#39;s blog">
+<meta name="twitter:url" content="https://zimpha.github.io/algonotes/zeckendorf-arithmetic/">
+<meta name="twitter:title" content="Zeckendorf Arithmetic - zimpha&#39;s blog">
+<meta name="twitter:description" content="&lt;p&gt;本文主要介绍了如何使用斐波那契数列来表示整数，也就是 &lt;a href=&#34;https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem&#34;&gt;Zeckendorf representation&lt;/a&gt;，以及如何用 &lt;code&gt;Zeckendorf representation&lt;/code&gt; 做整数的基本运算。&lt;/p&gt;">
+<meta name="twitter:image" content="https://zimpha.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/zimpha.github.io\/"
+    },
+    "headline": "Zeckendorf Arithmetic - zimpha\u0027s blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/zimpha.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2020-08-08T16:35:55JST",
+    "dateModified": "2020-08-08T16:35:55JST",
+    "author": {
+      "@type": "Person",
+      "name": "zimpha\u0027s blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "zimpha\u0027s blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/zimpha.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\u003cp\u003e本文主要介绍了如何使用斐波那契数列来表示整数，也就是 \u003ca href=\u0022https:\/\/en.wikipedia.org\/wiki\/Zeckendorf%27s_theorem\u0022\u003eZeckendorf representation\u003c\/a\u003e，以及如何用 \u003ccode\u003eZeckendorf representation\u003c\/code\u003e 做整数的基本运算。\u003c\/p\u003e"
+  }
+</script>
+
+
+    <link href="https://zimpha.github.io/css/styles.css" rel="stylesheet">
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$','$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    
+      window.addEventListener('load', (event) => {
+          document.querySelectorAll("mjx-container").forEach(function(x){
+            x.parentElement.classList += 'has-jax'})
+        });
+    
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://zimpha.github.io/">zimpha&#39;s blog</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/about/">About</a></li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/tags/">Tags</a></li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/archives/">Archives</a></li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/">Home</a></li>
+              
+            </ul>
+            
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://zimpha.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://zimpha.github.io/algonotes/" itemprop="url"><span itemprop="title">algonotes</span></a></li>
+        
+        <li class="active">Zeckendorf Arithmetic</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <h1 class="title">Zeckendorf Arithmetic</h1>
+    
+    <ul class="p-facts">
+        <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-08T16:35:55JST">2020-08-08</time></li>
+        <li>来源: <a href=""></a></li>
+        
+        
+
+        
+      </ul>
+  </header>
+
+  
+
+  <div class="article-body"><p>本文主要介绍了如何使用斐波那契数列来表示整数，也就是 <a href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">Zeckendorf representation</a>，以及如何用 <code>Zeckendorf representation</code> 做整数的基本运算。</p>
+<h2 id="zeckendorf-representation">Zeckendorf representation</h2>
+<p>斐波那契数列的定义如下：</p>
+<p>$$
+F_0 = 0, \quad F_1 = 1, \quad F_i = F_{i-1} + F_{i-2} \ \ \ \text{for}\ \ i \geq 2,
+$$</p>
+<p>任意自然数都可以表示成一些互不相同的斐波那契数之和，比如
+$$
+\begin{aligned}
+12 &amp;= 5 + 3 + 2 + 1 + 1 = F_5 + F_4 + F_3 + F_2 + F_1\<br>
+&amp;= 8 + 3 + 1 = F_6 + F_4 + F_2
+\end{aligned}
+$$</p>
+<p>其中在某个特定条件下，存在一个唯一表示法：不使用连续两个斐波那契数。准确的说，假设 $N$ 是一个正整数，那么存在正整数序列 $c$，满足 $c_i \ge 2$ 并且 $c_{i+1} &gt; c_i + 1$，使得</p>
+<p>$$
+N = \sum_{i=0}^{k} F_{c_i}
+$$</p>
+<p>这个就是正整数 $N$ 的 <code>Zeckendorf representation</code>。证明如下，</p>
+<p>首先证明存在性，即任意正整数 $n$ 都有一个 <code>Zeckendorf representation</code>。</p>
+<p>考虑数学归纳法。对于 $n=1,2,3$，结论显然是正确的，因为他们都是斐波那契数。对于 $n=4$，有 $4=3+1$，显然也是对的。假设所有 $a &lt; n$ 的数都有 <code>Zeckendorf representation</code>，考虑 $n$。如果 $n$ 是斐波那契数，显然结果是对的。否则，存在一个 $i$，使得 $F_i &lt; n &lt; F_{i+1}$。令 $a=n-F_i$，由于 $a &lt; n$，显然存在一个 <code>Zeckendorf representation</code>。同时有 $a &lt; F_{i+1} - F_i = F_{i-1}$，因此 $a$ 的 <code>Zeckendorf representation</code> 里不存在 $F_{i-1}$。因此，$n$ 可以表示为 $F_i$ 加上 $a$ 的 <code>Zeckendorf representation</code>。</p>
+<p>接下来考虑证明唯一性，即不存在一个正整数 $n$ 有两个不同的 <code>Zeckendorf representation</code>。</p>
+<p>首先考虑一个斐波那契数集合 $S$，里面最大数是 $F_i$，并且任意两个数不构成连续的斐波那契数，那么有$\sum_{x \in S} &lt; F_{i+1}$。这个可以用数学归纳法证明。</p>
+<p>考虑两个这样的集合 $S$ 和 $T$，并且它们的和一样。令 $S^\prime$ 和 $T^\prime$ 是 $S$ 和 $T$ 移除了公共元素后的子集，显然 $S^\prime$ 和 $T^\prime$ 的和也是一样的。接下来用反证法证明 $S^\prime$ 和 $T^\prime$ 至少有一个是空集。</p>
+<p>假设 $S^\prime$ 和 $T^\prime$ 都是非空的，那么令 $F_s$ 是 $S^\prime$ 里的最大数，$F_t$ 是 $T^\prime$ 里的最大数。显然有 $F_s \ne F_t$。不妨令 $F_s &lt; F_t$，那么根据一开始的引理，有 $\sum_{x \in S^\prime} x &lt; F_{s+1}$。也有 $\sum_{x \in S^\prime} x &lt; F_{t}$，因为 $s+1 \le t$。但是 $\sum_{x \in T^\prime}$ 是至少为 $F_t$ 的，出现了矛盾。</p>
+<p>于是就可以证明 $S^\prime = T^\prime = \emptyset$，因此 $S=T$，也就是说表示是唯一的。</p>
+<p>如果我们用 $0$ 或者 $1$ 来表示每个斐波那契数取还是不取，那么考虑所有小于 $F_{k+2}$ 的数，我们可以用一个长度为 $n$ 的二进制串 $a_{n-1} \ldots a_1 a_0$ 来表示。如果这个二进制串里没有连续相邻的$1$，那么它可以唯一表示一个数</p>
+<p>$$
+a_{n-1} \cdot F_{n+1} + \ldots + a_1 \cdot F_3 + a_0 \cdot F_2
+$$</p>
+<p>显然，这样的串总共有 $F_{n+2}$ 个，也就是说我们可以表示从 $0$ 到 $F_{n+2}-1$ 的所有数。</p>
+<p>那么给出一个正整数 $n$ 之后，如果得到它的 <code>Zeckendorf representation</code> 呢？可以考虑如下的贪心做法：首先找一个最大的不超过 $n$ 的斐波那契数 $F_{k_1}$，之后找一个最大的不超过 $n-F_{k_1}$ 的斐波那契数 $F_{k_2}$，依次类推直到 $n$ 变成 $0$ 为止。可以发现这个就是我们在证明存在性用的方法，因此找出来的一定是一个合法的 <code>Zeckendorf representation</code>。</p>
+<h2 id="basic-arithmetic">Basic arithmetic</h2>
+<p>下面介绍如何只用 <code>Zeckendorf representation</code> 做整数的基本运算</p>
+<h3 id="incrementation">Incrementation</h3>
+<p>首先考虑最简单的情况，我们有一个长度为 $n$ 二进制串 $a_{n-1} \ldots a_1 a_{0}$ 表示整数 $x$，我们想要知道 $x+1$ 的表示 $b_{n}b_{n-1} \dots b_1 b_{0}$。多了一位 $b_n$ 是因为当 $x=F_{n+2}-1$ 的时候，$x+1=F_{n+2}$，没法用 $n$ 位二进制串来表示。</p>
+<p>仅考虑最后两位 $a_1a_0$，我们可以发现只有两种情况：如果 $a_0=0$，我们只需要改成 $a_0=1$ 即可，等价于加上了 $F_2=1$；否则，最后两位一定是 $01$，我们可以把它们改成 $10$，因为 $F_3-F_2=1$。总结下的话，就是以下三种 $a_1a_0 \to c_1c_0$ 的转换规则</p>
+<p>$$
+00. \to 01. \qquad  01. \to 10. \qquad  10. \to 11.
+$$</p>
+<p>可以发现，在做完上述转化之后，我们得到的二进制串里可能会有相邻的 $1$。我们需要想办法移除掉这些相邻的 $1$。注意到 $F_{k+2}=F_{k+1}+F_{k}$，于是我们可以简单的应用这个规则：$011 \to 100$。这个肯定不会改变这个串的值。</p>
+<p>注意到应用这个规则一次后，可能会产生新的相邻的 $1$。因此，我们需要从低位开始应用这个规则，这样只会在更高位产生相邻的$1$。在后续的枚举过程中，会继续被消掉。</p>
+<p>至此，我们可以在 $O(n)$ 时间内从 $x$ 变成 $x+1$。</p>
+<h3 id="addition">Addition</h3>
+<p>接下来考虑更加复杂点的情况，我们需要把 $a_{n-1} \ldots a_1 a_{0}$ 加到一个斐波那契数 $F_{j+2}$ 上去。如果 $a_j = 0$，那么我们只需要把 $a_j$ 改成 $1$。接下来，如果产生了一对相邻的 $1$，可以应用上文的规则消掉这一对 $1$。如果产生了三个连续的 $1$，我们可以先消掉最后两个 $1$，也就是说 $111 \to 200$。接下来想办法消掉这个 $2$ 就好了。</p>
+<p>可以发现，这个和 $a_j=1$ 是等价的，考虑这个情况即可。可以发现，这个 $2$ 的周围肯定都是 $0$。因此，当 $j \ge 2$ 的时候，我们可以考虑如下的规则：</p>
+<p>$$
+0200 \to 0111 \to 1001 \qquad  0201 \to 0112 \to 1002
+$$</p>
+<p>对于前者，我们直接把 $2$ 都消掉了。对于后者，$2$ 会往后移动两个位置。这两个规则可以简单的表示成下面的形式，其中 $x \in {0, 1}$，$\bar{x} = x+1$：</p>
+<p>$$
+020x \to 100\bar{x}
+$$</p>
+<p>最终 $2$ 会移动到最后一位或者倒数第二位，也就是 $j \in {0, 1}$。那么我们就可以用下面两个规则消掉这个 $2$：</p>
+<p>$$
+020. \to 101. \qquad  02. \to 10.
+$$</p>
+<p>之后得到的串可能还是有相邻的 $1$，继续应用之前的规则消掉即可。</p>
+<p>至此，我们也得到了一个 $O(n)$ 的算法。如果考虑对两个 $n$ 位整数 $a_{n-1} \ldots a_1 a_{0}$ 和 $b_{n-1} \ldots b_1 b_{0}$ 相加的话，就可以对每一个 $b_j=1$ 的 $F_{j+2}$ 应用刚才的 $O(k^2)$ 的做法。这样就有一个 $O(n^2)$ 的算法来做加法。</p>
+<p>显然，我们可以有更快的做法。不妨令 $c_j=a_j+b_j$，那么数字串 $c_{n-1} \ldots c_1 c_0$ 只会有数字 $0$，$1$ 或者 $2$。我们需要想办法消掉这些 $2$ 和相邻的 $1$。</p>
+<p>首先我们只考虑消掉所有的 $2$。如果只用 $020x \to 100\bar{x}$ 这个规则，当 $x=2$ 的时候，我们可能引入 $3$。因此，我们需要加入一些新的规则：</p>
+<p>$$
+030x \to 021\bar{x} \to 110\bar{x}
+$$</p>
+<p>然后，由于相邻 $1$ 的存在，做 $0201 \to 1002$ 变换之后，可能会出现 $2$ 后面跟着一个 $1$ 的情况。类似的，做 $0200 \to 1001$ 变换之后，可能会出现 $1$ 后面跟着一个 $2$ 的情况。我们还需要另外的规则处理它们：</p>
+<p>$$
+021x \to 110x \qquad  012x \to 101x
+$$</p>
+<p>于是，我们现在总共有如下 $4$ 种规则，其中 $x \in {0, 1, 2}$，$\bar{x} = x+1$：</p>
+<p>$$
+020x \to 100\bar{x} \qquad  030x \to 110\bar{x} \qquad  021x \to 110x \qquad  012x \to 101x
+$$</p>
+<p>我们还需要特殊处理末尾，即 $j \in {0, 1}$的情况。但是，如果我们把 $F_0$ 和 $F_1$ 临时加入 <code>Zeckendorf representation</code> 里，也就是允许 $c_{-1}$ 和 $c_{-2}$ 的出现。那么直接用上面规则就可完全消掉 $2$，但是可能会出现 $c_{-1}=1$ 或者 $c_{-2} = 1$。对于后者，我们可以直接忽略，因为 $F_0=0$。对于前者，我们稍后再处理。</p>
+<p>之后，我们就得到了一个只包含 $0$ 或者 $1$ 的数字串。接下来，我们应用规则 $011 \to 100$ 两遍。第一遍从高位到低位，第二遍从低位到高位。</p>
+<p>可以发现第一遍操作完之后，不存在三个连续的 $1$，也就是说连续的 $1$ 个数最多是 $2$。接下来，$c_0$ 和 $c_{-1}$ 不可能同时是 $1$，于是当 $c_{-1}=1$的时候，可以直接令 $c_0=1,c_{-1}=0$。</p>
+<p>在这个基础上，第二遍就可以轻松做了。</p>
+<p>至此，我们有了一个 $O(n)$ 的算法来实现加法。</p>
+<h3 id="subtraction">Subtraction</h3>
+<p>接下来考虑如何实现两个 $n$ 位整数 $x=a_{n-1} \ldots a_1 a_{0}$ 和 $y=b_{n-1} \ldots b_1 b_{0}$ 的减法。不妨假设 $x \ge y$，不然只需要反过来，然后加上负号即可。</p>
+<p>减法相对于加法就简单了不少，我们一开始令$c_j=a_j-b_j$，那么就得到了一个包含 $-1$，$0$ 或者 $1$ 的数字串。为了简意起见，我们把 $-1$ 写成 $\bar{1}$。</p>
+<p>首先，我们从高位到低位处理每一位，使得最终序列仅包含 $0$，$1$ 或者 $2$。由于 $x \ge y$，第一个非 $0$ 位肯定不会是 $\bar{1}$。先考虑如下的规则：</p>
+<p>$$
+100 \to 011 \qquad 1\bar{1}0 \to 001 \qquad 1\bar{1}1 \to 002 \qquad 10\bar{1} \to 010
+$$</p>
+<p>可以简化成，其中 $x \in {0, -1}, y \in {0, 1}$：</p>
+<p>$$
+10x \to 01\bar{x} \qquad 1\bar{1}y \to 00\bar{y}
+$$</p>
+<p>由于我们引入了 $2$，可能会导致 $2$ 后面跟着 $-1$，同样需要把这些情况处理掉，因此加入下面的规则：</p>
+<p>$$
+200 \to 111 \qquad 2\bar{1}0 \to 101 \qquad 2\bar{1}1 \to 102 \qquad 20\bar{1} \to 110
+$$</p>
+<p>基本就是把 $2$ 拆成 $111$ 后合并到后续的位上去。</p>
+<p>接下来我们就得到了一个仅包含 $0$，$1$ 或者 $2$ 的序列，可以发现每个 $2$ 要么左右两侧都有一个 $0$，要么后面跟着一个 $0$。这个和加法得到的序列性质是一样的，因此可以直接套用加法的做法。</p>
+<p>于是，我们也可以 $O(n)$ 时间做好减法了。</p>
+<h3 id="complementing">Complementing</h3>
+<p>由于减法的出现，那么类似的我们就可以思考如何表示负数呢。在传统的计算机里面，我们是用补码来表示负数的，类似的，我们可以考虑用补码来表示负数。在二进制里面，我们是加上 $2^n$ 来得到补码的，那么在 <code>Zeckendorf representation</code>，可以加上 $F_{n+2}$ 来得到补码。</p>
+<p>求补码的过程就是两个 <code>Zeckendorf representation</code> 的整数的减法，直接套用上述算法即可。</p>
+<h3 id="canonicalization">Canonicalization</h3>
+<p>上面我们讨论了，如果把通过加法和减法得到的串变成一个合法的 <code>Zeckendorf representation</code>。但是我们更常遇到的事一般情况：</p>
+<blockquote>
+<p>给出$N=\sum\limits_{i=0}^{n} a_i \cdot F_{i}$，求出它的 <code>Zeckendorf representation</code></p>
+<p>其中 $1 \le n \le 10^6, 1 \le a_i \le 10^{18}$</p>
+</blockquote>
+<p>这个我们称之为正则化 (Canonicalization)。我们可以利用加法的做法来解决这个问题。</p>
+<p>令 $A = \sum\limits_{i=0}^{n-1} \lfloor \frac{a_i}{2} \rfloor \cdot F_{i+2}$，$B = \sum\limits_{i=0}^{n-1} (a_i \bmod 2) \cdot F_{i+2}$，显然 $N = 2A + B$。如果我们能够分别求得 $A$ 和 $B$ 的 <code>Zeckendorf representation</code>，那么就可以用两次加法来得到 $N$ 的 <code>Zeckendorf representation</code>。</p>
+<p>可以发现，对于 $B$ 的 <code>Zeckendorf representation</code>，直接应用加法的简化规则就可以了。对于 $A$ 的 <code>Zeckendorf representation</code>，我们可以变成一个子问题，递归的做。</p>
+<p>因此可以在 $O(n \log A)$ 的时间正则化。</p>
+<p>还可以利用一些恒等式来做，比如说 $F_{m}F_{n}+F_{m-1}F_{n-1} = F_{n+m-1}$。</p>
+<p>首先，从低位到高位考虑每个 $a_i$，显然可以运用规则 $011 \to 100$，把 $\min(a_i, a_{i-1})$ 加到 $a_{i+1}$ 上去，然后从 $a_i$ 和 $a_{i-1}$ 上减去 $\min(a_i, a_{i-1})$。这样一来，我们的 $a$ 序列一定满足而 $a_i \cdot a_{i-1} = 0$。</p>
+<p>接下来考虑从高位到低位依次考虑每个 $a_i$，显然可以把 $a_i$ 拆成若干个 $F_j$ 的和，那么我们可以考虑利用$F_{i}F_{j}+F_{i-1}F_{j-1} = F_{i+j-1}$，给答案加上 $F_{i+j-1}$，同时给 $a_{i-1}$ 加上 $F_{j-1}$。</p>
+<p>对于前者，可以用之前在加法讨论过的做法，不过我们只保证到 $res_i$ 为止。如果应该规则到了比 $i$ 小的位置 $j$，直接修改 $a_j$ 即可。</p>
+<p>可以发现，这样每次加上 $F_{i+j-1}$ 的复杂度也是 $O(\log A)$ 的。</p>
+<h3 id="multiplication">Multiplication</h3>
+<p>接下来考虑如何实现两个 $n$ 位整数 $x=a_{n-1} \ldots a_1 a_{0}$ 和 $y=b_{n-1} \ldots b_1 b_{0}$ 的乘法。</p>
+<p>首先考虑一个复杂点的做法，</p>
+<p>$$
+\forall m \ge n \ge 2, F_mF_n=\sum_{r=1}^{\lfloor \frac{n}{2} \rfloor}F_{m+n+2-4r}+\begin{cases}0 &amp; n \bmod 2 = 0 \ F_{m-n+1} &amp; n \bmod 2 = 1 \end{cases}
+$$</p>
+<p>其中，如果 $n=m$ 是奇数，那么用 $F_2$ 代替 $F_1$。</p>
+<p>这个意味着什么呢，说明我们可以单独考虑每一位 $a_i$ 和 $b_j$，得到一个没有正则化的 <code>Zeckendorf representation</code>，之后套用正则化的算法就可以了。</p>
+<p>令$S_i=S_{i-4}+F_i$，那么上述公式可以表示为</p>
+<p>$$
+\forall m \ge n \ge 2, F_mF_n=S_{n+m-2}+\begin{cases}F_{m-n+2}-S_{m-n+2} &amp; n \bmod 2 = 0 \ F_{m-n+4}-S_{m-n+4}+F_{m-n+1} &amp; n \bmod 2 = 1 \end{cases}
+$$</p>
+<p>同样，如果 $n=m$ 是奇数，那么用 $F_2$ 代替 $F_1$。</p>
+<p>很显然，如果我们能够求出每个 $F$ 和 $S$ 前面的系数，那么就可以求出一个没有正则化的 <code>Zeckendorf representation</code>。注意到，这些系数其实可以表示成关于 $a_i$ 和 $b_j$ 的若干个不同的卷积。</p>
+<p>于是我们就可以用FFT求出每个 $F$ 和 $S$ 前面的系数。然后稍微处理下就得到了每个 $F$ 前面最终的系数 $c_2,c_3,\dots,c_m$。最后套用正则化算法就解决了这个问题。</p>
+<p>上述方法需要做很多次 FFT，不免有点慢，可以使用 <a href="https://en.wikipedia.org/wiki/Lucas_number">Lucas Number</a> 来优化。</p>
+<p>我们知道 $L_n = F_{n-1}+F_{n+1}=F_n+2F_{n-1}=F_{n+2}-F_{n-2}$，但还有一个重要的公式</p>
+<p>$$
+F_{n+k}+(-1)^{k}F_{n-k}=L_{k}F_{n}
+$$</p>
+<p>其中，我们允许下标为负数，幸亏在下标为负数的时候斐波那契数的所有性质都是有用的，即 $F_{-n}=(-1)^{n-1}F_n$。</p>
+<p>于是我们可以把其中一个 <code>Zeckendorf representation</code> 表示成若干个 Lucas Number 的和。这个直接用一开始提到的式子就可以搞定。</p>
+<p>接下来的话，就可以应用 $F_{n+k}+(-1)^{k}F_{n-k}=L_{k}F_{n}$，我们分别做两个卷积，就可以求出 $F_{n+k}$ 和 $F_{n-k}$ 的系数了。下面的做法都是类似的，正则化一下答案即可。</p>
+<p>虽然使用 Lucas Number 之后，仅需要做两次卷积，但是我们还可以更快。考虑使用斐波那契数列通项公式来优化。</p>
+<p>我们知道，$F_n=\frac{1}{\sqrt{5}}(\phi^n-(-\phi)^{-n})$，那么可以把 $\sqrt{5} F_n$ 看成一个多项式 $x^n-(-x)^{-n}$。因此，两个数 $\sqrt{5} x$ 和 $\sqrt{5} y$，我们可以分别看成两个多项式 $A(x)$ 和 $B(x)$。</p>
+<p>考虑 $C(x)=A(x)B(x)$，它是 $5xy$ 对应的多项式，我们把它除以 $\sqrt{5}$ 就得到了 $\sqrt{5} xy$ 对应的多项式。显然这个多项式肯定也是有这种 $x^n-(-x)^{-n}$ 的对称性，我们从高到底就可以恢复出它的 <code>Zeckendorf representation</code>。只有套用正则化的算法即可。</p>
+<p>除以 $\sqrt{5}$ 可以利用 $\phi^4=(\phi+1)^2=3\phi+1=\sqrt{5} \phi$ 来做。</p>
+<p>上述的做法复杂度都是 $O(n \log n)$ 的。</p>
+<h3 id="division">Division</h3>
+<p>先考虑一类特殊的减法：求出 $F_{n+k} - F_n$ 的 <code>Zeckendorf representation</code>。</p>
+<p>首先，我们有</p>
+<p>$$
+F_{n+k}-F_n = \sum_{r=1}^{\lfloor \frac{k}{2} \rfloor} F_{n+k+1-2r} + \begin{cases} 0 &amp; k \equiv 0 \pmod 2 \ F_{n-1} &amp; k \equiv 1 \pmod 2 \end{cases}
+$$</p>
+<p>这个可以通过数学归纳法证明，或者暴力应用 $F_{n+2}=F_{n+1}+F_n$ 把 $F_{n+k}$ 拆掉。</p>
+<p>根据 $F_{n+k}=F_k F_{n+1} + F_{k-1} F_n$，如果令 $k=n$ 的话，我们有</p>
+<p>$$
+F_{2n}=F_n F_{n+1} + F_{n-1} F_n
+$$</p>
+<p>因此，$F_{2n}$ 是 $F_n$ 的倍数。类似的，有</p>
+<p>$$
+F_{3n}=F_2n F_{n+1} + F_{2n-1} F_n
+$$</p>
+<p>显然，$F_{3n}$ 也是 $F_n$ 的倍数。依次类推，我们就可以发现 $F_{kn}$ 是 $F_n$ 的倍数。于是就可以考虑这样的问题：求出 $\frac{F_{kn}}{F_n}$ 的 <code>Zeckendorf representation</code>。</p>
+<p>考虑 $F_{kn}$ 和 $F_n$ 的通项公式，我们知道</p>
+<p>$$
+\frac{F_{kn}}{F_n} = \frac{\alpha^{kn} - \beta^{kn}}{\alpha^n - \beta^n}=\sum_{i=1}^{k} \alpha^{(k-i)n} \beta^{(i-1)n}
+$$</p>
+<p>由于 $\alpha \beta = -1$，我们可以得到，对于 $1 \le r \le \lfloor \frac{k}{2} \rfloor$</p>
+<p>$$
+\alpha^{(k-r)n} \beta^{(r-1)n}+\alpha^{(r-1)n} \beta^{(k-r)n}=(-1)^{(r-1)n}(\alpha^{(k-2r+1)n}+\beta^{(k-2r+1)n})=(-1)^{(r-1)n} L_{(k-2r+1)n}
+$$</p>
+<p>于是，根据 $k$ 的奇偶性，我们可以得到</p>
+<p>$$
+\frac{F_{kn}}{F_n}=\sum_{r=1}^{\lfloor \frac{k}{2} \rfloor} (-1)^{(r-1)n} L_{(k-2r+1)n} + \begin{cases} (-1)^{\frac{(k-1)n}{2}} &amp; k \equiv 1 \pmod 2 \ 0 &amp; k \equiv 0 \pmod 2 \end{cases}
+$$</p>
+<p>对于偶数的 $n$，我们可以直接用 $L_n=L_{n+1}+L_{n-1}$ 来替换。对于 $n$ 是奇数，替换需要复杂得很多，这里先略去。</p>
+<p>对于更加通用的除法，目前没有什么好的方法。只能先转成别的进制，做完除法后再转回 <code>Zeckendorf representation</code>。</p>
+<h2 id="binary-representation">Binary representation</h2>
+<p>接下来介绍如何从 <code>Zeckendorf representation</code> 转成 <code>binary representation</code>。由于 <code>binary representation</code> 可以转成任意其他进制，因此我们也就可以做到从 <code>Zeckendorf representation</code> 转成任意进制。</p>
+<h3 id="conversion-to-zeckendorf-representation">Conversion to Zeckendorf representation</h3>
+<p>需要利用 Lucas Number 来辅助，我们知道</p>
+<p>$$
+L_m=F_{m+1}+F_{m-1}=\phi_{+}^{m}+\phi_{-}^m
+$$</p>
+<p>其中，$\phi_{\pm} = \frac{1 \pm \sqrt{5}}{2}$。并且对于任意的 $m$ 和 $k$ 都有</p>
+<p>$$
+F_{n+k}+(-1)^{k}F_{n-k}=L_{k}F_{n}
+$$</p>
+<p>给出一个长度为 $2n$ 的二进制数 $A$，令 $L_m \ge 2^{n+1} &gt; L_{m-1}$。考虑把 $A$ 除以 $L_m$</p>
+<p>$$
+A = A_1 L_m + A_0
+$$</p>
+<p>假设我们搞出了 $A_1$ 和 $A_0$ 的 <code>Zeckendorf representation</code>，那么就可以利用 $L_k F_n$ 的恒等式求出 $A_1 L_m$ 的 <code>Zeckendorf representation</code>，之后套用一个加法算法即可。</p>
+<p>可以发现 $A_1$ 和 $A_0$ 分别有 $n-1$ 和 $n+1$ 位，整数除法的复杂度是 $O(n
+\log n)$ 的，那么有</p>
+<p>$$
+T(2n) \le T(n+2)+T(n-1) + O(n \log n)
+$$</p>
+<p>因此整体复杂度是 $O(n \log^2 n)$ 的。</p>
+<h3 id="conversion-to-binary-representation">Conversion to binary representation</h3>
+<p>这个是上述问题的逆问题，我们可以考虑将上述算法反着用。找到一个 $m$ 使得差不多能够把  <code>Zeckendorf representation</code> 分成等长的两部分。然后考虑如下的式子</p>
+<p>$$
+A=A_1 L_m + B, \qquad B=A_1^\prime-A^{\prime \prime}+A_0
+$$</p>
+<p>其中 $A_1^\prime$ 和 $A^{\prime \prime}$ 是根据 $L_m F_k$ 关系化简出来的。</p>
+<p>利用减法和加法的算法构建出 $B$ 的 <code>Zeckendorf representation</code>，然后分别递归求 $A_1$ 和 $B$ 的二进制表示即可。</p>
+<p>最后通过整除乘法把 $A_1$，$L_m$ 和 $B$ 的结构合并起来。</p>
+<p>可以发现，复杂度也是 $O(n \log^2 n)$ 的。</p>
+<h2 id="dynamic-zeckendorf-representation">Dynamic Zeckendorf representation</h2>
+<p>上面说了很多东西，那么一个数的 <code>Zeckendorf representation</code> 是不是可以动态维护呢，也就是下面这个问题：</p>
+<blockquote>
+<p>你开始有个数 $X=0$，然后有 $Q$ 个操作，每次 $X = X + a \cdot F_b$ 或者 $X = X - a \cdot F_b$。每次操作完需要维护处理一些关于 $X$ 的 <code>Zeckendorf representation</code> 相关的询问。</p>
+<p>$1 \le Q \le 10^5, 1 \le a, b \le 10^{9}$</p>
+</blockquote>
+<p>还是利用 Lucas number 和斐波那契数数之间的恒等式：</p>
+<p>$$
+L_k \cdot F_n = F_{n+k} + (-1)^kF_{n-k}
+$$</p>
+<p>如果我们把$a$拆成若干个 Lucas number 的和，就可以用上面的式子变成加上或者减去若干个斐波那契数，这就比较方便维护了。</p>
+<p>经过一些观察发现，加入或者减去一个 $F_x$ 的话，只和 $X$ 的 <code>Zenkorf representation</code> 中那些极大的 <code>10101...10101</code> 有关，因此可以用一个 Treap 来维护这些极大的 <code>10101..101</code> 段。考虑加法的话，有以下几种情况：</p>
+<ol>
+<li>$F_{x-1},F_{x}, F_{x+1}$ 都不存在，那么直接加上一个 $F_x$ 即可。</li>
+<li>$F_{x-1},F_{x}, F_{x+1}$ 至少有一个存在，那么假设包含 $x$ 的 <code>101..101</code> 段中最高位 $1$ 和最低位 $1$ 分别是 $l$ 和 $r$，还可以分成下面几种情况：
+<ul>
+<li>$x=r+1$，那么需要把 $F_r$ 删掉，加入 $F_{r+2}$。</li>
+<li>$l \le x \le r$ 并且 $x \equiv l \bmod 2$，那么需要把 $F_{l}, F_{l+2}, \dots, F_{r}$ 都删掉，加入 $F_{r+1}$, $F_{l+1},F_{l+3}, \dots, F_{x-1}$ 和 $F_{l-2}$。</li>
+<li>$l \le x \le r$ 并且 $x \not \equiv l \bmod 2$，那么需要把 $F_{x+1},F_{x+3},\dots,F_r$ 都删掉，加入 $F_{r+1}$。</li>
+</ul>
+</li>
+</ol>
+<p>注意到在加入 $F_{r+2}$ 或者 $F_{l-2}$ 的时候可能会出现两个相邻的 <code>1</code>，需要递归重复以上过程。显然，递归有限次后就会结束。</p>
+<p>考虑减法的话，也是类似的分析后可以搞定。因此可以 $O(\log A)$ 时间维护一次加入或者删除后的 <code>Zenkorf representation</code>，其中 $A = \max(a, b)$。</p>
+<p>整体可以在 $O(Q \log^2 A)$ 的时间搞定这个题。</p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="coci-20102011-contest-4-hrpahttpstrainnzoiorgnzproblems329"><a href="https://train.nzoi.org.nz/problems/329">COCI 2010/2011. Contest #4. Hrpa</a></h3>
+<p>题意：有 $N$ 个石子，两个人玩游戏。第一轮先手可以取任意个石子。接下来，每一轮至少需要取 $1$ 个，但是不能超过之前的两倍。拿走最后一个石子的获胜。</p>
+<p>求出先手最少需要拿多少石子才能获胜。</p>
+<p>$2 \le N \le 10^{15}$</p>
+<p>题解：参考<a href="/coci/2010-2011#hrpa">这里</a></p>
+<h3 id="xix-oi-round-2-day-2-rozkład-fibonacciegohttpsszkopuleduplproblemsetproblemw1qbhpufazp-sh6x-u4ptnnusitekeystatement"><a href="https://szkopul.edu.pl/problemset/problem/w1QbhPufazp-sH6X-u4pTnNu/site/?key=statement">XIX OI. Round 2. Day 2. Rozkład Fibonacciego</a></h3>
+<p>题意：给出一个整数 $N$，可以用斐波那契数加加减减得到，求出最小需要的项数。</p>
+<p>$1 \le N \le 4 \times 10^{17}$</p>
+<p>题解：参考<a href="/polish-olympiad-in-informatics/2011-2012#day-2">这里</a></p>
+<h3 id="ceoi-2018-day-2-fibonacci-representationshttpslojacproblem3185"><a href="https://loj.ac/problem/3185">CEOI 2018 Day 2. Fibonacci Representations</a></h3>
+<p>题意：对一个正整数 $p$，令 $X(p)$ 表示把 $p$ 表示为若干个不同的斐波那契数的和的表示法数，两种表示法不同当且仅当有一个斐波那契数是其中一个的项，而不是另一个的项。</p>
+<p>给出 $n$ 个整数 $a_1,a_2,\dots,a_n$，定义 $p_k=F_{a_1}+F_{a_2}+\dots+F_{a_k}$。</p>
+<p>对于 $k=1,2,\dots,n$，求出 $X(p_k) \bmod (10^9+7)$。</p>
+<p>$1 \le n \le 10^5, 1 \le a_i \le 10^9$</p>
+<p>题解：把 $p$ 的 <code>Zeckendorf representation</code> 写出来后，考虑两个连续 <code>1</code> 的位置是 $x$ 和 $y$，那么他们的方案数是 $\lfloor \frac{y-x}{2} \rfloor$。因此，用上面动态维护 <code>Zeckendorf representation</code> 的方法，顺便维护每个 <code>1</code> 拆或者不拆的方案数即可。</p>
+<h3 id="pa-2019-round-3-iloczyny-fibonacciegohttpsszkopuleduplproblemsetproblemfdlfc1tbgkoqqzwrttpcrtbcsite"><a href="https://szkopul.edu.pl/problemset/problem/fDlfC1tbgkoQqZwRttPCrtbC/site/">PA 2019. Round 3. Iloczyny Fibonacciego</a></h3>
+<p>题意：给出两个整数 $x$ 和 $y$ 的 <code>Zeckendorf representation</code>，长度为 $n$ 和 $m$。求出它们的乘积的 <code>Zeckendorf representation</code>。</p>
+<p>$1 \le n, m \le 10^6$</p>
+<p>题解：就是裸的乘法，参考上面的算法即可。</p>
+<h3 id="ontak-2019-day-1-fibonacci-divisionhttpssio2mimuweduplcwiekuisty_ontak2019pfib"><a href="https://sio2.mimuw.edu.pl/c/wiekuisty_ontak2019/p/fib/">ONTAK 2019. Day 1. Fibonacci Division</a></h3>
+<p>题意：给出一个数 $x$ 的 <code>Zeckendorf representation</code>，$b_0,b_1,\dots,b_{n-1}$ 和一个整数 $k$。求出 $\lfloor \frac{x}{k} \rfloor$ 的 <code>Zeckendorf representation</code>。</p>
+<p>$1 \le n \le 10^5, 1 \le k \le 3$</p>
+<p>题解：如果$k=1$，直接输出输入的数即可。对于 $k=2,3$，我们可以找出 $\lfloor \frac{F_i}{k} \rfloor$ 的表示，以及 $F_i \bmod k$ 的值。对于前者，我们可以先搞出一个没有正则化的表示，然后做一次正则化即可。对于后者，和不超过 $n \cdot (k-1)$，直接拆成 <code>Zeckendorf representation</code>，然后和前面的结果做加法即可。</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://www.algonotes.com/en/fibonacci-arithmetic">Algorithms for arithmetic in Fibonacci and golden ratio representations</a></li>
+<li><a href="https://www.cs.auckland.ac.nz/~peter-f/FTPfiles/Zeckendorf.pdf">Zeckendorf Integer Arithmetic</a></li>
+<li><a href="https://www.irif.fr/~cf/publications/AUFP.pdf">Efficient Algorithms For Zeckendorf Arithmetic</a></li>
+<li><a href="https://www.csie.ntu.edu.tw/~r97002/temp/Concrete%20Mathematics%202e.pdf">Concrete Mathematics</a></li>
+<li><a href="https://arxiv.org/pdf/1501.04924.pdf">Zeckendorf arithmetic for Lucas numbers</a></li>
+<li><a href="https://doi.org/10.1134/S0032946018040038">On the Complexity of Fibonacci Coding</a></li>
+</ul></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zimpha" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zimpha.github.io/">
+      <button type="submit" class="submit icon-search glyphicon glyphicon-search"></button>
+</form>
+    </section>
+    <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://zimpha.github.io/algonotes/zeckendorf-arithmetic/" class="list-group-item">Zeckendorf Arithmetic</a>
+      
+      <a href="https://zimpha.github.io/algonotes/matroid/" class="list-group-item">Matroid</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LINKS</div>
+    </div>
+    <ol class="list-group">
+      
+      <a href="http://www.cnblogs.com/clrs97/" class="list-group-item">Claris</a>
+      
+      <a href="http://min-25.hatenablog.com/" class="list-group-item">Min_25</a>
+      
+    </ol>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; zimpha&#39;s blog</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
