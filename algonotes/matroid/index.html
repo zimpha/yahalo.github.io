@@ -184,13 +184,13 @@
 <ul>
 <li>$\emptyset \in \mathcal{I}$</li>
 <li>如果有 $A \in \mathcal{I}, B \subseteq A$，那么 $B \in \mathcal{I}$。就是说独立集的任何子集也是独立集</li>
-<li>如果 $A \in \mathcal{I}, B \in \mathcal{I}$ 并且 $|A| \le |B|$，那么存在一个 $b \in B\setminus A$ 使得 $A \cup {b} \in \mathcal{I}$。</li>
+<li>如果 $A \in \mathcal{I}, B \in \mathcal{I}$ 并且 $|A| \le |B|$，那么存在一个 $b \in B\setminus A$ 使得 $A \cup \{b\} \in \mathcal{I}$。</li>
 </ul>
 <p>拟阵有两个概念叫做 <code>basis</code> 和 <code>circuit</code>，中文对应基和环。一个极大独立集叫做基，一个极小非独立集叫做环。</p>
 <p>根据拟阵的性质可以发现</p>
 <ul>
 <li>拟阵中任意一个基的大小都是一样的</li>
-<li>如果存在两个不同的基 $A$ 和 $B$，那么对于任意 $x \in A \setminus B$，都存在一个 $y \in B \setminus A$，使得 $A \setminus {x} \cup {y}$ 是一个独立集。</li>
+<li>如果存在两个不同的基 $A$ 和 $B$，那么对于任意 $x \in A \setminus B$，都存在一个 $y \in B \setminus A$，使得 $A \setminus \{x\} \cup \{y\}$ 是一个独立集。</li>
 </ul>
 <p>类似的，我们还可以定义拟阵的秩 (rank)。</p>
 <p>给出一个拟阵 $\mathcal{M}=\langle U, \mathcal{I} \rangle$，对于任何一个集合 $S \subseteq U$，定义 $S$ 的秩 $r(S)$ 为 $S$ 的子集中极大独立集的大小。也就是 $S$ 的一个基的大小，因为显然 $S$ 的每个极大独立集大小也是一样的。拟阵的秩也满足一些性质</p>
@@ -198,10 +198,10 @@
 <li>对于任意 $S \subseteq U$，都有 $0 \le r(S) \le |S|$</li>
 <li>对于任意 $A \subseteq B \subseteq U$，都有 $r(A) \le r(B)$</li>
 <li>对于任意 $A \subseteq U, B \subseteq U$，都有 $r(A \cup B) + r(A \cap B) \le r(A) + r(B)$。这个也叫做 Submodular。</li>
-<li>对于任意 $S \subseteq U$ 和 $x \not \in S$，都有 $r(S) \le r(S \cup {x}) \le r(S) + 1$，这个可以由上面三个性质推出来。</li>
+<li>对于任意 $S \subseteq U$ 和 $x \not \in S$，都有 $r(S) \le r(S \cup \{x\}) \le r(S) + 1$，这个可以由上面三个性质推出来。</li>
 </ul>
 <p>基于这个秩，我们还可以定义 <code>dual matroid</code>。</p>
-<p>给出一个拟阵 $\mathcal{M} = \langle U, \mathcal{I} \rangle$，以及它的秩函数 $r(\cdot)$。它的一个 <code>dual matroid</code> 定义为 $\mathcal{M}^* = \langle U, \mathcal{I}^* \rangle$，其中 $\mathcal{I}^* = {I \subseteq U : r(U \setminus I) = r(U)}$。</p>
+<p>给出一个拟阵 $\mathcal{M} = \langle U, \mathcal{I} \rangle$，以及它的秩函数 $r(\cdot)$。它的一个 <code>dual matroid</code> 定义为 $\mathcal{M}^* = \langle U, \mathcal{I}^* \rangle$，其中 $\mathcal{I}^* = \{I \subseteq U : r(U \setminus I) = r(U)\}$。</p>
 <h2 id="常见拟阵">常见拟阵</h2>
 <h3 id="graphical-matroid">Graphical Matroid</h3>
 <p>这应该是我们接触最多的拟阵。</p>
@@ -211,9 +211,9 @@
 <p>定义：对于一个有限集合 $U$ 和一个整数 $k$，它的独立集 $S$ 满足 $|S| \le k$。</p>
 <p>显然，$r(S)$ 就是 $\min(k, |S|)$。</p>
 <h3 id="linear-matroid">Linear Matroid</h3>
-<p>定义：令 $U$ 是一个有限集合，对于 $U$ 里每条边 $e$ 都对应了一个向量 $v_e$。不妨假设 $v_e$ 都是在一个域 $F$ 下面的，并且每个向量的维度都是一样的。对于 $S \subseteq U$，如果 ${v_e: e \in S}$ 是线性无关的，那么 $S$ 是这个拟阵的一个独立集。</p>
+<p>定义：令 $U$ 是一个有限集合，对于 $U$ 里每条边 $e$ 都对应了一个向量 $v_e$。不妨假设 $v_e$ 都是在一个域 $F$ 下面的，并且每个向量的维度都是一样的。对于 $S \subseteq U$，如果 $\{v_e: e \in S\}$ 是线性无关的，那么 $S$ 是这个拟阵的一个独立集。</p>
 <p>如果域 $F$ 是 $GF(2)$ 的话，那么我们也可以称这个为 <code>binary matroid</code>。</p>
-<p>显然，这个 $r(S)$ 就是线性空间 ${v_e: e \in S}$ 的秩，可以通过高斯消元得到。</p>
+<p>显然，这个 $r(S)$ 就是线性空间 $\{v_e: e \in S\}$ 的秩，可以通过高斯消元得到。</p>
 <h3 id="colorful-matroid">Colorful Matroid</h3>
 <p>定义：令全集 $U$ 是一个有限集合，对于 $U$ 里面的每个元素 $e$ 都有唯一一个颜色 $col_e$。考虑 $S \subseteq U$，如果 $S$ 里面每个元素的颜色都不同，那么 $S$ 是这个拟阵的一个独立集。</p>
 <p>显然，这个 $r(S)$ 就是 $S$ 里面本质不同的颜色个数。</p>
@@ -230,7 +230,7 @@
 <p>对于一个 <code>weighted matroid</code>，我们可以用如下算法求出权值最大的基，权值最小也是类似的。</p>
 <ul>
 <li>从 $S=\emptyset$ 开始</li>
-<li>找一个权值最大的 $x \in U \setminus S$，并且 $S \cup {x}$ 是独立集。</li>
+<li>找一个权值最大的 $x \in U \setminus S$，并且 $S \cup \{x\}$ 是独立集。</li>
 <li>把 $x$ 加入到 $S$ 中。重复上述两步直到找不到合法的 $x$ 为止。</li>
 </ul>
 <p>显然最后 $S$ 是一个极大的独立集，所以 $S$ 是一个基。每一步可以通过归纳法证明 $S$ 确实是一个权值最大的基。</p>
@@ -251,7 +251,7 @@ $$</p>
 <h3 id="算法">算法</h3>
 <ol>
 <li>从 $I = \emptyset$ 开始</li>
-<li>构建一个交换图 $G_I = {I \cup (U \setminus I), E}$，其中
+<li>构建一个交换图 $G_I = \{I \cup (U \setminus I), E\}$，其中
 <ul>
 <li>$x \in I, y \in (U \setminus I), \langle x, y \rangle \in E \Leftrightarrow I - x + y \in \mathcal{I_1}$,</li>
 <li>$x \in I, y \in (U \setminus I), \langle y, x \rangle \in E \Leftrightarrow I - x + y \in \mathcal{I_2}$.</li>
@@ -263,7 +263,7 @@ $$</p>
 <li>$I + y_{k + 1} \in \mathcal{I}_2$.</li>
 </ul>
 </li>
-<li>把 $I$ 替换为 $I \oplus {y_1, x_1, \dots, x_k, y_{k + 1}}$.</li>
+<li>把 $I$ 替换为 $I \oplus \{y_1, x_1, \dots, x_k, y_{k + 1}\}$.</li>
 </ol>
 <p>如果是带权的话，要先权值和最小然后边数最少。$\langle x,y \rangle$ 的边权是正的，$\langle y,x \rangle$ 的边权是负的。</p>
 <p>算法的正确性就不在此证明了，下面是几个拟阵相关的练习题。</p>
@@ -282,7 +282,7 @@ $$</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/codeforces/Hello%202020/G.cc">代码</a></p>
 <h3 id="naipc-2018-g-rainbow-graphhttpsofficialcontestyandexruopencupxviiicontest7836problemsg"><a href="https://official.contest.yandex.ru/opencupXVIII/contest/7836/problems/G/">NAIPC 2018. G. Rainbow Graph</a></h3>
 <p>题意：有一个 $n$ 个点 $m$ 条边的无向图，每条边有个权值和颜色，只有红绿蓝三种颜色。第 $i$ 条边连接 $a_i$ 和 $b_i$，权值为 $w_i$，颜色为 $c_i$。可能有重边和自环。对于个一个整数 $k$，你需要选出 $k$ 条边，使得这 $k$ 条边里面红绿边连通了所有点，蓝绿边也连通了所有点。对于每个 $k=1 \dots m$，求出权值和最小的选法。</p>
-<p>$1 \le n, m \le 100, 1 \le w_i \le 1000, c_i \in {R,G,B}$</p>
+<p>$1 \le n, m \le 100, 1 \le w_i \le 1000, c_i \in \{R,G,B\}$</p>
 <p>题解：考虑哪些边可以被删掉，显然是删掉后红绿边要有一个生成树同时绿蓝边也有一个生成树。那么这两个分别对应了一个 <code>dual graphical matroid</code>。你的目的就是要求出每个大小为 $k$ 的 <code>matroid intersection</code>，并且要求权值和最大。那么就做一个带权的 <code>matroid intersection</code> 即可。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/opencup/xviii/gp-of-america/G.cc">代码</a></p>
 <h3 id="google-code-jam-2019-round-3-datacenter-duplexhttpscodingcompetitionswithgooglecomcodejamround00000000000517070000000000158f1c"><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000051707/0000000000158f1c">Google Code Jam 2019. Round 3. Datacenter Duplex</a></h3>

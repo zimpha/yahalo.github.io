@@ -188,7 +188,7 @@ $$</p>
 <p>任意自然数都可以表示成一些互不相同的斐波那契数之和，比如
 $$
 \begin{aligned}
-12 &amp;= 5 + 3 + 2 + 1 + 1 = F_5 + F_4 + F_3 + F_2 + F_1\<br>
+12 &amp;= 5 + 3 + 2 + 1 + 1 = F_5 + F_4 + F_3 + F_2 + F_1 \\<br>
 &amp;= 8 + 3 + 1 = F_6 + F_4 + F_2
 \end{aligned}
 $$</p>
@@ -227,11 +227,11 @@ $$</p>
 <p>$$
 0200 \to 0111 \to 1001 \qquad  0201 \to 0112 \to 1002
 $$</p>
-<p>对于前者，我们直接把 $2$ 都消掉了。对于后者，$2$ 会往后移动两个位置。这两个规则可以简单的表示成下面的形式，其中 $x \in {0, 1}$，$\bar{x} = x+1$：</p>
+<p>对于前者，我们直接把 $2$ 都消掉了。对于后者，$2$ 会往后移动两个位置。这两个规则可以简单的表示成下面的形式，其中 $x \in \{0, 1\}$，$\bar{x} = x+1$：</p>
 <p>$$
 020x \to 100\bar{x}
 $$</p>
-<p>最终 $2$ 会移动到最后一位或者倒数第二位，也就是 $j \in {0, 1}$。那么我们就可以用下面两个规则消掉这个 $2$：</p>
+<p>最终 $2$ 会移动到最后一位或者倒数第二位，也就是 $j \in \{0, 1\}$。那么我们就可以用下面两个规则消掉这个 $2$：</p>
 <p>$$
 020. \to 101. \qquad  02. \to 10.
 $$</p>
@@ -246,11 +246,11 @@ $$</p>
 <p>$$
 021x \to 110x \qquad  012x \to 101x
 $$</p>
-<p>于是，我们现在总共有如下 $4$ 种规则，其中 $x \in {0, 1, 2}$，$\bar{x} = x+1$：</p>
+<p>于是，我们现在总共有如下 $4$ 种规则，其中 $x \in \{0, 1, 2\}$，$\bar{x} = x+1$：</p>
 <p>$$
 020x \to 100\bar{x} \qquad  030x \to 110\bar{x} \qquad  021x \to 110x \qquad  012x \to 101x
 $$</p>
-<p>我们还需要特殊处理末尾，即 $j \in {0, 1}$的情况。但是，如果我们把 $F_0$ 和 $F_1$ 临时加入 <code>Zeckendorf representation</code> 里，也就是允许 $c_{-1}$ 和 $c_{-2}$ 的出现。那么直接用上面规则就可完全消掉 $2$，但是可能会出现 $c_{-1}=1$ 或者 $c_{-2} = 1$。对于后者，我们可以直接忽略，因为 $F_0=0$。对于前者，我们稍后再处理。</p>
+<p>我们还需要特殊处理末尾，即 $j \in \{0, 1\}$的情况。但是，如果我们把 $F_0$ 和 $F_1$ 临时加入 <code>Zeckendorf representation</code> 里，也就是允许 $c_{-1}$ 和 $c_{-2}$ 的出现。那么直接用上面规则就可完全消掉 $2$，但是可能会出现 $c_{-1}=1$ 或者 $c_{-2} = 1$。对于后者，我们可以直接忽略，因为 $F_0=0$。对于前者，我们稍后再处理。</p>
 <p>之后，我们就得到了一个只包含 $0$ 或者 $1$ 的数字串。接下来，我们应用规则 $011 \to 100$ 两遍。第一遍从高位到低位，第二遍从低位到高位。</p>
 <p>可以发现第一遍操作完之后，不存在三个连续的 $1$，也就是说连续的 $1$ 个数最多是 $2$。接下来，$c_0$ 和 $c_{-1}$ 不可能同时是 $1$，于是当 $c_{-1}=1$的时候，可以直接令 $c_0=1,c_{-1}=0$。</p>
 <p>在这个基础上，第二遍就可以轻松做了。</p>
@@ -262,7 +262,7 @@ $$</p>
 <p>$$
 100 \to 011 \qquad 1\bar{1}0 \to 001 \qquad 1\bar{1}1 \to 002 \qquad 10\bar{1} \to 010
 $$</p>
-<p>可以简化成，其中 $x \in {0, -1}, y \in {0, 1}$：</p>
+<p>可以简化成，其中 $x \in \{0, -1\}, y \in \{0, 1\}$：</p>
 <p>$$
 10x \to 01\bar{x} \qquad 1\bar{1}y \to 00\bar{y}
 $$</p>
@@ -295,13 +295,13 @@ $$</p>
 <p>接下来考虑如何实现两个 $n$ 位整数 $x=a_{n-1} \ldots a_1 a_{0}$ 和 $y=b_{n-1} \ldots b_1 b_{0}$ 的乘法。</p>
 <p>首先考虑一个复杂点的做法，</p>
 <p>$$
-\forall m \ge n \ge 2, F_mF_n=\sum_{r=1}^{\lfloor \frac{n}{2} \rfloor}F_{m+n+2-4r}+\begin{cases}0 &amp; n \bmod 2 = 0 \ F_{m-n+1} &amp; n \bmod 2 = 1 \end{cases}
+\forall m \ge n \ge 2, F_mF_n=\sum_{r=1}^{\lfloor \frac{n}{2} \rfloor}F_{m+n+2-4r}+\begin{cases}0 &amp; n \bmod 2 = 0 \\ F_{m-n+1} &amp; n \bmod 2 = 1 \end{cases}
 $$</p>
 <p>其中，如果 $n=m$ 是奇数，那么用 $F_2$ 代替 $F_1$。</p>
 <p>这个意味着什么呢，说明我们可以单独考虑每一位 $a_i$ 和 $b_j$，得到一个没有正则化的 <code>Zeckendorf representation</code>，之后套用正则化的算法就可以了。</p>
 <p>令$S_i=S_{i-4}+F_i$，那么上述公式可以表示为</p>
 <p>$$
-\forall m \ge n \ge 2, F_mF_n=S_{n+m-2}+\begin{cases}F_{m-n+2}-S_{m-n+2} &amp; n \bmod 2 = 0 \ F_{m-n+4}-S_{m-n+4}+F_{m-n+1} &amp; n \bmod 2 = 1 \end{cases}
+\forall m \ge n \ge 2, F_mF_n=S_{n+m-2}+\begin{cases}F_{m-n+2}-S_{m-n+2} &amp; n \bmod 2 = 0 \\ F_{m-n+4}-S_{m-n+4}+F_{m-n+1} &amp; n \bmod 2 = 1 \end{cases}
 $$</p>
 <p>同样，如果 $n=m$ 是奇数，那么用 $F_2$ 代替 $F_1$。</p>
 <p>很显然，如果我们能够求出每个 $F$ 和 $S$ 前面的系数，那么就可以求出一个没有正则化的 <code>Zeckendorf representation</code>。注意到，这些系数其实可以表示成关于 $a_i$ 和 $b_j$ 的若干个不同的卷积。</p>
@@ -323,7 +323,7 @@ $$</p>
 <p>先考虑一类特殊的减法：求出 $F_{n+k} - F_n$ 的 <code>Zeckendorf representation</code>。</p>
 <p>首先，我们有</p>
 <p>$$
-F_{n+k}-F_n = \sum_{r=1}^{\lfloor \frac{k}{2} \rfloor} F_{n+k+1-2r} + \begin{cases} 0 &amp; k \equiv 0 \pmod 2 \ F_{n-1} &amp; k \equiv 1 \pmod 2 \end{cases}
+F_{n+k}-F_n = \sum_{r=1}^{\lfloor \frac{k}{2} \rfloor} F_{n+k+1-2r} + \begin{cases} 0 &amp; k \equiv 0 \pmod 2 \\ F_{n-1} &amp; k \equiv 1 \pmod 2 \end{cases}
 $$</p>
 <p>这个可以通过数学归纳法证明，或者暴力应用 $F_{n+2}=F_{n+1}+F_n$ 把 $F_{n+k}$ 拆掉。</p>
 <p>根据 $F_{n+k}=F_k F_{n+1} + F_{k-1} F_n$，如果令 $k=n$ 的话，我们有</p>
@@ -345,7 +345,7 @@ $$</p>
 $$</p>
 <p>于是，根据 $k$ 的奇偶性，我们可以得到</p>
 <p>$$
-\frac{F_{kn}}{F_n}=\sum_{r=1}^{\lfloor \frac{k}{2} \rfloor} (-1)^{(r-1)n} L_{(k-2r+1)n} + \begin{cases} (-1)^{\frac{(k-1)n}{2}} &amp; k \equiv 1 \pmod 2 \ 0 &amp; k \equiv 0 \pmod 2 \end{cases}
+\frac{F_{kn}}{F_n}=\sum_{r=1}^{\lfloor \frac{k}{2} \rfloor} (-1)^{(r-1)n} L_{(k-2r+1)n} + \begin{cases} (-1)^{\frac{(k-1)n}{2}} &amp; k \equiv 1 \pmod 2 \\ 0 &amp; k \equiv 0 \pmod 2 \end{cases}
 $$</p>
 <p>对于偶数的 $n$，我们可以直接用 $L_n=L_{n+1}+L_{n-1}$ 来替换。对于 $n$ 是奇数，替换需要复杂得很多，这里先略去。</p>
 <p>对于更加通用的除法，目前没有什么好的方法。只能先转成别的进制，做完除法后再转回 <code>Zeckendorf representation</code>。</p>
