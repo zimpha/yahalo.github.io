@@ -35,11 +35,13 @@
       <pubDate>Sat, 08 Aug 2020 18:24:44 +0800</pubDate>
       
       <guid>https://zimpha.github.io/editorials/project-euler/</guid>
-      <description>This book aims at providing solutions for this site Project Euler and sharing interesting knowledge from Project Euler Forum.
-This book will only include solutions for problem in the archives. Besides, the solution for those problems solved by less than one hundred people will not published.
-Most of the Chinese translations of come from this site Project Euler | 欧拉计划.
-Hope you enjoy solving problems in Project Euler.
- &amp;ldquo;Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics.</description>
+      <description>&lt;p&gt;This book aims at providing solutions for this site &lt;a href=&#34;https://projecteuler.net/&#34;&gt;Project Euler&lt;/a&gt; and sharing interesting knowledge from Project Euler Forum.&lt;/p&gt;
+&lt;p&gt;This book will only include solutions for problem in the archives. Besides, the solution for those problems solved by less than one hundred people will not published.&lt;/p&gt;
+&lt;p&gt;Most of the Chinese translations of come from this site &lt;a href=&#34;http://pe-cn.github.io/&#34;&gt;Project Euler | 欧拉计划&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hope you enjoy solving problems in Project Euler.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
   </channel>
