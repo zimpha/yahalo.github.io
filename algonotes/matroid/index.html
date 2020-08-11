@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.72.0" />
+<meta name="generator" content="Hugo 0.75.0@zimpha" />
 
 
 
@@ -215,145 +215,144 @@
   
 
   <div class="article-body"><p>本文主要介绍了拟阵相关的一些概念，一些详细的说明和算法的证明：<a href="https://zhenweiliu.gitee.io/blog/2020/02/15/combinatorial-optimization-matroid/">link 1</a>，<a href="https://codeforces.com/blog/entry/69287">link 2</a>。</p>
-<p>一个拟阵可以用一对 $\langle U, \mathcal{I} \rangle$ 来表示，其中 $U$ 被称为 <code>groud set</code>，$\mathcal{I}$ 是 $U$ 所有独立集的集合，记为 $\mathcal{M}=\langle U, \mathcal{I} \rangle$。一个拟阵要满足下面三个性质：</p>
+<p>一个拟阵可以用一对 <span class="math inline">\(\langle U, \mathcal{I} \rangle\)</span> 来表示，其中 <span class="math inline">\(U\)</span> 被称为 <code>groud set</code>，<span class="math inline">\(\mathcal{I}\)</span> 是 <span class="math inline">\(U\)</span> 所有独立集的集合，记为 <span class="math inline">\(\mathcal{M}=\langle U, \mathcal{I} \rangle\)</span>。一个拟阵要满足下面三个性质：</p>
 <ul>
-<li>$\emptyset \in \mathcal{I}$</li>
-<li>如果有 $A \in \mathcal{I}, B \subseteq A$，那么 $B \in \mathcal{I}$。就是说独立集的任何子集也是独立集</li>
-<li>如果 $A \in \mathcal{I}, B \in \mathcal{I}$ 并且 $|A| \le |B|$，那么存在一个 $b \in B\setminus A$ 使得 $A \cup \{b\} \in \mathcal{I}$。</li>
+<li><span class="math inline">\(\emptyset \in \mathcal{I}\)</span></li>
+<li>如果有 <span class="math inline">\(A \in \mathcal{I}, B \subseteq A\)</span>，那么 <span class="math inline">\(B \in \mathcal{I}\)</span>。就是说独立集的任何子集也是独立集</li>
+<li>如果 <span class="math inline">\(A \in \mathcal{I}, B \in \mathcal{I}\)</span> 并且 <span class="math inline">\(|A| \le |B|\)</span>，那么存在一个 <span class="math inline">\(b \in B\setminus A\)</span> 使得 <span class="math inline">\(A \cup \{b\} \in \mathcal{I}\)</span>。</li>
 </ul>
 <p>拟阵有两个概念叫做 <code>basis</code> 和 <code>circuit</code>，中文对应基和环。一个极大独立集叫做基，一个极小非独立集叫做环。</p>
 <p>根据拟阵的性质可以发现</p>
 <ul>
 <li>拟阵中任意一个基的大小都是一样的</li>
-<li>如果存在两个不同的基 $A$ 和 $B$，那么对于任意 $x \in A \setminus B$，都存在一个 $y \in B \setminus A$，使得 $A \setminus \{x\} \cup \{y\}$ 是一个独立集。</li>
+<li>如果存在两个不同的基 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>，那么对于任意 <span class="math inline">\(x \in A \setminus B\)</span>，都存在一个 <span class="math inline">\(y \in B \setminus A\)</span>，使得 <span class="math inline">\(A \setminus \{x\} \cup \{y\}\)</span> 是一个独立集。</li>
 </ul>
 <p>类似的，我们还可以定义拟阵的秩 (rank)。</p>
-<p>给出一个拟阵 $\mathcal{M}=\langle U, \mathcal{I} \rangle$，对于任何一个集合 $S \subseteq U$，定义 $S$ 的秩 $r(S)$ 为 $S$ 的子集中极大独立集的大小。也就是 $S$ 的一个基的大小，因为显然 $S$ 的每个极大独立集大小也是一样的。拟阵的秩也满足一些性质</p>
+<p>给出一个拟阵 <span class="math inline">\(\mathcal{M}=\langle U, \mathcal{I} \rangle\)</span>，对于任何一个集合 <span class="math inline">\(S \subseteq U\)</span>，定义 <span class="math inline">\(S\)</span> 的秩 <span class="math inline">\(r(S)\)</span> 为 <span class="math inline">\(S\)</span> 的子集中极大独立集的大小。也就是 <span class="math inline">\(S\)</span> 的一个基的大小，因为显然 <span class="math inline">\(S\)</span> 的每个极大独立集大小也是一样的。拟阵的秩也满足一些性质</p>
 <ul>
-<li>对于任意 $S \subseteq U$，都有 $0 \le r(S) \le |S|$</li>
-<li>对于任意 $A \subseteq B \subseteq U$，都有 $r(A) \le r(B)$</li>
-<li>对于任意 $A \subseteq U, B \subseteq U$，都有 $r(A \cup B) + r(A \cap B) \le r(A) + r(B)$。这个也叫做 Submodular。</li>
-<li>对于任意 $S \subseteq U$ 和 $x \not \in S$，都有 $r(S) \le r(S \cup \{x\}) \le r(S) + 1$，这个可以由上面三个性质推出来。</li>
+<li>对于任意 <span class="math inline">\(S \subseteq U\)</span>，都有 <span class="math inline">\(0 \le r(S) \le |S|\)</span></li>
+<li>对于任意 <span class="math inline">\(A \subseteq B \subseteq U\)</span>，都有 <span class="math inline">\(r(A) \le r(B)\)</span></li>
+<li>对于任意 <span class="math inline">\(A \subseteq U, B \subseteq U\)</span>，都有 <span class="math inline">\(r(A \cup B) + r(A \cap B) \le r(A) + r(B)\)</span>。这个也叫做 Submodular。</li>
+<li>对于任意 <span class="math inline">\(S \subseteq U\)</span> 和 <span class="math inline">\(x \not \in S\)</span>，都有 <span class="math inline">\(r(S) \le r(S \cup \{x\}) \le r(S) + 1\)</span>，这个可以由上面三个性质推出来。</li>
 </ul>
 <p>基于这个秩，我们还可以定义 <code>dual matroid</code>。</p>
-<p>给出一个拟阵 $\mathcal{M} = \langle U, \mathcal{I} \rangle$，以及它的秩函数 $r(\cdot)$。它的一个 <code>dual matroid</code> 定义为 $\mathcal{M}^* = \langle U, \mathcal{I}^* \rangle$，其中 $\mathcal{I}^* = \{I \subseteq U : r(U \setminus I) = r(U)\}$。</p>
+<p>给出一个拟阵 <span class="math inline">\(\mathcal{M} = \langle U, \mathcal{I} \rangle\)</span>，以及它的秩函数 <span class="math inline">\(r(\cdot)\)</span>。它的一个 <code>dual matroid</code> 定义为 <span class="math inline">\(\mathcal{M}^* = \langle U, \mathcal{I}^* \rangle\)</span>，其中 <span class="math inline">\(\mathcal{I}^* = \{I \subseteq U : r(U \setminus I) = r(U)\}\)</span>。</p>
 <h2 id="常见拟阵">常见拟阵</h2>
 <h3 id="graphical-matroid">Graphical Matroid</h3>
 <p>这应该是我们接触最多的拟阵。</p>
-<p>定义：给定一个无向图 $G=(V, E)$，图拟阵 $\mathcal{M}_G$ 的全集 $U$ 是边集 $E$。对于一个子集 $S \subseteq E$，如果这些边构成的子图中没有环，那么 $S$ 就是这个拟阵的一个独立集。</p>
-<p>显然，这个 $r(S)$ 就是 $|V|$ 减去连通块个数。</p>
+<p>定义：给定一个无向图 <span class="math inline">\(G=(V, E)\)</span>，图拟阵 <span class="math inline">\(\mathcal{M}_G\)</span> 的全集 <span class="math inline">\(U\)</span> 是边集 <span class="math inline">\(E\)</span>。对于一个子集 <span class="math inline">\(S \subseteq E\)</span>，如果这些边构成的子图中没有环，那么 <span class="math inline">\(S\)</span> 就是这个拟阵的一个独立集。</p>
+<p>显然，这个 <span class="math inline">\(r(S)\)</span> 就是 <span class="math inline">\(|V|\)</span> 减去连通块个数。</p>
 <h3 id="uniform-matroid">Uniform Matroid</h3>
-<p>定义：对于一个有限集合 $U$ 和一个整数 $k$，它的独立集 $S$ 满足 $|S| \le k$。</p>
-<p>显然，$r(S)$ 就是 $\min(k, |S|)$。</p>
+<p>定义：对于一个有限集合 <span class="math inline">\(U\)</span> 和一个整数 <span class="math inline">\(k\)</span>，它的独立集 <span class="math inline">\(S\)</span> 满足 <span class="math inline">\(|S| \le k\)</span>。</p>
+<p>显然，<span class="math inline">\(r(S)\)</span> 就是 <span class="math inline">\(\min(k, |S|)\)</span>。</p>
 <h3 id="linear-matroid">Linear Matroid</h3>
-<p>定义：令 $U$ 是一个有限集合，对于 $U$ 里每条边 $e$ 都对应了一个向量 $v_e$。不妨假设 $v_e$ 都是在一个域 $F$ 下面的，并且每个向量的维度都是一样的。对于 $S \subseteq U$，如果 $\{v_e: e \in S\}$ 是线性无关的，那么 $S$ 是这个拟阵的一个独立集。</p>
-<p>如果域 $F$ 是 $GF(2)$ 的话，那么我们也可以称这个为 <code>binary matroid</code>。</p>
-<p>显然，这个 $r(S)$ 就是线性空间 $\{v_e: e \in S\}$ 的秩，可以通过高斯消元得到。</p>
+<p>定义：令 <span class="math inline">\(U\)</span> 是一个有限集合，对于 <span class="math inline">\(U\)</span> 里每条边 <span class="math inline">\(e\)</span> 都对应了一个向量 <span class="math inline">\(v_e\)</span>。不妨假设 <span class="math inline">\(v_e\)</span> 都是在一个域 <span class="math inline">\(F\)</span> 下面的，并且每个向量的维度都是一样的。对于 <span class="math inline">\(S \subseteq U\)</span>，如果 <span class="math inline">\(\{v_e: e \in S\}\)</span> 是线性无关的，那么 <span class="math inline">\(S\)</span> 是这个拟阵的一个独立集。</p>
+<p>如果域 <span class="math inline">\(F\)</span> 是 <span class="math inline">\(GF(2)\)</span> 的话，那么我们也可以称这个为 <code>binary matroid</code>。</p>
+<p>显然，这个 <span class="math inline">\(r(S)\)</span> 就是线性空间 <span class="math inline">\(\{v_e: e \in S\}\)</span> 的秩，可以通过高斯消元得到。</p>
 <h3 id="colorful-matroid">Colorful Matroid</h3>
-<p>定义：令全集 $U$ 是一个有限集合，对于 $U$ 里面的每个元素 $e$ 都有唯一一个颜色 $col_e$。考虑 $S \subseteq U$，如果 $S$ 里面每个元素的颜色都不同，那么 $S$ 是这个拟阵的一个独立集。</p>
-<p>显然，这个 $r(S)$ 就是 $S$ 里面本质不同的颜色个数。</p>
+<p>定义：令全集 <span class="math inline">\(U\)</span> 是一个有限集合，对于 <span class="math inline">\(U\)</span> 里面的每个元素 <span class="math inline">\(e\)</span> 都有唯一一个颜色 <span class="math inline">\(col_e\)</span>。考虑 <span class="math inline">\(S \subseteq U\)</span>，如果 <span class="math inline">\(S\)</span> 里面每个元素的颜色都不同，那么 <span class="math inline">\(S\)</span> 是这个拟阵的一个独立集。</p>
+<p>显然，这个 <span class="math inline">\(r(S)\)</span> 就是 <span class="math inline">\(S\)</span> 里面本质不同的颜色个数。</p>
 <h3 id="truncated-matroid">Truncated Matroid</h3>
-<p>对于任意一个拟阵，我们可以限制它的秩的大小不超过某个数 $k$，这个得到的也是一个拟阵。比如 <code>truncated colorful matroid</code> 的独立集 $S$ 可以定义为 $S$ 里面不同的颜色不能超过 $k$ 个，<code>truncated graphical matroid</code> 的独立集 $S$ 可以定义为，连通块至少是 $|V|-k$ 个。</p>
+<p>对于任意一个拟阵，我们可以限制它的秩的大小不超过某个数 <span class="math inline">\(k\)</span>，这个得到的也是一个拟阵。比如 <code>truncated colorful matroid</code> 的独立集 <span class="math inline">\(S\)</span> 可以定义为 <span class="math inline">\(S\)</span> 里面不同的颜色不能超过 <span class="math inline">\(k\)</span> 个，<code>truncated graphical matroid</code> 的独立集 <span class="math inline">\(S\)</span> 可以定义为，连通块至少是 <span class="math inline">\(|V|-k\)</span> 个。</p>
 <h3 id="matroid-on-a-subset-of-ground-set">Matroid on a subset of ground set</h3>
 <p>类似 <code>truncated matroid</code>，对于一个拟阵，我们可以把它的 <code>ground set</code> 限制为一个它的子集，这样得到的也是一个拟阵。</p>
 <h3 id="expanded-matroid">Expanded Matroid</h3>
-<p>这个也可以叫做 <code>direct matroid sum</code>。对于两个拟阵 $\mathcal{M}_1=\langle U_1,\mathcal{I}_1 \rangle$ 和 $\mathcal{M}_2=\langle U_2,\mathcal{I}_2 \rangle$，那么 $\mathcal{M}_1+\mathcal{M}_2=\langle U_1 \cup U_2,\mathcal{I}_1 \times \mathcal{I}_2 \rangle$ 也是一个拟阵。</p>
-<p>一个比较直观的例子就是 <code>partition matroid</code>，它是若干个 <code>uniform Matroid</code> 的和。定义是每个全集 $U$ 里的元素 $e$ 都有一个类别 $type_e$，对于一个类别 $k$，我们限制它的出现次数不能超过 $bound_k$。那么所有满足限制的子集 $S$ 都是一个独立集。</p>
+<p>这个也可以叫做 <code>direct matroid sum</code>。对于两个拟阵 <span class="math inline">\(\mathcal{M}_1=\langle U_1,\mathcal{I}_1 \rangle\)</span> 和 <span class="math inline">\(\mathcal{M}_2=\langle U_2,\mathcal{I}_2 \rangle\)</span>，那么 <span class="math inline">\(\mathcal{M}_1+\mathcal{M}_2=\langle U_1 \cup U_2,\mathcal{I}_1 \times \mathcal{I}_2 \rangle\)</span> 也是一个拟阵。</p>
+<p>一个比较直观的例子就是 <code>partition matroid</code>，它是若干个 <code>uniform Matroid</code> 的和。定义是每个全集 <span class="math inline">\(U\)</span> 里的元素 <span class="math inline">\(e\)</span> 都有一个类别 <span class="math inline">\(type_e\)</span>，对于一个类别 <span class="math inline">\(k\)</span>，我们限制它的出现次数不能超过 <span class="math inline">\(bound_k\)</span>。那么所有满足限制的子集 <span class="math inline">\(S\)</span> 都是一个独立集。</p>
 <p>下面来看一些和拟阵相关的算法。</p>
 <h2 id="minimummaximum-weighted-basis">Minimum/Maximum Weighted Basis</h2>
-<p>对于一个拟阵 $\mathcal{M}=\langle U,\mathcal{I} \rangle$，如果 $U$ 里面的每个元素 $e$ 都有一个非负的权值 $w(e)$，那么这个被称为 <code>weighted matroid</code>。如果所有的 $w(e)$ 都是 $1$，就是我们普通的 <code>unweighted matroid</code>。</p>
+<p>对于一个拟阵 <span class="math inline">\(\mathcal{M}=\langle U,\mathcal{I} \rangle\)</span>，如果 <span class="math inline">\(U\)</span> 里面的每个元素 <span class="math inline">\(e\)</span> 都有一个非负的权值 <span class="math inline">\(w(e)\)</span>，那么这个被称为 <code>weighted matroid</code>。如果所有的 <span class="math inline">\(w(e)\)</span> 都是 <span class="math inline">\(1\)</span>，就是我们普通的 <code>unweighted matroid</code>。</p>
 <p>对于一个 <code>weighted matroid</code>，我们可以用如下算法求出权值最大的基，权值最小也是类似的。</p>
 <ul>
-<li>从 $S=\emptyset$ 开始</li>
-<li>找一个权值最大的 $x \in U \setminus S$，并且 $S \cup \{x\}$ 是独立集。</li>
-<li>把 $x$ 加入到 $S$ 中。重复上述两步直到找不到合法的 $x$ 为止。</li>
+<li>从 <span class="math inline">\(S=\emptyset\)</span> 开始</li>
+<li>找一个权值最大的 <span class="math inline">\(x \in U \setminus S\)</span>，并且 <span class="math inline">\(S \cup \{x\}\)</span> 是独立集。</li>
+<li>把 <span class="math inline">\(x\)</span> 加入到 <span class="math inline">\(S\)</span> 中。重复上述两步直到找不到合法的 <span class="math inline">\(x\)</span> 为止。</li>
 </ul>
-<p>显然最后 $S$ 是一个极大的独立集，所以 $S$ 是一个基。每一步可以通过归纳法证明 $S$ 确实是一个权值最大的基。</p>
+<p>显然最后 <span class="math inline">\(S\)</span> 是一个极大的独立集，所以 <span class="math inline">\(S\)</span> 是一个基。每一步可以通过归纳法证明 <span class="math inline">\(S\)</span> 确实是一个权值最大的基。</p>
 <p>可以发现对于 <code>graphical matroid</code>，上述算法就是 <a href="https://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Kruskal’s minimum spanning tree algorithm</a>。</p>
 <h2 id="matroid-partitioning">Matroid Partitioning</h2>
-<p>对于一个拟阵 $\mathcal{M}=\langle U, \mathcal{I} \rangle$，你希望把 $U$ 划分成若干个不相交的独立集 $I_1,I_2,\dots,I_k$，使得 $U=I_1 \cup I_2 \cup \dots \cup I_k$ 并且 $k$ 最小。</p>
+<p>对于一个拟阵 <span class="math inline">\(\mathcal{M}=\langle U, \mathcal{I} \rangle\)</span>，你希望把 <span class="math inline">\(U\)</span> 划分成若干个不相交的独立集 <span class="math inline">\(I_1,I_2,\dots,I_k\)</span>，使得 <span class="math inline">\(U=I_1 \cup I_2 \cup \dots \cup I_k\)</span> 并且 <span class="math inline">\(k\)</span> 最小。</p>
 <p>这个在 <code>graphical matroid</code> 中对应的是 <a href="https://en.wikipedia.org/wiki/Arboricity">Arboricity</a>，就是把一个图的边集划分成最少的森林。</p>
-<p>根据 generalize Nash-Williams&rsquo; formula，可以得出这个最小划分为
-$$
-k(\mathcal{M})=\max_{S} \left\lceil \frac{|S|}{r(S)} \right\rceil
-$$</p>
+<p>根据 generalize Nash-Williams&rsquo; formula，可以得出这个最小划分为</p>
+<p><span class="math display">\[k(\mathcal{M})=\max_{S} \left\lceil \frac{|S|}{r(S)} \right\rceil
+\]</span></p>
 <p>在算法竞赛中用处似乎不大，可以参考 <a href="https://en.wikipedia.org/wiki/Matroid_partitioning">Matroid partitioning
 </a>。</p>
 <h2 id="matroid-intersection">Matroid Intersection</h2>
 <h3 id="定义">定义</h3>
-<p>给出两个拟阵 $\mathcal{M}_1 = \langle U, \mathcal{I}_1 \rangle$ 和 $\mathcal{M}_2 = \langle U, \mathcal{I}_2 \rangle$, 找到一个 $I \subseteq U \in \mathcal{I}_1 \cap \mathcal{I}_2$ 并且 $|I|$ 最大。</p>
-<p>如果 $U$ 里每个元素 $e$ 带有一个非负的权 $w(e)$，我们还可以找到一个 $\sum_{x \in I} w(x)$ 最小 / 大的交。</p>
+<p>给出两个拟阵 <span class="math inline">\(\mathcal{M}_1 = \langle U, \mathcal{I}_1 \rangle\)</span> 和 <span class="math inline">\(\mathcal{M}_2 = \langle U, \mathcal{I}_2 \rangle\)</span>, 找到一个 <span class="math inline">\(I \subseteq U \in \mathcal{I}_1 \cap \mathcal{I}_2\)</span> 并且 <span class="math inline">\(|I|\)</span> 最大。</p>
+<p>如果 <span class="math inline">\(U\)</span> 里每个元素 <span class="math inline">\(e\)</span> 带有一个非负的权 <span class="math inline">\(w(e)\)</span>，我们还可以找到一个 <span class="math inline">\(\sum_{x \in I} w(x)\)</span> 最小 / 大的交。</p>
 <h3 id="算法">算法</h3>
 <ol>
-<li>从 $I = \emptyset$ 开始</li>
-<li>构建一个交换图 $G_I = \{I \cup (U \setminus I), E\}$，其中
+<li>从 <span class="math inline">\(I = \emptyset\)</span> 开始</li>
+<li>构建一个交换图 <span class="math inline">\(G_I = \{I \cup (U \setminus I), E\}\)</span>，其中
 <ul>
-<li>$x \in I, y \in (U \setminus I), \langle x, y \rangle \in E \Leftrightarrow I - x + y \in \mathcal{I_1}$,</li>
-<li>$x \in I, y \in (U \setminus I), \langle y, x \rangle \in E \Leftrightarrow I - x + y \in \mathcal{I_2}$.</li>
+<li><span class="math inline">\(x \in I, y \in (U \setminus I), \langle x, y \rangle \in E \Leftrightarrow I - x + y \in \mathcal{I_1}\)</span>,</li>
+<li><span class="math inline">\(x \in I, y \in (U \setminus I), \langle y, x \rangle \in E \Leftrightarrow I - x + y \in \mathcal{I_2}\)</span>.</li>
 </ul>
 </li>
-<li>然后在 $G_I$ 中找到一条最短路 $y_1 x_1 \dots x_k y_{k + 1}$，使得
+<li>然后在 <span class="math inline">\(G_I\)</span> 中找到一条最短路 <span class="math inline">\(y_1 x_1 \dots x_k y_{k + 1}\)</span>，使得
 <ul>
-<li>$I + y_1 \in \mathcal{I}_1$,</li>
-<li>$I + y_{k + 1} \in \mathcal{I}_2$.</li>
+<li><span class="math inline">\(I + y_1 \in \mathcal{I}_1\)</span>,</li>
+<li><span class="math inline">\(I + y_{k + 1} \in \mathcal{I}_2\)</span>.</li>
 </ul>
 </li>
-<li>把 $I$ 替换为 $I \oplus \{y_1, x_1, \dots, x_k, y_{k + 1}\}$.</li>
+<li>把 <span class="math inline">\(I\)</span> 替换为 <span class="math inline">\(I \oplus \{y_1, x_1, \dots, x_k, y_{k + 1}\}\)</span>.</li>
 </ol>
-<p>如果是带权的话，要先权值和最小然后边数最少。$\langle x,y \rangle$ 的边权是正的，$\langle y,x \rangle$ 的边权是负的。</p>
+<p>如果是带权的话，要先权值和最小然后边数最少。<span class="math inline">\(\langle x,y \rangle\)</span> 的边权是正的，<span class="math inline">\(\langle y,x \rangle\)</span> 的边权是负的。</p>
 <p>算法的正确性就不在此证明了，下面是几个拟阵相关的练习题。</p>
 <h2 id="题目">题目</h2>
 <h3 id="beijing2011元素httpsdarkbzojtkproblem2460"><a href="https://darkbzoj.tk/problem/2460">[BeiJing2011]元素</a></h3>
 <h3 id="2011-2012-acmicpc-asia-dhaka-e-game-of-connecthttpsonlinejudgeorgindexphpoptioncom_onlinejudgeitemid8pageshow_problemproblem3792"><a href="https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=3792">2011-2012 ACM/ICPC, Asia, Dhaka. E. Game of Connect</a></h3>
-<p>题意：给出一个 $n$ 个点 $m$ 条边的无向图，一开始每条边都没有染色。两个人玩游戏，第一个人先选一对点 $(A,B)$。然后两个人轮流玩，第一个人每次选一个未染色的边删掉，第二个人每次选一条边染色。第二个人目的是用染色的边连通 $A$ 和 $B$。问第二个人是否存在必胜策略，无论第一个人选那对点以及怎么操作。</p>
-<p>$2 \le n \le 100, 1 \le m \le 300$</p>
+<p>题意：给出一个 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的无向图，一开始每条边都没有染色。两个人玩游戏，第一个人先选一对点 <span class="math inline">\((A,B)\)</span>。然后两个人轮流玩，第一个人每次选一个未染色的边删掉，第二个人每次选一条边染色。第二个人目的是用染色的边连通 <span class="math inline">\(A\)</span> 和 <span class="math inline">\(B\)</span>。问第二个人是否存在必胜策略，无论第一个人选那对点以及怎么操作。</p>
+<p><span class="math inline">\(2 \le n \le 100, 1 \le m \le 300\)</span></p>
 <p>题解：显然，只要图中存在两个不相交的生成树，第二个人就有必胜策略。这个等价于求一个 <code>graphical matriod</code> 和它的 <code>dual matroid</code> 的拟阵交。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/acm-icpc/2011-2012/dhaka/E.cc">代码</a></p>
 <h3 id="hello-2020-g-seollalhttpscodeforcescomcontest1284problemg"><a href="https://codeforces.com/contest/1284/problem/G">Hello 2020. G. Seollal</a></h3>
-<p>题意：给出 $n \times m$ 的网格，有些位置是障碍物，用 <code>X</code> 表示；有些位置是空地，用 <code>O</code> 表示。保证 $(1,1)$ 是空地，并且从 $(1,1)$ 出发可以到达其他所有空地。现在给每个空地黑白染色，$(1,1)$ 是黑色，相邻两个空地颜色不一样。</p>
-<p>你需要找出这样一个网格图的一个生成树，使得除 $(1,1)$ 外，其他黑点的度数都恰好是 $2$。</p>
-<p>题解：把这些有度数要求的点当做特殊点，设为集合 $S$。显然，如果我们能够选出一个生成森林，使得每个特殊点度数都是 $2$ 就好了。</p>
-<p>考虑把度数都是 $2$ 的限制改成度数不超过 $2$，那么生成森林对应了 <code>graphical matroid</code>，度数不超过 $2$ 对应了 <code>choice matroid</code>。我们只需要做一个拟阵交即可。假设选出来的边集为 $E$，只要 $|E| \ge 2|S|$ 就是有解的，否则无解。之后我们只需要用一些其他边把生成森林变成生成树即可。</p>
+<p>题意：给出 <span class="math inline">\(n \times m\)</span> 的网格，有些位置是障碍物，用 <code>X</code> 表示；有些位置是空地，用 <code>O</code> 表示。保证 <span class="math inline">\((1,1)\)</span> 是空地，并且从 <span class="math inline">\((1,1)\)</span> 出发可以到达其他所有空地。现在给每个空地黑白染色，<span class="math inline">\((1,1)\)</span> 是黑色，相邻两个空地颜色不一样。</p>
+<p>你需要找出这样一个网格图的一个生成树，使得除 <span class="math inline">\((1,1)\)</span> 外，其他黑点的度数都恰好是 <span class="math inline">\(2\)</span>。</p>
+<p>题解：把这些有度数要求的点当做特殊点，设为集合 <span class="math inline">\(S\)</span>。显然，如果我们能够选出一个生成森林，使得每个特殊点度数都是 <span class="math inline">\(2\)</span> 就好了。</p>
+<p>考虑把度数都是 <span class="math inline">\(2\)</span> 的限制改成度数不超过 <span class="math inline">\(2\)</span>，那么生成森林对应了 <code>graphical matroid</code>，度数不超过 <span class="math inline">\(2\)</span> 对应了 <code>choice matroid</code>。我们只需要做一个拟阵交即可。假设选出来的边集为 <span class="math inline">\(E\)</span>，只要 <span class="math inline">\(|E| \ge 2|S|\)</span> 就是有解的，否则无解。之后我们只需要用一些其他边把生成森林变成生成树即可。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/codeforces/Hello%202020/G.cc">代码</a></p>
 <h3 id="naipc-2018-g-rainbow-graphhttpsofficialcontestyandexruopencupxviiicontest7836problemsg"><a href="https://official.contest.yandex.ru/opencupXVIII/contest/7836/problems/G/">NAIPC 2018. G. Rainbow Graph</a></h3>
-<p>题意：有一个 $n$ 个点 $m$ 条边的无向图，每条边有个权值和颜色，只有红绿蓝三种颜色。第 $i$ 条边连接 $a_i$ 和 $b_i$，权值为 $w_i$，颜色为 $c_i$。可能有重边和自环。对于个一个整数 $k$，你需要选出 $k$ 条边，使得这 $k$ 条边里面红绿边连通了所有点，蓝绿边也连通了所有点。对于每个 $k=1 \dots m$，求出权值和最小的选法。</p>
-<p>$1 \le n, m \le 100, 1 \le w_i \le 1000, c_i \in \{R,G,B\}$</p>
-<p>题解：考虑哪些边可以被删掉，显然是删掉后红绿边要有一个生成树同时绿蓝边也有一个生成树。那么这两个分别对应了一个 <code>dual graphical matroid</code>。你的目的就是要求出每个大小为 $k$ 的 <code>matroid intersection</code>，并且要求权值和最大。那么就做一个带权的 <code>matroid intersection</code> 即可。</p>
+<p>题意：有一个 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的无向图，每条边有个权值和颜色，只有红绿蓝三种颜色。第 <span class="math inline">\(i\)</span> 条边连接 <span class="math inline">\(a_i\)</span> 和 <span class="math inline">\(b_i\)</span>，权值为 <span class="math inline">\(w_i\)</span>，颜色为 <span class="math inline">\(c_i\)</span>。可能有重边和自环。对于个一个整数 <span class="math inline">\(k\)</span>，你需要选出 <span class="math inline">\(k\)</span> 条边，使得这 <span class="math inline">\(k\)</span> 条边里面红绿边连通了所有点，蓝绿边也连通了所有点。对于每个 <span class="math inline">\(k=1 \dots m\)</span>，求出权值和最小的选法。</p>
+<p><span class="math inline">\(1 \le n, m \le 100, 1 \le w_i \le 1000, c_i \in \{R,G,B\}\)</span></p>
+<p>题解：考虑哪些边可以被删掉，显然是删掉后红绿边要有一个生成树同时绿蓝边也有一个生成树。那么这两个分别对应了一个 <code>dual graphical matroid</code>。你的目的就是要求出每个大小为 <span class="math inline">\(k\)</span> 的 <code>matroid intersection</code>，并且要求权值和最大。那么就做一个带权的 <code>matroid intersection</code> 即可。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/opencup/xviii/gp-of-america/G.cc">代码</a></p>
 <h3 id="google-code-jam-2019-round-3-datacenter-duplexhttpscodingcompetitionswithgooglecomcodejamround00000000000517070000000000158f1c"><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000051707/0000000000158f1c">Google Code Jam 2019. Round 3. Datacenter Duplex</a></h3>
-<p>题意：有一个 $R \times C$ 的格子，每个位置要么是 <code>A</code>，要么是 <code>B</code>，并且 <code>A</code> 和 <code>B</code> 都至少有一个。你可以在 $(i,j)$ 和 $(i+1,j+1)$ 之间加一条边，或者在 $(i+1,j)$ 和 $(i,j+1)$ 之间加一条边，或者不加，但是不能同时加。要求这条边连接的格子上的字符是一样的。求出一个加边的方案，使得最后所有 <code>A</code> 是连通的，所有 <code>B</code> 也是连通的。</p>
-<p>题解：仅考虑所有 <code>A</code> 的格子，你加一条边的话肯定是要连通两个不同的连通块比较好。假设你选了一个边集 $S$，那么 $S$ 合法当且仅当剩下来的可以选的边能够让 <code>B</code> 连通。于是我们可以把 <code>A</code> 看成一个<code>graphical matroid</code>，<code>B</code> 看成 <code>dual graphical matroid</code>，求他们的拟阵交就好了。但是这个复杂度是 $O(R^3C^3)$ 的，在现在GCJ的赛制下有点难以接受。</p>
-<p>考虑我们如果已经加了一些边了，那么什么时候两个对角相邻的 <code>A</code> 格子 $c$ 和 $d$ 会不连通呢。显然，需要满足以下两个条件之一：</p>
+<p>题意：有一个 <span class="math inline">\(R \times C\)</span> 的格子，每个位置要么是 <code>A</code>，要么是 <code>B</code>，并且 <code>A</code> 和 <code>B</code> 都至少有一个。你可以在 <span class="math inline">\((i,j)\)</span> 和 <span class="math inline">\((i+1,j+1)\)</span> 之间加一条边，或者在 <span class="math inline">\((i+1,j)\)</span> 和 <span class="math inline">\((i,j+1)\)</span> 之间加一条边，或者不加，但是不能同时加。要求这条边连接的格子上的字符是一样的。求出一个加边的方案，使得最后所有 <code>A</code> 是连通的，所有 <code>B</code> 也是连通的。</p>
+<p>题解：仅考虑所有 <code>A</code> 的格子，你加一条边的话肯定是要连通两个不同的连通块比较好。假设你选了一个边集 <span class="math inline">\(S\)</span>，那么 <span class="math inline">\(S\)</span> 合法当且仅当剩下来的可以选的边能够让 <code>B</code> 连通。于是我们可以把 <code>A</code> 看成一个<code>graphical matroid</code>，<code>B</code> 看成 <code>dual graphical matroid</code>，求他们的拟阵交就好了。但是这个复杂度是 <span class="math inline">\(O(R^3C^3)\)</span> 的，在现在GCJ的赛制下有点难以接受。</p>
+<p>考虑我们如果已经加了一些边了，那么什么时候两个对角相邻的 <code>A</code> 格子 <span class="math inline">\(c\)</span> 和 <span class="math inline">\(d\)</span> 会不连通呢。显然，需要满足以下两个条件之一：</p>
 <ul>
-<li>存在一个一条 <code>B</code> 格子的环，$c$ 和 $d$ 分别在环的里面和外面</li>
-<li>存在两个边界上的 <code>B</code> 格子 $a$ 和 $b$，使得存在一条 $a$ 到 $b$ 的路径，$c$ 和 $d$ 分别在路径的两侧。</li>
+<li>存在一个一条 <code>B</code> 格子的环，<span class="math inline">\(c\)</span> 和 <span class="math inline">\(d\)</span> 分别在环的里面和外面</li>
+<li>存在两个边界上的 <code>B</code> 格子 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span>，使得存在一条 <span class="math inline">\(a\)</span> 到 <span class="math inline">\(b\)</span> 的路径，<span class="math inline">\(c\)</span> 和 <span class="math inline">\(d\)</span> 分别在路径的两侧。</li>
 </ul>
-<p>接下来考虑初始格子里面，边界上两个不连通的 <code>A</code> 格子 $a$ 和 $b$，由于他们不连通，那么肯定存在两个边界上的 <code>B</code> 格子 $c$ 和 $d$，使得 $c$ 在沿边界 $a \to b$ 中间，$d$ 在沿边界 $b \to a$ 中间。这个说明在最终的图里面，$a$ 和 $b$ 或者 $c$ 和 $d$ 最多只有一对是连通的。根据上面的条件可以显然得出这个结论。</p>
-<p>那么这就告诉我们，如果有解，那么边界上的点肯定早就连通了，也就是说第二个条件在有解的情况下不会出现。然后我们现在不会加入新的边使这个图增加一些环。于是上述条件中的环肯定一开始就在图中存在了。所以说，如果这个格子是有解的，我们可以枚举一个对角，能加边就加边。最后再检查是否满足条件即可。这样复杂度是 $O(RC)$ 的。</p>
+<p>接下来考虑初始格子里面，边界上两个不连通的 <code>A</code> 格子 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span>，由于他们不连通，那么肯定存在两个边界上的 <code>B</code> 格子 <span class="math inline">\(c\)</span> 和 <span class="math inline">\(d\)</span>，使得 <span class="math inline">\(c\)</span> 在沿边界 <span class="math inline">\(a \to b\)</span> 中间，<span class="math inline">\(d\)</span> 在沿边界 <span class="math inline">\(b \to a\)</span> 中间。这个说明在最终的图里面，<span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 或者 <span class="math inline">\(c\)</span> 和 <span class="math inline">\(d\)</span> 最多只有一对是连通的。根据上面的条件可以显然得出这个结论。</p>
+<p>那么这就告诉我们，如果有解，那么边界上的点肯定早就连通了，也就是说第二个条件在有解的情况下不会出现。然后我们现在不会加入新的边使这个图增加一些环。于是上述条件中的环肯定一开始就在图中存在了。所以说，如果这个格子是有解的，我们可以枚举一个对角，能加边就加边。最后再检查是否满足条件即可。这样复杂度是 <span class="math inline">\(O(RC)\)</span> 的。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/google-code-jam/2019/round-3/datacenter-duplex.cc">代码</a></p>
 <h3 id="2019-multi-university-training-contest-6-c-milk-candyhttpacmhdueducnshowproblemphppid6636"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6636">2019 Multi-University Training Contest 6. C. Milk Candy</a></h3>
-<p>题意：有 $n$ 个未知数，然后 $m$ 个人有提示。第 $i$ 个人有 $c_i$ 条提示，每条提示会告诉你 $l_j$ 到 $r_j$ 的未知数的和，需要花费 $w_j$ 的代价。现在你可以买提示，对于第 $i$ 个人，你要么不买，要么恰好买 $k_i$ 个提示。求出能够计算出 $n$ 个数的最小代价。</p>
-<p>题解：对于一个提示，我们可以把 $l_j-1$ 和 $r_j$ 连边，显然如果能够买到的边包含一个生成树就可以计算出所有解了。那么考虑那些不买的边构成的集合，显然这个是一个 <code>dual graphical matroid</code>。然后每个边集我们最多不买 $c_i-k_i$，这个也是一个拟阵。我们求出这两个拟阵的带权拟阵交即可。如果拟阵的大小不是 $\sum c_i-k_i$ 就是无解。</p>
+<p>题意：有 <span class="math inline">\(n\)</span> 个未知数，然后 <span class="math inline">\(m\)</span> 个人有提示。第 <span class="math inline">\(i\)</span> 个人有 <span class="math inline">\(c_i\)</span> 条提示，每条提示会告诉你 <span class="math inline">\(l_j\)</span> 到 <span class="math inline">\(r_j\)</span> 的未知数的和，需要花费 <span class="math inline">\(w_j\)</span> 的代价。现在你可以买提示，对于第 <span class="math inline">\(i\)</span> 个人，你要么不买，要么恰好买 <span class="math inline">\(k_i\)</span> 个提示。求出能够计算出 <span class="math inline">\(n\)</span> 个数的最小代价。</p>
+<p>题解：对于一个提示，我们可以把 <span class="math inline">\(l_j-1\)</span> 和 <span class="math inline">\(r_j\)</span> 连边，显然如果能够买到的边包含一个生成树就可以计算出所有解了。那么考虑那些不买的边构成的集合，显然这个是一个 <code>dual graphical matroid</code>。然后每个边集我们最多不买 <span class="math inline">\(c_i-k_i\)</span>，这个也是一个拟阵。我们求出这两个拟阵的带权拟阵交即可。如果拟阵的大小不是 <span class="math inline">\(\sum c_i-k_i\)</span> 就是无解。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/petrozavodsk-training-camp/2019-summer/songyang-chen-contest-2/C.cc">代码</a></p>
 <h3 id="codechef-october-challenge-2019-faulty-systemhttpswwwcodechefcomoct19aproblemscnnct2"><a href="https://www.codechef.com/OCT19A/problems/CNNCT2">CodeChef. October Challenge 2019. Faulty System</a></h3>
-<p>题意：给出两个 $N$ 个点 $M$ 条边的连通无向图。你需要选出一个 $1$ 到 $M$ 的集合，使得仅用这个集合里的边，能够使这两个图都连通。</p>
-<p>题解：我们考虑没有选的边的集合 $S$。对于一个图，$S$ 是合法的当且仅当删掉 $S$ 时候剩下的图有个生成树。也就是说这个是一个 <code>dual graphical matroid</code>。我们就是要求两个 <code>dual graphical matroid</code> 的最大 <code>matroid intersection</code>。不过这复杂度是 $O(m^3)$ 的，会被卡常。</p>
-<p>考虑直接从 <code>graphical matroid</code> 出发，你可以直接求出两个 <code>graphical matroid</code> 的交 $I$，显然 $2N-2-I$ 就是答案。这样会把复杂度优化到 $O(NM^2)$，但是还是过不了。你得加点常数优化，就是一开始起点和终点一样的时候直接把这条边选了即可，不需要建图。</p>
+<p>题意：给出两个 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的连通无向图。你需要选出一个 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(M\)</span> 的集合，使得仅用这个集合里的边，能够使这两个图都连通。</p>
+<p>题解：我们考虑没有选的边的集合 <span class="math inline">\(S\)</span>。对于一个图，<span class="math inline">\(S\)</span> 是合法的当且仅当删掉 <span class="math inline">\(S\)</span> 时候剩下的图有个生成树。也就是说这个是一个 <code>dual graphical matroid</code>。我们就是要求两个 <code>dual graphical matroid</code> 的最大 <code>matroid intersection</code>。不过这复杂度是 <span class="math inline">\(O(m^3)\)</span> 的，会被卡常。</p>
+<p>考虑直接从 <code>graphical matroid</code> 出发，你可以直接求出两个 <code>graphical matroid</code> 的交 <span class="math inline">\(I\)</span>，显然 <span class="math inline">\(2N-2-I\)</span> 就是答案。这样会把复杂度优化到 <span class="math inline">\(O(NM^2)\)</span>，但是还是过不了。你得加点常数优化，就是一开始起点和终点一样的时候直接把这条边选了即可，不需要建图。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/codechef/OCT19/CNNCT2.cc">代码</a></p>
 <h3 id="yandex-algorithm-2018-round-1-f-yet-another-binary-matrixhttpscontestyandexcomcontest7636problemsf"><a href="https://contest.yandex.com/contest/7636/problems/F/">Yandex Algorithm 2018. Round 1. F. Yet Another Binary Matrix</a></h3>
-<p>题意：给出一个 $R \times C$ 的 <code>01</code> 矩阵。定义 $W(P,Q)$ 是把 $r \in P, c \in Q$ 的位置保留下来的 <code>01</code> 矩阵。给出行的集合 $A$ 和列的集合 $B$，你需要找出一个列的集合 $X$ 使得</p>
+<p>题意：给出一个 <span class="math inline">\(R \times C\)</span> 的 <code>01</code> 矩阵。定义 <span class="math inline">\(W(P,Q)\)</span> 是把 <span class="math inline">\(r \in P, c \in Q\)</span> 的位置保留下来的 <code>01</code> 矩阵。给出行的集合 <span class="math inline">\(A\)</span> 和列的集合 <span class="math inline">\(B\)</span>，你需要找出一个列的集合 <span class="math inline">\(X\)</span> 使得</p>
 <ul>
-<li>$X \cap B = \emptyset$</li>
-<li>$W(A,B+X)$ 的所有行线性无关</li>
-<li>$W(R-A,C-X-B)$ 的所有行线性无关</li>
+<li><span class="math inline">\(X \cap B = \emptyset\)</span></li>
+<li><span class="math inline">\(W(A,B+X)\)</span> 的所有行线性无关</li>
+<li><span class="math inline">\(W(R-A,C-X-B)\)</span> 的所有行线性无关</li>
 </ul>
-<p>$1 \le n \le 50, 0 \le |A|, |B| \le n$</p>
-<p>题解：「 $W(A,B+X)$ 的所有行线性无关」对应了一个 <code>linear matroid</code>，「 $W(R-A,C-X-B)$ 的所有行线性无关」对应了一个 <code>dual linear matroid</code>。求他们的拟阵交即可。</p>
+<p><span class="math inline">\(1 \le n \le 50, 0 \le |A|, |B| \le n\)</span></p>
+<p>题解：「 <span class="math inline">\(W(A,B+X)\)</span> 的所有行线性无关」对应了一个 <code>linear matroid</code>，「 <span class="math inline">\(W(R-A,C-X-B)\)</span> 的所有行线性无关」对应了一个 <code>dual linear matroid</code>。求他们的拟阵交即可。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/yandex-algorithm/2018/round1/F.cc">代码</a></p>
 <h3 id="2019-petrozavodsk-winter-camp-yandex-cup-d-pick-your-own-nimhttpscodeforcescomgym102156problemd"><a href="https://codeforces.com/gym/102156/problem/D">2019 Petrozavodsk Winter Camp Yandex Cup. D. Pick Your Own Nim</a></h3>
-<p>题意：Alice 准备了 $n$ 个数 $a_1,a_2,\dots,a_n$。Bob 准备了 $m$ 组数，第 $i$ 组有 $k_i$ 个。Bob先从每一组里面选出恰好一个整数，然后 Alice 从自己的 $n$ 个数里选一个子集。然后 Alice 和 Bob 用这些数玩 Nim 游戏。求出 Bob 应该选出哪些数，使得 Alice无 论怎么选都是必败的。</p>
-<p>$0 \le n \le 60, 1 \le m \le 60, 1 \le k_i \le 5000, \sum k_i \le 5000, 1 \le a_i \le 2^{60}-1$</p>
-<p>题解：要求 $m$ 堆里面每堆恰好选出一个，这个对应了一个 <code>colorful matroid</code>。然后 Alice 必败对应了，选出来的数和 Alice 的数线性无关。就是求这两个拟阵的交。</p>
+<p>题意：Alice 准备了 <span class="math inline">\(n\)</span> 个数 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span>。Bob 准备了 <span class="math inline">\(m\)</span> 组数，第 <span class="math inline">\(i\)</span> 组有 <span class="math inline">\(k_i\)</span> 个。Bob先从每一组里面选出恰好一个整数，然后 Alice 从自己的 <span class="math inline">\(n\)</span> 个数里选一个子集。然后 Alice 和 Bob 用这些数玩 Nim 游戏。求出 Bob 应该选出哪些数，使得 Alice无 论怎么选都是必败的。</p>
+<p><span class="math inline">\(0 \le n \le 60, 1 \le m \le 60, 1 \le k_i \le 5000, \sum k_i \le 5000, 1 \le a_i \le 2^{60}-1\)</span></p>
+<p>题解：要求 <span class="math inline">\(m\)</span> 堆里面每堆恰好选出一个，这个对应了一个 <code>colorful matroid</code>。然后 Alice 必败对应了，选出来的数和 Alice 的数线性无关。就是求这两个拟阵的交。</p>
 <p><a href="https://github.com/zimpha/competitive-programming/blob/master/petrozavodsk-training-camp/2019-winter/yandex-cup/D.cc">代码</a></p></div>
 
   <footer class="article-footer">
