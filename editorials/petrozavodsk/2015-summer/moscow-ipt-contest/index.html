@@ -262,10 +262,10 @@ P(i,j) &=& Q_0(i,j)+\sum_{k=i}^{j-1} P(i,k) \cdot dp(k + 1, j)
 <p>当时对于 <span class="math inline">\(Q_1(i,j)\)</span> 转移有一点限制，并不是所有的 <span class="math inline">\(k\)</span> 都是满足条件的。因为 <span class="math inline">\(Q\)</span> 节点要么是顺序要么是逆序，那么对于一个连续区间 <span class="math inline">\([i,k]\)</span>，扩展的时候一定也是要么顺序，要么逆序的。</p>
 <p>我们需要预处理出 <span class="math inline">\(ext(i,k)\)</span> 表示区间 <span class="math inline">\([i,k]\)</span> 在每个排列中只能超一个方向扩展的最长距离 <span class="math inline">\(j\)</span>。只有 <span class="math inline">\(j \le ext(i,k)\)</span> 的 <span class="math inline">\(k\)</span> 才是能够转移的。</p>
 <p>具体怎么处理呢，考虑枚举 <span class="math inline">\((i, k)\)</span>，然后对于第 <span class="math inline">\(x\)</span> 个排列，如果有 <span class="math inline">\(rank(i) < rank(k)\)</span>，那么不能扩展到 <span class="math inline">\([i,k]\)</span> 的左边去，也就是</p>
-<p><span class="math display">\[ext(i,k) \overset{\min}{\leftarrow} \text{perm}(x, \min_{i \le j \le k} \text{rank}(j) - 1) - 1
+<p><span class="math display">\[ext(i,k) \overset{\min}{\leftarrow} \text{perm}(x, \min_{i \le j \le k} (\text{rank}(j)) - 1) - 1
 \]</span></p>
 <p>否则不能扩展到 <span class="math inline">\([i,k]\)</span> 的右边边去，也就是</p>
-<p><span class="math display">\[ext(i,k) \overset{\min}{\leftarrow} \text{perm}(x, \max_{i \le j \le k} \text{rank}(j) + 1) - 1
+<p><span class="math display">\[ext(i,k) \overset{\min}{\leftarrow} \text{perm}(x, \max_{i \le j \le k} (\text{rank}(j)) + 1) - 1
 \]</span></p>
 <h2 id="g-random-walking">G. Random Walking</h2>
 <p>题意：给出一棵 <span class="math inline">\(n\)</span> 个点的树，每条边边权是 <span class="math inline">\(1\)</span>。有 <span class="math inline">\(q\)</span> 个询问，每次询问从 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 的期望时间：每次会随机选一条边往外走。</p>
