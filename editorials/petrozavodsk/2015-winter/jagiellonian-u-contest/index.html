@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.75.0@zimpha" />
+
+
+
+<link rel="canonical" href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest - zimpha&#39;s blog</title>
+    
+<meta name="description" content="&lt;h2 id=&#34;a-ladderhttpswwwacmicpcnetproblem19179&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19179&#34;&gt;A. Ladder&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个木棍，长度分别为 &lt;span class=&#34;math inline&#34;&gt;\(d_1,d_2,\dots,d_n\)&lt;/span&gt;。你需要 &lt;span class=&#34;math inline&#34;&gt;\(k&#43;2\)&lt;/span&gt; 个木棍，其中两个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;。你可以削断已有的木棍，求是否可能。&lt;/p&gt;">
+
+<meta property="og:title" content="Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest - zimpha&#39;s blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/">
+<meta property="og:image" content="https://zimpha.github.io/images/default.png">
+<meta property="og:site_name" content="zimpha&#39;s blog">
+<meta property="og:description" content="&lt;h2 id=&#34;a-ladderhttpswwwacmicpcnetproblem19179&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19179&#34;&gt;A. Ladder&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个木棍，长度分别为 &lt;span class=&#34;math inline&#34;&gt;\(d_1,d_2,\dots,d_n\)&lt;/span&gt;。你需要 &lt;span class=&#34;math inline&#34;&gt;\(k&#43;2\)&lt;/span&gt; 个木棍，其中两个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;。你可以削断已有的木棍，求是否可能。&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="zimpha&#39;s blog">
+<meta name="twitter:url" content="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/">
+<meta name="twitter:title" content="Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest - zimpha&#39;s blog">
+<meta name="twitter:description" content="&lt;h2 id=&#34;a-ladderhttpswwwacmicpcnetproblem19179&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19179&#34;&gt;A. Ladder&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个木棍，长度分别为 &lt;span class=&#34;math inline&#34;&gt;\(d_1,d_2,\dots,d_n\)&lt;/span&gt;。你需要 &lt;span class=&#34;math inline&#34;&gt;\(k&#43;2\)&lt;/span&gt; 个木棍，其中两个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;。你可以削断已有的木棍，求是否可能。&lt;/p&gt;">
+<meta name="twitter:image" content="https://zimpha.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/zimpha.github.io\/"
+    },
+    "headline": "Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest - zimpha\u0027s blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/zimpha.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2020-08-13T20:22:52JST",
+    "dateModified": "2020-08-13T20:22:52JST",
+    "author": {
+      "@type": "Person",
+      "name": "zimpha\u0027s blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "zimpha\u0027s blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/zimpha.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\u003ch2 id=\u0022a-ladderhttpswwwacmicpcnetproblem19179\u0022\u003e\u003ca href=\u0022https:\/\/www.acmicpc.net\/problem\/19179\u0022\u003eA. Ladder\u003c\/a\u003e\u003c\/h2\u003e\n\u003cp\u003e题意：给出 \u003cspan class=\u0022math inline\u0022\u003e\\(n\\)\u003c\/span\u003e 个木棍，长度分别为 \u003cspan class=\u0022math inline\u0022\u003e\\(d_1,d_2,\\dots,d_n\\)\u003c\/span\u003e。你需要 \u003cspan class=\u0022math inline\u0022\u003e\\(k\u002b2\\)\u003c\/span\u003e 个木棍，其中两个长度恰好为 \u003cspan class=\u0022math inline\u0022\u003e\\(x\\)\u003c\/span\u003e，\u003cspan class=\u0022math inline\u0022\u003e\\(k\\)\u003c\/span\u003e 个长度恰好为 \u003cspan class=\u0022math inline\u0022\u003e\\(y\\)\u003c\/span\u003e。你可以削断已有的木棍，求是否可能。\u003c\/p\u003e"
+  }
+</script>
+
+
+    <link href="https://zimpha.github.io/css/styles.css" rel="stylesheet">
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$','$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    
+      window.addEventListener('load', (event) => {
+          document.querySelectorAll("mjx-container").forEach(function(x){
+            x.parentElement.classList += 'has-jax'})
+        });
+    
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://zimpha.github.io/">zimpha&#39;s blog</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/about/">About</a></li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/algonotes/">Algorithm Notes</a></li>
+                  
+                  <li><a href="/resource/problems">Problem Settings</a></li>
+                  
+                  <li><a href="/resource/translation/">Transalation</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/tools/generator">Generator</a></li>
+                  
+                  <li><a href="/tools/algorithmic-library">Algorithmic Library</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Editorials <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/editorials/project-euler">Project Euler</a></li>
+                  
+                  <li><a href="/editorials/opencup">Open Cup</a></li>
+                  
+                  <li><a href="/editorials/petrozavodsk">Petrozavodsk Training Camp</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/">Home</a></li>
+              
+            </ul>
+            
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://zimpha.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://zimpha.github.io/editorials/" itemprop="url"><span itemprop="title">editorials</span></a></li>
+        
+        <li class="active">Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <h1 class="title">Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</h1>
+    
+    <ul class="p-facts">
+        <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-13T20:22:52JST">2020-08-13</time></li>
+        <li>来源: <a href=""></a></li>
+        
+        
+
+        
+      </ul>
+  </header>
+
+  
+
+  <div class="article-body"><h2 id="a-ladderhttpswwwacmicpcnetproblem19179"><a href="https://www.acmicpc.net/problem/19179">A. Ladder</a></h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个木棍，长度分别为 <span class="math inline">\(d_1,d_2,\dots,d_n\)</span>。你需要 <span class="math inline">\(k+2\)</span> 个木棍，其中两个长度恰好为 <span class="math inline">\(x\)</span>，<span class="math inline">\(k\)</span> 个长度恰好为 <span class="math inline">\(y\)</span>。你可以削断已有的木棍，求是否可能。</p>
+<p><span class="math inline">\(1 \le n \le 10^5, 0 \le k \le 10^5, 1 \le x, y \le 10^9, 1 \le d_i \le 10^9\)</span></p>
+<p>题解：求出 <span class="math inline">\(cx\)</span> 和 <span class="math inline">\(cy\)</span> 分别表示有多少木棍长度大于等于 <span class="math inline">\(x\)</span> 或者 <span class="math inline">\(y\)</span>，然后根据 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 的大小判一判即可。</p>
+<h2 id="b-36-puzzlehttpswwwacmicpcnetproblem19180"><a href="https://www.acmicpc.net/problem/19180">B. 36 Puzzle</a></h2>
+<p>题意：有一个 <span class="math inline">\(6 \times 6\)</span> 的格子，依次填满了 <code>a-z0-9</code> 这 <span class="math inline">\(36\)</span> 个字符。你希望将它排好序，每次可以选一行或者一列循环位移若干个单位。构造一个操作顺序。</p>
+<p>题解：可以发现如果我们能够实现交换相邻两个格子的话，那么就可以不断通过交换两个格子来达成目的。</p>
+<p>考虑交换 <span class="math inline">\((i,j)\)</span> 和 <span class="math inline">\((i,j+1)\)</span>，可以发现只需要对格子 <span class="math inline">\((i,j)\)</span> 执行 <code>ULURULURULURU</code> 就可以达成目的。类似的，如果要交换 <span class="math inline">\((i,j)\)</span> 和 <span class="math inline">\((i+1,j)\)</span> 的话，只需要对格子 <span class="math inline">\((i,j)\)</span> 不断执行 <code>LULRLULRLULRL</code> 即可。</p>
+<h2 id="c-messagehttpswwwacmicpcnetproblem19181"><a href="https://www.acmicpc.net/problem/19181">C. Message</a></h2>
+<p>题意：有一个 <span class="math inline">\(b\)</span> 进制数的编码，数字 <span class="math inline">\(i\)</span> (<span class="math inline">\(1 \le i \le b - 1\)</span>) 的编码为 <span class="math inline">\(s_i\)</span>。现在给出一个长度为 <span class="math inline">\(n\)</span> 的字符串，你需要找到里面一个最大的 <span class="math inline">\(b\)</span> 进制数。</p>
+<p><span class="math inline">\(3 \le b \le 50000, \sum |s_i| \le 500000, 1 \le n \le 300000\)</span></p>
+<p>题解：由于要求这个数最大，那么首先是要长度最长，之后再是字典序最大。</p>
+<p>先考虑长度最长，那么我们可以对 <span class="math inline">\(s_i\)</span> 倒着建立 AC 自动机，然后令 <span class="math inline">\(dp(i)\)</span> 表示以 <span class="math inline">\(i\)</span> 开始的后缀最多能够多长。显然，只需要倒着在AC自动机走一遍，每次求出长度最短的匹配串即可。做完这一步之后，可以发现 <span class="math inline">\(dp(1) \ge dp(2) \ge \dots \ge dp(n)\)</span>。</p>
+<p>接下来考虑字典序最大，对于第一位，我们知道它的起始位置只能在那些 <span class="math inline">\(dp(i)=dp(1)\)</span> 的 <span class="math inline">\(i\)</span> 上，结束为止最晚可以在 <span class="math inline">\(dp(i)=dp(1)-1\)</span> 的位置上。于是我们把 <span class="math inline">\(s_i\)</span> 按照正着建立 AC 自动机，把 <span class="math inline">\(dp(i)=dp(1)\)</span> 或者 <span class="math inline">\(dp(i)=dp(1)-1\)</span> 的位置拿出来在自动机走，找到一个数字最大的串即可。之后我们就可以把这个前缀去掉，考虑下一位，按照上面方法搞即可。</p>
+<p>可以发现，每个位置 <span class="math inline">\(i\)</span> 只会最多被用两次，因此整个算法是线性的。</p>
+<h2 id="d-arithmetic-sequenceshttpswwwacmicpcnetproblem19182"><a href="https://www.acmicpc.net/problem/19182">D. Arithmetic Sequences</a></h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个数，<span class="math inline">\(a_1,a_2,\dots,a_n\)</span>，你需要找到一个最长的等差子序列。</p>
+<p><span class="math inline">\(1 \le n \le 2000, 0 \le a_i \le 10^9\)</span></p>
+<p>题解：先给所有数排序。考虑枚举公差 <span class="math inline">\(d\)</span>，那么对于 <span class="math inline">\(i < j\)</span> 并且 <span class="math inline">\(a_i + d = a_j\)</span> 的，构建一条从 <span class="math inline">\(i\)</span> 到 <span class="math inline">\(j\)</span> 的有向边。这个DAG的最长路就是 <span class="math inline">\(d\)</span> 对应的答案。</p>
+<p>复杂度<span class="math inline">\(O(n^2)\)</span>。</p>
+<h2 id="e-subsequencehttpswwwacmicpcnetproblem19183"><a href="https://www.acmicpc.net/problem/19183">E. Subsequence</a></h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个数 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span>，求出它的一个最短的<code>maximal nondecreasing subsequence</code>。</p>
+<p><span class="math inline">\(1 \le n \le 10^6, 0 \le a_i \le 10^6\)</span></p>
+<p>题解：应该是这个论文 <a href="https://www.matem.unam.mx/~urrutia/online_papers/incsubseqperm.pdf">Finding Shortest Maximal Increasing Subsequences and Domination in Permutation Graphs</a>，但是复杂度是 <span class="math inline">\(O(n \log^2 n)\)</span> 的，过不了。</p>
+<p>首先，我们可以令 <span class="math inline">\(a_i = a_i \cdot n + i\)</span>，使得任意数都互不相同。考虑论文里的转移方程，令 <span class="math inline">\(dp(i)\)</span> 表示以 <span class="math inline">\(i\)</span> 结尾的 Maximal Increasing Subsequences 的最短长度。把 <span class="math inline">\((i,a_i)\)</span> 看成二维平面上的点，那么把所有 <span class="math inline">\(x < i, y < a_i\)</span> 的点 <span class="math inline">\((x, y)\)</span> 都拿出来，然后考虑那些处于边界上的点 <span class="math inline">\((x, y)\)</span> 们，<span class="math inline">\(dp(i)\)</span> 的值就是 <span class="math inline">\(dp(x)\)</span> 的最小值加上 <span class="math inline">\(1\)</span>。</p>
+<p>用分治来优化这个dp，假设当前区间是 <span class="math inline">\([l, r)\)</span>，令 <span class="math inline">\(m=\frac{l+r}{2}\)</span>，求出 <span class="math inline">\(i \in [l, m)\)</span> 里所有 <span class="math inline">\(dp(i)\)</span> 值，对 <span class="math inline">\(j  \in [m, r)\)</span> 里 <span class="math inline">\(dp(j)\)</span> 值的贡献。</p>
+<p>把 <span class="math inline">\([l, r)\)</span> 里的所有位置按照 <span class="math inline">\(a_i\)</span> 从小到大排序。可以发现，对于 <span class="math inline">\([l,m)\)</span> 里的点，需要维护一个 <span class="math inline">\(x\)</span> 递增，<span class="math inline">\(y\)</span> 递减的序列 <span class="math inline">\(A\)</span>。对于 <span class="math inline">\([m, r)\)</span> 里的点，也需要维护一个 <span class="math inline">\(x\)</span> 递增，<span class="math inline">\(y\)</span> 递增的序列 <span class="math inline">\(B\)</span>，并且这个序列按照 <span class="math inline">\(y\)</span> 坐标会把 <span class="math inline">\(A\)</span> 序列切成一块块的。那么 <span class="math inline">\([l, m)\)</span> 里所有 dp 值对某个 <span class="math inline">\([m, r)\)</span> 里 <span class="math inline">\(dp(i)\)</span> 的贡献，就是对应那一份 dp 值的最小值加 <span class="math inline">\(1\)</span>。</p>
+<p>我们可以用一个单调栈套单调队列的数据结构来维护，第一层单调栈维护序列 <span class="math inline">\(B\)</span>，第二层维护切出来的每一块 <span class="math inline">\(A\)</span>，每一块从队尾到队首仅保留 dp 值变小的那些。</p>
+<ul>
+<li>加入一个 <span class="math inline">\([l.m)\)</span> 的点的时候，我们需要把 <span class="math inline">\(A\)</span> 序列里面不合法的点都弹栈，然后把这个点加进去。加进去的时候需要考虑栈顶属不属于新切出来的一个块，如果不是，这个点需要单独成为一个块。</li>
+<li>加入一个 <span class="math inline">\([m,r)\)</span> 的点的时候，可能会弹走 <span class="math inline">\(B\)</span> 序列里一些点，这个时候会发生 <span class="math inline">\(A\)</span> 里某些块的合并，只要保证从队尾到队首的 dp 值的性质即可。最后考虑栈顶这个块，看看是不是一个新块，如果是的话用最小值加 <span class="math inline">\(1\)</span> 更新下 dp 值即可。</li>
+</ul>
+<p>预先处理好归并树的话，复杂度就是 <span class="math inline">\(O(n \log n)\)</span> 的。</p>
+<h2 id="f-algebra-is-awesomehttpswwwacmicpcnetproblem19184"><a href="https://www.acmicpc.net/problem/19184">F. Algebra is Awesome</a></h2>
+<p>题意：对于一个排列 <span class="math inline">\(\sigma\)</span>，定义 <span class="math inline">\(D(\sigma)=\{\sigma^k: k \in \mathrm{N}\}\)</span>。</p>
+<p>现在给出 <span class="math inline">\(m\)</span> 个长度为 <span class="math inline">\(n\)</span> 的排列 <span class="math inline">\(\sigma_1,\sigma_2,\dots,\sigma_m\)</span>。对于每个 <span class="math inline">\(i\)</span>，求出有多少 <span class="math inline">\(j\)</span> 满足 <span class="math inline">\(j < i\)</span> 并且 <span class="math inline">\(D(\sigma_i)=D(\sigma_j)\)</span>。</p>
+<p><span class="math inline">\(1 \le n \le 100, 1 \le m \le 10^4\)</span></p>
+<p>题解：对于每个 <span class="math inline">\(S(\sigma_i)\)</span>，我们需要找个一个字典序最小的 <span class="math inline">\(p_i\)</span>，使得 <span class="math inline">\(S(p_i)=S(\sigma_i)\)</span>。</p>
+<p>考虑将排列环分解，并且按照最小元素的大小将所有环排好序，假设环长依次为 <span class="math inline">\(n_1,n_2,\dots,n_m\)</span>。考虑第一个环，我们需要找个一个 <span class="math inline">\(s_1\)</span>，使得 <span class="math inline">\(\gcd(s_1,n_1)=1\)</span>，并且 <span class="math inline">\(s_1\)</span> 对应的环上元素要是最小的。</p>
+<p>在这个基础上，我们考虑第二个环，同样也得找一个 <span class="math inline">\(s_2\)</span>，满足<span class="math inline">\(\gcd(s_2,n_2)=1\)</span>，并且 <span class="math inline">\(s_2\)</span> 对应的环上元素要是最小的。</p>
+<p>依次类推，可以得到 <span class="math inline">\(m\)</span> 个同余方程组</p>
+<p><span class="math display">\[\begin{array}{c}
+x \equiv s_1 \pmod {n_1} \\
+x \equiv s_2 \pmod {n_2} \\
+\cdots \\
+x \equiv s_m \pmod {n_m}
+\end{array}
+\]</span></p>
+<p>我们在保证方程有解的情况下，依次确定每一个 <span class="math inline">\(s_i\)</span> 即可。方程有解当且仅当对于任意的 <span class="math inline">\(i\)</span> 和 <span class="math inline">\(j\)</span> 都有 <span class="math inline">\(s_i \equiv s_j \pmod{\gcd(n_i,n_j)}\)</span>。</p>
+<h2 id="g-bus-lineshttpswwwacmicpcnetproblem19185"><a href="https://www.acmicpc.net/problem/19185">G. Bus Lines</a></h2>
+<p>题意：给出一棵 <span class="math inline">\(n\)</span> 个点的树，第 <span class="math inline">\(i\)</span> 条边连接 <span class="math inline">\(a_i\)</span> 个 <span class="math inline">\(b_i\)</span>，最多被使用 <span class="math inline">\(c_i\)</span> 次。</p>
+<p>你需要找出最多的路径数目，使得起点和终点都是叶子，每条边使用次数不能超。</p>
+<p><span class="math inline">\(2 \le n \le 10^5, 1 \le a_i, b_i \le n, 1 \le c_i \le 10^6\)</span></p>
+<p>题解：随便找一个非叶子节点作为根节点，然后考虑从叶子开始往上贪心。对于每个点 <span class="math inline">\(u\)</span>，维护 <span class="math inline">\((up_u, free_u)\)</span> 表示这个点能够往上提供多少条边，以及在这些提供的边中，可以在 <span class="math inline">\(u\)</span> 的子树内自由匹配成 <span class="math inline">\(free_u\)</span> 对。</p>
+<p>考虑 <span class="math inline">\(u\)</span> 的父亲 <span class="math inline">\(p\)</span>，以及他们之间的容量限制 <span class="math inline">\(w\)</span>。显然如果 <span class="math inline">\(up_u \le w\)</span>，不需要做任何事情；否则，我们需要舍弃部分 <span class="math inline">\(up_u\)</span>。为了最大化，不妨可以先用 <span class="math inline">\(free_u\)</span> 消耗掉一部分 <span class="math inline">\(up_u\)</span>，直到 <span class="math inline">\(up_u \le w\)</span> 或者 <span class="math inline">\(free_u\)</span> 等于 <span class="math inline">\(0\)</span> 为止。也就是说 <span class="math inline">\(\min(\lceil \frac{w-up_u}{2} \rceil, free_u)\)</span> 这些一定对答案产生贡献，可以直接计入答案里。</p>
+<p>那么接下来怎么合并 <span class="math inline">\(u\)</span> 的儿子的结果到 <span class="math inline">\(u\)</span> 里来，考虑 <span class="math inline">\(u\)</span> 只有两个儿子 <span class="math inline">\(v_1\)</span> 和 <span class="math inline">\(v_2\)</span>。令 <span class="math inline">\(x=\min(up_{v_1},up_{v_2})\)</span>，显然我们可以将这 <span class="math inline">\(2x\)</span> 配对下，然后将剩下来的留给 <span class="math inline">\(v_1\)</span> 或者 <span class="math inline">\(v_2\)</span> 自己的子树去配对。也就是说</p>
+<p><span class="math display">\[up_u = up_{v_1}+up_{v_2}
+\]</span></p>
+<p><span class="math display">\[free_u=x+\min(\lfloor \frac{up_{v_1}-2x}{2} \rfloor, free_{v_1})+\min(\lfloor \frac{up_{v_2}-2x}{2} \rfloor, free_{v_2})
+\]</span></p>
+<p>由于一些奇偶性的问题，还需要考虑 <span class="math inline">\(x=\min(up_{v_1},up_{v_2})-1\)</span> 是否会更优。</p>
+<p>如果超过 <span class="math inline">\(2\)</span> 个儿子的话，可以两个两个合并计算。</p>
+<p>最后答案就是 <span class="math inline">\(\min(\lceil \frac{w-up_u}{2} \rceil, free_u)\)</span> 的贡献和加上 <span class="math inline">\(free_{root}\)</span>。</p>
+<h2 id="h-coal-minehttpswwwacmicpcnetproblem19186"><a href="https://www.acmicpc.net/problem/19186">H. Coal Mine</a></h2>
+<p>题意：有一个 <span class="math inline">\(n \times m\)</span> 的格子，你需要给每个格子标上 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(k\)</span>。使得所有标号为 <span class="math inline">\(i\)</span> 的格子关于位置 <span class="math inline">\((x_i,y_i)\)</span> 中心对称。坐标 <span class="math inline">\((x_i,y_i)\)</span> 一定在某条格子边的中点。</p>
+<p><span class="math inline">\(1 \le nm \le 1500, 1 \le k \le 100\)</span></p>
+<p>题解：把所有格子黑白染色，可以发现中心对称的一对格子一定一黑一白。于是把中心对称的格子建立一条边，搞出一个二分图。直接跑最大匹配即可。</p>
+<h2 id="i-chocolate-is-tastyhttpswwwacmicpcnetproblem19187"><a href="https://www.acmicpc.net/problem/19187">I. Chocolate is Tasty</a></h2>
+<p>题意：有一块 <span class="math inline">\(n \times m\)</span> 的巧克力，有若干个小孩围成圆桌。每个男孩会选择巧克力较长的边切下一条，每个女孩会选择巧克力较短的边切下一条。</p>
+<p>给出一个字符串 <span class="math inline">\(s\)</span>，表示每个小孩是男的还是女的，求出从哪个人开始分巧克力，才能使得最多人能够吃到巧克力。</p>
+<p><span class="math inline">\(1 \le n, m \le 10^6, 1 \le |s| \le 10^6\)</span></p>
+<p>题解：维护长边减去短边的差，对于男孩显然是 <span class="math inline">\(+1\)</span>，对于女孩是 <span class="math inline">\(-1\)</span>。那么一段字符串可以看成一个折线，不妨把这段折线的最低点放在 <span class="math inline">\(x\)</span> 轴上，然后维护折线最左端和最右端的高度 <span class="math inline">\(L\)</span> 和 <span class="math inline">\(R\)</span>。考虑一个 <span class="math inline">\(n \times m\)</span> (<span class="math inline">\(n \ge m\)</span>) 的巧克力要经过这段折线，我们想要求出最后这块巧克力会变成什么样。</p>
+<p>令 <span class="math inline">\(d=n-m\)</span>。显然，如果 <span class="math inline">\(d \ge L\)</span>，我们仅需要把折线整体往上移动 <span class="math inline">\(d-L\)</span> 即可。那么最终 <span class="math inline">\(R+d-L\)</span> 就是巧克力长边减短边的差。我们可以列出方程</p>
+<p><span class="math display">\[\begin{array}{c}
+n^\prime+m^\prime=n+m-S, \\ 
+n^\prime-m^\prime=R+d-L
+\end{array}
+\]</span></p>
+<p>其中 <span class="math inline">\(S\)</span> 是折线的段数。那么就可以解出最终巧克力的边长。</p>
+<p>如果 <span class="math inline">\(d < L\)</span>，可能会有操作导致长短边交换，不太能够直接列出方程。但是可以发现只和 <span class="math inline">\(L-d\)</span> 的奇偶性有关，如果是偶数那么最终差为 <span class="math inline">\(R\)</span>，否则为 <span class="math inline">\(R+1\)</span>。因此我们也可以类似的列出一个方程求出边长。</p>
+<p>显然，当边长都是正整数的时候，我们呢可以继续操作，否则就终止了。至此，我们有了一一个 <span class="math inline">\(O(1)\)</span> 判定的方法。</p>
+<p>接下来就可以双指针维护极大的合法区间，还需要一个单调队列维护区间最小值。</p>
+<h2 id="j-gamehttpswwwacmicpcnetproblem19188"><a href="https://www.acmicpc.net/problem/19188">J. Game</a></h2>
+<p>题意：有一个长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span>。两个人轮流玩游戏，每次可以删掉左边的数或者右边的数。</p>
+<p>有 <span class="math inline">\(k\)</span> 个终止序列，第 <span class="math inline">\(i\)</span> 个序列长度为 <span class="math inline">\(m_i\)</span>。一旦操作出一个终止序列，那么这个人赢了。求出最优策略下，是先手必胜还是后手必胜。</p>
+<p><span class="math inline">\(1 \le n \le 10^6, 0 \le a_i, w_i \le 10^9, \sum m_i \le 3 \times 10^6\)</span></p>
+<p>题解：令 <span class="math inline">\(win(l,r)\)</span> 表示 <span class="math inline">\(a[l..r]\)</span> 从这个子串开始，先手能否必胜。分以下几种情况考虑：</p>
+<ul>
+<li><span class="math inline">\(a[l..r]\)</span> 本身就是终止序列，那么先手肯定必败</li>
+<li><span class="math inline">\(a[l+1..r]\)</span> 或者 <span class="math inline">\(a[l..r-1]\)</span> 是终止序列，那么先手只要操作一下就必胜了</li>
+<li><span class="math inline">\(a[l+2..r]\)</span> 是终止序列，那么先手肯定不会去取 <span class="math inline">\(a[l]\)</span>，所以和 <span class="math inline">\(win(l,r-1)\)</span> 的状态有关</li>
+<li><span class="math inline">\(a[l..r-2]\)</span> 是终止序列，类似的，先手肯定不会取 <span class="math inline">\(a[r]\)</span>，所以和 <span class="math inline">\(win(l+1,r)\)</span> 的状态有关</li>
+<li><span class="math inline">\(a[l+1..r-1]\)</span> 是终止序列，显然不管先手怎么操作，后手总是能够必胜的</li>
+<li><span class="math inline">\(a[l+2..r-1]\)</span> 或者 <span class="math inline">\(a[l+1..r-2]\)</span> 是终止序列，先手肯定能必胜，可以对于前者拿掉 <span class="math inline">\(a[l]\)</span>，后者拿掉 <span class="math inline">\(a[r]\)</span></li>
+<li>对于剩下的其他情况，必然有 <span class="math inline">\(win(l,r)=win(l+1,r-1)\)</span>。因为
+<ul>
+<li>如果 <span class="math inline">\(win(l+1,r-1)\)</span> 是必败的，那么显然 <span class="math inline">\(win(l,r)\)</span> 也是必败的</li>
+<li>如果 <span class="math inline">\(win(l+1,r-1)\)</span> 是必胜的，那么有 <span class="math inline">\(win(l+2,r-1)\)</span> 或者 <span class="math inline">\(win(l+1,r-2)\)</span> 是必败的。对于前者，先手可以拿掉 <span class="math inline">\(a[l]\)</span>，那么无论后手怎么操作，都会到达状态 <span class="math inline">\(win(l+2,r-1)\)</span>。后者也是类似的。</li>
+</ul>
+</li>
+</ul>
+<p>因此直接按照上面的情况考虑即可。复杂度是 <span class="math inline">\(O(n + \sum m_i)\)</span>。</p>
+<h2 id="k-tic-tac-toehttpswwwacmicpcnetproblem19189"><a href="https://www.acmicpc.net/problem/19189">K. Tic-tac-toe</a></h2>
+<p>题意：给出一个 <code>Tic-tac-toe</code> 的局面，判断是不是两个都很聪明的人下出来的，或者其中一个很聪明的人下出来的，或者都不是。</p>
+<p>题解：显然我们可以用一个小于 <span class="math inline">\(3^9\)</span> 的数来表示所有局面。令 <span class="math inline">\(dp(mask)\)</span> 表示局面 <span class="math inline">\(mask\)</span> 是先手必胜，还是平局，还是必败。</p>
+<p>可以发现不在 <span class="math inline">\(dp(\cdot)\)</span> 里的局面都是不能达到的。如果两个人都是最优策略的话，结果肯定是平局。因此可以直接沿着 <span class="math inline">\(dp(\cdot)\)</span> 数组遍历出所有合法状态。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zimpha" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zimpha.github.io/">
+      <button type="submit" class="submit icon-search glyphicon glyphicon-search"></button>
+</form>
+    </section>
+    <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://zimpha.github.io/resource/translation/xxvii-poi/" class="list-group-item">XXVII POI Chinese Translation</a>
+      
+      <a href="https://zimpha.github.io/resource/translation/" class="list-group-item">Translation</a>
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/" class="list-group-item">Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</a>
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/" class="list-group-item">Petrozavodsk Summer 2015. Day 4. Moscow IPT Contest</a>
+      
+      <a href="https://zimpha.github.io/editorials/project-euler/001/" class="list-group-item">Problem 1. Multiples of 3 and 5</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      
+      <a href="https://zimpha.github.io/tags/inclusion-exclusion-principle" class="taglink">inclusion-exclusion-principle</a>
+      
+      
+      
+      <a href="https://zimpha.github.io/tags/math" class="taglink">math</a>
+      
+      
+    </div>
+  </section>
+  
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LINKS</div>
+    </div>
+    <ol class="list-group">
+      
+      <a href="http://www.cnblogs.com/clrs97/" class="list-group-item">Claris</a>
+      
+      <a href="http://min-25.hatenablog.com/" class="list-group-item">Min_25</a>
+      
+      <a href="https://blog.csdn.net/skywalkert/" class="list-group-item">skywalkert</a>
+      
+    </ol>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; zimpha&#39;s blog</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

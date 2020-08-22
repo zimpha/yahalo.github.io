@@ -12,12 +12,43 @@
     
     
     <item>
+      <title>Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</title>
+      <link>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</link>
+      <pubDate>Thu, 13 Aug 2020 20:22:52 +0800</pubDate>
+      
+      <guid>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</guid>
+      <description>&lt;h2 id=&#34;a-ladderhttpswwwacmicpcnetproblem19179&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19179&#34;&gt;A. Ladder&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个木棍，长度分别为 &lt;span class=&#34;math inline&#34;&gt;\(d_1,d_2,\dots,d_n\)&lt;/span&gt;。你需要 &lt;span class=&#34;math inline&#34;&gt;\(k+2\)&lt;/span&gt; 个木棍，其中两个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;。你可以削断已有的木棍，求是否可能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Petrozavodsk Summer 2015. Day 4. Moscow IPT Contest</title>
+      <link>https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/</link>
+      <pubDate>Thu, 13 Aug 2020 03:22:34 +0800</pubDate>
+      
+      <guid>https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/</guid>
+      <description>&lt;h2 id=&#34;a-rectangle-query&#34;&gt;A. Rectangle Query&lt;/h2&gt;
+&lt;p&gt;题意：强制在线。有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个点 &lt;span class=&#34;math inline&#34;&gt;\((x_i, y_i)\)&lt;/span&gt;。给出 &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; 个询问，每次求出 &lt;span class=&#34;math inline&#34;&gt;\(x_1 \le x_i \le x_2, y_1 \le y_i \le y_2\)&lt;/span&gt; 的所有点中本质不同的 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 坐标和 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; 坐标个数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Problem 1. Multiples of 3 and 5</title>
+      <link>https://zimpha.github.io/editorials/project-euler/001/</link>
+      <pubDate>Thu, 13 Aug 2020 02:59:38 +0800</pubDate>
+      
+      <guid>https://zimpha.github.io/editorials/project-euler/001/</guid>
+      <description>&lt;p&gt;题意：给出一个整数 &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt;，求出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 以下所有是 &lt;span class=&#34;math inline&#34;&gt;\(3\)&lt;/span&gt; 或者 &lt;span class=&#34;math inline&#34;&gt;\(5\)&lt;/span&gt; 的倍数的数之和。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Petrozavodsk</title>
       <link>https://zimpha.github.io/editorials/petrozavodsk/</link>
       <pubDate>Sat, 08 Aug 2020 18:27:38 +0800</pubDate>
       
       <guid>https://zimpha.github.io/editorials/petrozavodsk/</guid>
-      <description>Coming Soon&amp;hellip;</description>
+      <description>&lt;p&gt;Petrozavodsk Programming Camp 是俄罗斯每年定期举办的一个训练营，在每年8月举办 Petrozavodsk Summer Camp 训练营，次年1月举办 Winter Camp。每次训练营共有 9 天比赛，比赛题目基本上来自参加学校或者选手无偿提供，或者 Snark 通过各种交易（比如杭电多校，牛客多校，Japan Alumni Group，区域赛等等）从世界各地获取。&lt;/p&gt;
+&lt;p&gt;比赛题目质量很高，难度也非常大，但是题解却几乎没有，对训练后补题其实非常不友好。因此，我会在这里陆续总结相关比赛的题解，希望能够对选手训练有所帮助。&lt;/p&gt;
+&lt;p&gt;下面是这些题解对应的链接：&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,7 +61,7 @@
     </item>
     
     <item>
-      <title>Project Euler</title>
+      <title>Project Euler Editorial</title>
       <link>https://zimpha.github.io/editorials/project-euler/</link>
       <pubDate>Sat, 08 Aug 2020 18:24:44 +0800</pubDate>
       
