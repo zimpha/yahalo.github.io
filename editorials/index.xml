@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</title>
+      <link>https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/</link>
+      <pubDate>Wed, 02 Sep 2020 01:07:21 +0800</pubDate>
+      
+      <guid>https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/</guid>
+      <description>&lt;h2 id=&#34;a-raid&#34;&gt;A. Raid&lt;/h2&gt;
+&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(a_1,a_2,\dots,a_n\)&lt;/span&gt;，对于每个 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(1 \le k \le n\)&lt;/span&gt;)，你要从中选出一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</title>
       <link>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</link>
       <pubDate>Thu, 13 Aug 2020 20:22:52 +0800</pubDate>

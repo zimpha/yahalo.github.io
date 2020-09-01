@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.75.0@zimpha" />
+
+
+
+<link rel="canonical" href="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Petrozavodsk Summer 2020. Day 1. Warsaw U Contest - zimpha&#39;s blog</title>
+    
+<meta name="description" content="&lt;h2 id=&#34;a-raid&#34;&gt;A. Raid&lt;/h2&gt;&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(a_1,a_2,\dots,a_n\)&lt;/span&gt;，对于每个 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(1 \le k \le n\)&lt;/span&gt;)，你要从中选出一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。&lt;/p&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)&lt;/span&gt;&lt;/p&gt;">
+
+<meta property="og:title" content="Petrozavodsk Summer 2020. Day 1. Warsaw U Contest - zimpha&#39;s blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/">
+<meta property="og:image" content="https://zimpha.github.io/images/default.png">
+<meta property="og:site_name" content="zimpha&#39;s blog">
+<meta property="og:description" content="&lt;h2 id=&#34;a-raid&#34;&gt;A. Raid&lt;/h2&gt;&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(a_1,a_2,\dots,a_n\)&lt;/span&gt;，对于每个 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(1 \le k \le n\)&lt;/span&gt;)，你要从中选出一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。&lt;/p&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)&lt;/span&gt;&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="zimpha&#39;s blog">
+<meta name="twitter:url" content="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/">
+<meta name="twitter:title" content="Petrozavodsk Summer 2020. Day 1. Warsaw U Contest - zimpha&#39;s blog">
+<meta name="twitter:description" content="&lt;h2 id=&#34;a-raid&#34;&gt;A. Raid&lt;/h2&gt;&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(a_1,a_2,\dots,a_n\)&lt;/span&gt;，对于每个 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(1 \le k \le n\)&lt;/span&gt;)，你要从中选出一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。&lt;/p&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)&lt;/span&gt;&lt;/p&gt;">
+<meta name="twitter:image" content="https://zimpha.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/zimpha.github.io\/"
+    },
+    "headline": "Petrozavodsk Summer 2020. Day 1. Warsaw U Contest - zimpha\u0027s blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/zimpha.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2020-09-02T01:07:21JST",
+    "dateModified": "2020-09-02T01:07:21JST",
+    "author": {
+      "@type": "Person",
+      "name": "zimpha\u0027s blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "zimpha\u0027s blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/zimpha.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\u003ch2 id=\u0022a-raid\u0022\u003eA. Raid\u003c\/h2\u003e\n\u003cp\u003e题意：给出 \u003cspan class=\u0022math inline\u0022\u003e\\(n\\)\u003c\/span\u003e 个数 \u003cspan class=\u0022math inline\u0022\u003e\\(a_1,a_2,\\dots,a_n\\)\u003c\/span\u003e，对于每个 \u003cspan class=\u0022math inline\u0022\u003e\\(k\\)\u003c\/span\u003e (\u003cspan class=\u0022math inline\u0022\u003e\\(1 \\le k \\le n\\)\u003c\/span\u003e)，你要从中选出一个长度为 \u003cspan class=\u0022math inline\u0022\u003e\\(k\\)\u003c\/span\u003e 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。\u003c\/p\u003e\n\u003cp\u003e\u003cspan class=\u0022math inline\u0022\u003e\\(1 \\le n \\le 40, 1 \\le a_i \\le n, \\forall i \\ne j, a_i \\ne a_j\\)\u003c\/span\u003e\u003c\/p\u003e"
+  }
+</script>
+
+
+    <link href="https://zimpha.github.io/css/styles.css" rel="stylesheet">
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$','$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    
+      window.addEventListener('load', (event) => {
+          document.querySelectorAll("mjx-container").forEach(function(x){
+            x.parentElement.classList += 'has-jax'})
+        });
+    
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://zimpha.github.io/">zimpha&#39;s blog</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/about/">About</a></li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/algonotes/">Algorithm Notes</a></li>
+                  
+                  <li><a href="/resource/problems">Problem Settings</a></li>
+                  
+                  <li><a href="/resource/translation/">Transalation</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/tools/generator">Generator</a></li>
+                  
+                  <li><a href="/tools/algorithmic-library">Algorithmic Library</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Editorials <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/editorials/project-euler">Project Euler</a></li>
+                  
+                  <li><a href="/editorials/opencup">Open Cup</a></li>
+                  
+                  <li><a href="/editorials/petrozavodsk">Petrozavodsk Training Camp</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/">Home</a></li>
+              
+            </ul>
+            
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://zimpha.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://zimpha.github.io/editorials/" itemprop="url"><span itemprop="title">editorials</span></a></li>
+        
+        <li class="active">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <h1 class="title">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</h1>
+    
+    <ul class="p-facts">
+        <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-09-02T01:07:21JST">2020-09-02</time></li>
+        <li>来源: <a href=""></a></li>
+        
+        
+
+        
+      </ul>
+  </header>
+
+  
+
+  <div class="article-body"><h2 id="a-raid">A. Raid</h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个数 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span>，对于每个 <span class="math inline">\(k\)</span> (<span class="math inline">\(1 \le k \le n\)</span>)，你要从中选出一个长度为 <span class="math inline">\(k\)</span> 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。</p>
+<p><span class="math inline">\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)</span></p>
+<p>题解：考虑 <span class="math inline">\(dp(i, state)\)</span> 表示处理完前 <span class="math inline">\(i\)</span> 个数后当前状态为 <span class="math inline">\(state\)</span> 的时候的逆序对最小值，<span class="math inline">\(ways(i,state)\)</span> 同理，表示最小值条件下的方案数。<span class="math inline">\(state\)</span> 如果直接表示为哪些数选还是没选显然是不太行的。观察到当处理完前 <span class="math inline">\(i\)</span> 个数后，只有 <span class="math inline">\(a_{i+1},\dots,a_n\)</span> 才可能被选上。不妨对这些数排个序，假设为 <span class="math inline">\(b_1 < b_2 < \dots < b_k\)</span>，其中 <span class="math inline">\(k=n-i\)</span>。</p>
+<p>那么，其实我们不关心之前选了哪些数，只关心之前数和 <span class="math inline">\(b_i\)</span> 的大小关系。不妨令 <span class="math inline">\(state\)</span> 记录 <span class="math inline">\([1,b_1),[b_1,b_2),\dots,[b_{k-1}, b_k),[b_k,n+1)\)</span> 对于这里面每个区间，已经选的数有多少落在了里面。这样我们选或者不选一个 <span class="math inline">\(b_i\)</span>，都能快速维护维护 <span class="math inline">\(state\)</span>，也能方便进行转移。而且 <span class="math inline">\(state\)</span> 也是可以用一个 <span class="math inline">\(64\)</span> 位整数来存储的，落在区间 <span class="math inline">\([b_i,b_{i+1})\)</span> 里的个数就是这些对应位里面 <code>1</code> 的个数。</p>
+<p>然后可以证明这样状态数最多只有 <span class="math inline">\(O(3^{n/3})\)</span>，足以过这个题。</p>
+<h2 id="b-broken-line">B. Broken line</h2>
+<p>题意：给出一个字符串 <span class="math inline">\(s\)</span>，由前 <span class="math inline">\(16\)</span> 个小写字母组成。你现在可以把每个字母替换成 <span class="math inline">\(\uparrow\)</span> 或者 <span class="math inline">\(\rightarrow\)</span>。然后从 <span class="math inline">\((0,0)\)</span> 出发，遍历字符串 <span class="math inline">\(s\)</span>，遇到 <span class="math inline">\(\uparrow\)</span> 向上走一步，遇到 <span class="math inline">\(\rightarrow\)</span> 向右走一步。求出折线下方覆盖面积的最大值。</p>
+<p><span class="math inline">\(1 \le |s| \le 300000\)</span></p>
+<p>题解：对于一个由 <span class="math inline">\(\uparrow\)</span> 和 <span class="math inline">\(\rightarrow\)</span> 组成的序列，考虑每个 <span class="math inline">\(\rightarrow\)</span>，它对答案的贡献就是左边 <span class="math inline">\(\uparrow\)</span> 的个数。于是我们可以先预处理出 <span class="math inline">\(cnt(x,y)\)</span> 表示字符 <span class="math inline">\(x\)</span> 出现在字符 <span class="math inline">\(y\)</span> 的次数。然后可以 <span class="math inline">\(2^{16}\)</span> 枚举每个字符变成什么东西，根据 <span class="math inline">\(cnt(x,y)\)</span> 就可以统计出答案。复杂度<span class="math inline">\(O(|s|\cdot k + 2^k k^2)\)</span>。</p>
+<h2 id="c-territories">C. Territories</h2>
+<p>题意：有一个 <span class="math inline">\(X \times Y\)</span> 的网格，给出其中 <span class="math inline">\(n\)</span> 个子矩形左下角是 <span class="math inline">\((x_i,y_i)\)</span>，右上角是 <span class="math inline">\((x_i^\prime,y_i^\prime)\)</span>，要在第 <span class="math inline">\(i\)</span> 个矩形外面放置 <span class="math inline">\(c_i\)</span> 个元素。一个格子如果放了 <span class="math inline">\(p\)</span> 个元素，那么代价是 <span class="math inline">\(\frac{p(p-1)}{2}\)</span>。求出一个放置方案使得代价和最大。</p>
+<p><span class="math inline">\(1 \le n \le 10^5, 1 \le X, Y \le 1000, 1 \le x_i \le x_i^\prime, 1 \le y_i \le y_i^\prime, 1 \le c_i \le 1000\)</span></p>
+<p>题解：首先可以证明最多只有一个非网格 <span class="math inline">\(4\)</span> 个角的位置会放元素。然后假设你枚举了一个中间位置 <span class="math inline">\(p\)</span> 后，可以发现剩下最多需要两个角，且一定是两个对角，假设为左上角和右下角。你可以把矩形分成一下几类：</p>
+<ul>
+<li>仅包含左上角：那么这些可以把元素放到 <span class="math inline">\(p\)</span> 或者右下角；</li>
+<li>仅包含 <span class="math inline">\(p\)</span>：那么这些可以把元素放到左上角或者右下角；</li>
+<li>仅包含右下角：那么这些可以把元素放到左上角或者 <span class="math inline">\(p\)</span>；</li>
+<li>同时包含左上角和 <span class="math inline">\(p\)</span>：这些矩形只能放在右下角</li>
+<li>同时包含右下角和 <span class="math inline">\(p\)</span>：这些矩形只能放在左上角</li>
+<li>这三个点都不包含：可以任意放</li>
+</ul>
+<p><span class="math inline">\(2^3\)</span> 枚举前三种情况怎么放，然后选个最大的放最后一种即可。也可以努力分析一下把 <span class="math inline">\(2^3\)</span> 的枚举去掉。</p>
+<h2 id="d-tea">D. Tea</h2>
+<p>题意：有 <span class="math inline">\(n\)</span> 杯水，第 <span class="math inline">\(i\)</span> 杯体积为 <span class="math inline">\(l_i\)</span>，初始温度为 <span class="math inline">\(a_i\)</span>，目标温度为 <span class="math inline">\(b_i\)</span>。现在你可以通过混合的方式得到其它温度的水，或者交换杯水的位置。问最终能否使第 <span class="math inline">\(i\)</span> 杯水体积为 <span class="math inline">\(l_i\)</span>，温度为 <span class="math inline">\(b_i\)</span>。</p>
+<p><span class="math inline">\(1 \le n \le 10^5, 1 \le l_i, a_i, b_i \le 10^6\)</span></p>
+<p>题解：把体积为 <span class="math inline">\(l\)</span>，温度为 <span class="math inline">\(a\)</span> 的一杯水看成 <span class="math inline">\(l\)</span> 杯体积为 <span class="math inline">\(1\)</span>，温度为 <span class="math inline">\(a\)</span> 的水。你把这些水按照温度从大到小排序，目标状态也是一样。那么肯定每杯体积为 <span class="math inline">\(1\)</span> 的水初始温度和最终温度定了。接下来考虑模拟，一杯水从温度低的到温度高的需要吸收热量，反之需要放出热量。只要从高到低模拟的时候当前不需要额外提供热量(也就是放出的热量有足够的量供别人吸收)，那么肯定是可行的，否则是不行的。最后还需要考虑总热量守恒。</p>
+<p>复杂度 <span class="math inline">\(O(n \log n)\)</span>。</p>
+<h2 id="e-three-balls">E. Three balls</h2>
+<p>题意：给出 <span class="math inline">\(3\)</span> 个长度为 <span class="math inline">\(n\)</span> 的 <code>01</code> 串 <span class="math inline">\(s_1,s_2,s_3\)</span>，以及三个整数 <span class="math inline">\(r_1,r_2,r_3\)</span>。求出有多少长度为 <span class="math inline">\(n\)</span> 的 <code>01</code> 串 <span class="math inline">\(s\)</span>，满足：至少存在一个 <span class="math inline">\(i\)</span>，使得 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(s_i\)</span> 的 Hamming 距离不超过 <span class="math inline">\(r_i\)</span>。对 <span class="math inline">\(10^9+7\)</span> 取模。</p>
+<p><span class="math inline">\(1 \le n \le 10^4, 0 \le r_i \le n\)</span></p>
+<p>题解：考虑容斥，令 <span class="math inline">\(S_i\)</span> 表示，满足 <span class="math inline">\(s_i\)</span> 的串的集合，那么答案就是</p>
+<p><span class="math display">\[|S_1|+|S_2|+|S_3|-|S_1 \cap S_2| - |S_1 \cap S_3| - |S_2 \cap S_3| + |S_1 \cap S_2 \cap S_3|
+\]</span></p>
+<p>显然，<span class="math inline">\(|S_i|=\sum_{k=0}^{r_i} \binom{r_i}{k}\)</span>。</p>
+<p>然后考虑 <span class="math inline">\(|S_i \cap S_j|\)</span>。</p>
+<p>令 <span class="math inline">\(s^\prime=s_i \text{ XOR } s_j\)</span>，那么问题可以转换成求有多少串 <span class="math inline">\(s\)</span> 满足：有不超过 <span class="math inline">\(r_i\)</span> 个 <code>1</code> 且和 <span class="math inline">\(s^\prime\)</span> 不同位置不超过 <span class="math inline">\(r_j\)</span>个。令 <span class="math inline">\(c_0\)</span> 和 <span class="math inline">\(c_1\)</span> 分别表示 <span class="math inline">\(s^\prime\)</span> 中 <code>0</code> 的个数和 <code>1</code> 的个数。然后我们要把不超过 <span class="math inline">\(r_i\)</span> 个 <code>1</code> 分 <span class="math inline">\(x\)</span> 个到 <code>0</code> 那，分 <span class="math inline">\(y\)</span> 个到 <code>1</code> 那。显然要满足 <span class="math inline">\(a+c_1-b \le r_j\)</span>，于是方案数就是</p>
+<p><span class="math display">\[|S_i \cap S_j|=\sum_{x=0}^{r_i}\sum_{y=\max(0,a+c_1-r_j)}^{\min(r_i-x,c_1)}\binom{c_0}{x} \binom{c_1}{b}
+\]</span></p>
+<p>接下来考虑 <span class="math inline">\(|S_1 \cap S_2 \cap S_3|\)</span>。</p>
+<p>和上面一样，我们做同样的转化 <span class="math inline">\(s_2^\prime=s_1 \text{ XOR }s_2,s_3^\prime=s_1 \text{ XOR }s_3\)</span>。变成求有多少串 <span class="math inline">\(s\)</span> 满足：有不超过 <span class="math inline">\(r_i\)</span> 个 <code>1</code> 且和 <span class="math inline">\(s_i^\prime\)</span> 不同位置不超过 <span class="math inline">\(r_j\)</span> 个。</p>
+<p>令 <span class="math inline">\(c_{00},c_{01},c_{10},c_{11}\)</span>，分别表示 <span class="math inline">\(s_2^\prime\)</span> 和 <span class="math inline">\(s_3^\prime\)</span> 对应位置分别是 <code>0</code> 或者 <code>1</code> 的位置个数。同样，需要把然后我们要把不超过 <span class="math inline">\(r_1\)</span> 个 <code>1</code> 分 <span class="math inline">\(a\)</span> 个到 <code>00</code> 那，<span class="math inline">\(b\)</span> 个到 <code>01</code> 那，<span class="math inline">\(c\)</span> 个到 <code>10</code> 那，<span class="math inline">\(d\)</span> 个到 <code>11</code> 那。然后可以列出以下不等式</p>
+<p><span class="math display">\[\begin{aligned} a \le c_{00}, b \le c_{01}, c \le c_{10}, d \le c_{11} \\ a+b+c+d \le r_1 \\ a+b+c_{10}-c+c_{11}-d \le r_1 \\ a+c_{01}-b+c+c_{11}-d \le r_2 \end{aligned}
+\]</span></p>
+<p>稍微化简整理下可以得到</p>
+<p><span class="math display">\[\begin{aligned} a \le c_{00}, b \le c_{01}, c \le c_{10}, d \le c_{11} \\ a+b \le \min(r_1-c_{10}-c_{11}+c+d, r_0-(c+d)) \\ a-b \le r_2-c_{01}-c_{11}+d-c \end{aligned}
+\]</span></p>
+<p>变成了一个二维数点问题。由于坐标范围都是 <span class="math inline">\(O(n)\)</span> 的，可以用 <span class="math inline">\(O(n^2)\)</span> 的暴力去做。</p>
+<h2 id="f-family-photo">F. Family photo</h2>
+<p>题意：有一棵 <span class="math inline">\(n\)</span> 个点的有根树，你需要找出一个最长的序列 <span class="math inline">\(a_1,a_2,\dots,a_m\)</span>，使得 <span class="math inline">\(a_i\)</span> 是 <span class="math inline">\(a_{i+1}\)</span> 的祖先或者 <span class="math inline">\(a_{i+1}\)</span> 是 <span class="math inline">\(a_i\)</span> 的祖先。</p>
+<p><span class="math inline">\(2 \le n \le 300000\)</span></p>
+<p>题解：考虑每个节点 <span class="math inline">\(u\)</span> 维护一个优先队列，队列里前 <span class="math inline">\(k\)</span> 大的数之和其实表示如果再新增 <span class="math inline">\(k\)</span> 个祖先的最优值。那么你在 dfs 过程中，先把儿子的优先队列都合并了。然后取出最大和次大，相加后再加 <span class="math inline">\(1\)</span> 塞回队列里面。这样最后根节点队列里最大值就是答案。</p>
+<p>用左偏树维护的话，可以做到 <span class="math inline">\(O(n \log n)\)</span>。</p>
+<h2 id="g-pop-music">G. Pop music</h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个数 <span class="math inline">\(a_1,a_2,\dots,a_n\)</span>。求出一个序列 <span class="math inline">\(b_1,b_2,\dots,b_n\)</span>，使得：</p>
+<ul>
+<li><span class="math inline">\(0 \le b_1 < b_2 < \dots < b_n \le m\)</span></li>
+<li><span class="math inline">\(\sum\limits_{i=1}^{n} a_i \cdot \text{popcount}(b_i)\)</span> 最大</li>
+</ul>
+<p><span class="math inline">\(1 \le n \le 200, n-1 \le m \le 10^{18}, -10^{14} \le a_i \le 10^{14}\)</span></p>
+<p>题解：假设我们有一棵包含 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(m\)</span> 的 trie，那么就可以在 trie 上 dp 了。令 <span class="math inline">\(f(x,l,r)\)</span> 表示当前在节点 <span class="math inline">\(x\)</span>，还有区间 <span class="math inline">\(b[l..r]\)</span> 还没有被确定。那么我们就可以枚举 <span class="math inline">\(b[l..k]\)</span> 往 <span class="math inline">\(x\)</span> 的左子树走，<span class="math inline">\(b[k+1..r]\)</span> 往 <span class="math inline">\(x\)</span> 的右子树走，进行转移。</p>
+<p>可以观察到这颗 trie 其实分成了两部分节点，一部分节点是一棵完全二叉树，一部分节点不是完全二叉树。对于那些是完全二叉树的节点，我们只关心它的树高。对于那些非完全二叉树的节点，总共只有 <span class="math inline">\(O(\log m)\)</span> 个。</p>
+<p>于是按照这两类节点，分别做 dp 即可，复杂度 <span class="math inline">\(O(n^3 \log m)\)</span>。</p>
+<h2 id="h-island">H. Island</h2>
+<p>题意：有一个小岛，中间有个湖。有 <span class="math inline">\(n\)</span> 个点，其中 <span class="math inline">\(a\)</span> 个沿着湖依次标号为 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(a\)</span>；其中 <span class="math inline">\(b\)</span> 个沿着海岸线依次标号为 <span class="math inline">\(a+1\)</span> 到 <span class="math inline">\(a+b\)</span>。其中有 <span class="math inline">\(m\)</span> 条边，有些边是有向边，有些边是无向边。保证构成了一个平面图。</p>
+<p>现在要选出一个 <span class="math inline">\(\{a+1,a+2,\dots,a+b\}\)</span> 的非空子集，使得 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(a\)</span> 的每个点能够到达子集里至少一个点。求方案数，对 <span class="math inline">\(10^9+7\)</span> 取模。</p>
+<p><span class="math inline">\(2 \le n \le 500000, 1 \le m \le 10^6, a,b \ge 1, a + b \le n\)</span></p>
+<p>题解：首先题目的各种限制保证了湖上一个点能够遍历到的海岸线上的点一定是个区间。那么可以先缩点，然后在这个有向无环图上dp出这些区间。</p>
+<p>之后变成环上有若干区间，然后选若干点使得每个区间内至少有一个点。这个问题在线段上是可以做到 <span class="math inline">\(O(n)\)</span> 的。</p>
+<p>由于给定的是平面图，然后有一个不会证明的猜测：区间个数和区间最小长度的乘积不是很大（可能是 <span class="math inline">\(O(n)\)</span> 或者 <span class="math inline">\(O(n^{1.5})\)</span>）。于是就可以找个最小的区间，枚举在哪个位置切开这个区间。之后就是一个线段上的问题了。</p>
+<h2 id="i-goldfish-and-pikes">I. Goldfish and pikes</h2>
+<p>题意：有 <span class="math inline">\(n\)</span> 个物品，第 <span class="math inline">\(i\)</span> 个大小为 <span class="math inline">\(w_i\)</span>。给出 <span class="math inline">\(q\)</span> 个操作：</p>
+<ul>
+<li><span class="math inline">\(1\ s\ k\)</span>：询问初始值为 <span class="math inline">\(s\)</span>，每次可以选择一个小于 <span class="math inline">\(s\)</span> 的 <span class="math inline">\(w_i\)</span>，删掉并加到 <span class="math inline">\(s\)</span> 上去。求出最小操作次数，使得 <span class="math inline">\(s \ge k\)</span>。</li>
+<li><span class="math inline">\(2\ w\)</span>：加入一个重量为 <span class="math inline">\(w\)</span> 的物品。</li>
+<li><span class="math inline">\(3\ w\)</span>：删去一个重量为 <span class="math inline">\(w\)</span> 的物品。</li>
+</ul>
+<p><span class="math inline">\(1 \le n \le 300000, 1 \le q \le 10^5, 1 \le s, k \le 10^{18}, 1 \le w, w_i \le 10^{12}\)</span></p>
+<p>题解：考虑暴力模拟上述过程，假设下一个大于等于 <span class="math inline">\(s\)</span> 数是 <span class="math inline">\(x\)</span>，那么我们肯定是先把 <span class="math inline">\(s\)</span> 变成至少 <span class="math inline">\(x+1\)</span> 是最优的。于是可以选出一些小于 <span class="math inline">\(s\)</span> 的数，使得他们加在 <span class="math inline">\(s\)</span> 上大于等于 <span class="math inline">\(x+1\)</span>，并删掉这些数。之后，我们重复这个过程，直到到达 <span class="math inline">\(k\)</span> 为止。</p>
+<p>上述暴力的复杂度就是 <span class="math inline">\(O(\log k)\)</span> 的，因为考虑一次模拟中，我们获得了一个比 <span class="math inline">\(s\)</span> 大的数 <span class="math inline">\(x\)</span>，那么下一次 <span class="math inline">\(x\)</span> 肯定可以加在 <span class="math inline">\(s\)</span> 上，这样会至少让 <span class="math inline">\(s\)</span> 翻倍。于是最多不会超过 <span class="math inline">\(2 \lfloor \log_2{\frac{k}{s}}+1 \rfloor\)</span> 轮模拟。</p>
+<p>用平衡树模拟即可，模拟结束后需要把删掉的数依次加回去。总的复杂度 <span class="math inline">\(O(q \log^2 k)\)</span>。</p>
+<h2 id="j-tokens">J. Tokens</h2>
+<p>题意：给出两个 <span class="math inline">\(A \times B \times C\)</span> 的三维矩阵，每次可以找一个 <span class="math inline">\(a_{i,j,k} \ge 1\)</span> 做如下三种操作：</p>
+<ul>
+<li><span class="math inline">\(a_{i,j,k} - 1\)</span> 同时 <span class="math inline">\(a_{i+1,j,k}+1\)</span></li>
+<li><span class="math inline">\(a_{i,j,k} - 1\)</span> 同时 <span class="math inline">\(a_{i,j+1,k}+1\)</span></li>
+<li><span class="math inline">\(a_{i,j,k} - 1\)</span> 同时 <span class="math inline">\(a_{i,j,k+1}+1\)</span></li>
+</ul>
+<p>求出能否从第一个变成第二个。</p>
+<p><span class="math inline">\(1 \le A \le 10000, 1 \le B, C \le 6\)</span></p>
+<p>题解：考虑构建一个二分图，左边点是第一个矩阵，右边点是第二个矩阵，然后如果能从一个点到另一个点就连一条边。考虑 Hall 定理，无解等价于存在一个左边点子集，它的和大于相邻的右边点集合。</p>
+<p>观察可以发现，我们选取左边点集合的时候，如果 <span class="math inline">\((i,j,k)\)</span> 选了，那么 <span class="math inline">\((i^\prime,j^\prime,k^\prime)\)</span> (<span class="math inline">\(i \le i^\prime, j \le j^\prime, k \le k^\prime\)</span>) 也会选，因为这样才能最大化左边的和。因此每一层左边点集合肯定是一个阶梯状的东西，这个东西最多有 <span class="math inline">\(\binom{B+C}{C}\)</span> 个。我们可以逐层 dp，只要这一层选取的阶梯轮廓完全在下一层选取轮廓的忧伤那么就是合法的。</p>
+<p>如果一开始预处理好所有的轮廓线和合法的转移，那么复杂度是 <span class="math inline">\(O(A \binom{B+C}{C} \min(B, C))\)</span> 的。</p>
+<h2 id="k-even-rain">K. Even rain</h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个数 <span class="math inline">\(h_1,h_2,\dots,h_n\)</span>，你可以把其中 <span class="math inline">\(m\)</span> 个数变成 <span class="math inline">\(0\)</span>。求出能够使得下雨后积水总量是偶数的修改方案数，对 <span class="math inline">\(10^9+7\)</span> 取模。</p>
+<p><span class="math inline">\(1 \le n \le 25000, 0 \le m \le \min(25, n-1)\)</span></p>
+<p>题意：令 <span class="math inline">\(prefix_i\)</span> 表示 <span class="math inline">\(h_1,h_2,\dots,h_i\)</span> 的最大值，<span class="math inline">\(suffix_i\)</span> 表示 <span class="math inline">\(h_i,h_{i+1},\dots,h_n\)</span> 的最大值，那么显然积水量为 <span class="math inline">\(\sum_{i=1}^{n} \min(prefix_i, suffix_i) - h_i\)</span>。</p>
+<p>不妨从另一个角度考虑，我们固定一个 <span class="math inline">\(h_x\)</span> 表示序列里面的最大值，那么上面的式子其实可以改成 <span class="math inline">\(\sum_{i=1}^{x-1} (prefix_i - h_i) + \sum_{i=x+1}^{n} (suffix_i - h_i)\)</span>，这样就把答案里面的 <span class="math inline">\(\min\)</span> 给去掉了。</p>
+<p>那么左右两侧式子可以分开 dp，不妨先考虑左边。令 <span class="math inline">\(f(i, j, k, e)\)</span> 表示考虑了 <span class="math inline">\(h_1,h_2,\dots,h_i\)</span>，当前最大值为 <span class="math inline">\(j\)</span>，我们总共删掉了 <span class="math inline">\(k\)</span> 个数，然后当前积水量的奇偶性是 <span class="math inline">\(e\)</span> 的方案数。转移方程就是考虑 <span class="math inline">\(h_{i+1}\)</span> 取还是不取，取了的话还得考虑是否会更新 <span class="math inline">\(j\)</span>，比较容易写出来。然后，可以观察到最多只有 <span class="math inline">\(m+1\)</span> 个 <span class="math inline">\(j\)</span> 是有用的，我们先处理出来并离散化。这样就可以做到 <span class="math inline">\(O(nm^2)\)</span> 处理出这个dp数组。</p>
+<p>同理，我们可以求出 <span class="math inline">\(g(i,j,k,e)\)</span> 表示考虑了 <span class="math inline">\(h_i,h_{i+1},\dots,h_n\)</span>，当前最大值为 <span class="math inline">\(j\)</span>，我们总共删掉了 <span class="math inline">\(k\)</span> 个数，然后当前积水量的奇偶性是 <span class="math inline">\(e\)</span> 的方案数。</p>
+<p>接下来我们考虑枚举 <span class="math inline">\(h_x\)</span>，注意到同一个序列里面可能有多个最大值，我们取 <span class="math inline">\(x\)</span> 最小的那个。那么这个 <span class="math inline">\(h_x\)</span> 对答案的贡献就是</p>
+<p><span class="math display">\[\sum_{k=0}^{m} \sum_{e=0}^{1} \sum_{a=0}^{h_x-1} f(i - 1, a, k, e) \cdot \sum_{b=0}^{h_x} g(i+1,b,m-k,e)
+\]</span></p>
+<p>右侧括号里两个式子都可以先预处理出来，也可以做到 <span class="math inline">\(O(nm^2)\)</span> 的复杂度。</p>
+<h2 id="l-floyd-warshall">L. Floyd-Warshall</h2>
+<p>题意：有一个 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的带权无向图，考虑如下的 <code>Floyd-Warshall</code> 实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+  <span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+    <span style="color:#66d9ef">for</span> z <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+      M[y][z] <span style="color:#f92672">=</span> min(M[y][z], M[y][x] <span style="color:#f92672">+</span> M[x][z])
+</code></pre></div><p>现在你不小心交换了询问的顺序，变成了下面的实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> y <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+  <span style="color:#66d9ef">for</span> z <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+      M[y][z] <span style="color:#f92672">=</span> min(M[y][z], M[y][x] <span style="color:#f92672">+</span> M[x][z])
+</code></pre></div><p>求出有多少位置 <span class="math inline">\((y,z)\)</span> 算出来还是对的。</p>
+<p><span class="math inline">\(2 \le n \le 2000, 1 \le m \le 3000, 1 \le u_i, v_i \le n, 1 \le w_i \le 100000\)</span></p>
+<p>题解：考虑第二个算法什么时候值是对的：</p>
+<ul>
+<li>如果 <span class="math inline">\(x\)</span> 到 <span class="math inline">\(y\)</span> 之间有一条 <span class="math inline">\(w\)</span> 的边，并且最短路 <span class="math inline">\(dist(x,y)=w\)</span>，显然这时候 <span class="math inline">\(M[x][y]\)</span> 是对的</li>
+<li>否则，如果存在一个 <span class="math inline">\(z\)</span>，使得 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(x\)</span> 到 <span class="math inline">\(y\)</span> 的最短路上，并且 <span class="math inline">\(M[x][z]\)</span> 和 <span class="math inline">\(M[z][y]\)</span> 都是对的，那么 <span class="math inline">\(M[x][y]\)</span> 是对的。</li>
+</ul>
+<p>那么做法就显然了，我们用 <code>std::bitset</code> 维护 <span class="math inline">\(f_x(y)\)</span> 表示 <span class="math inline">\(M[x][y]\)</span> 的值是对的，<span class="math inline">\(g_y(x)\)</span> 表示 <span class="math inline">\(M[x][y]\)</span> 的值是对的，<span class="math inline">\(on_{x,y}(z)\)</span> 表示 <span class="math inline">\(z\)</span> 在 <span class="math inline">\(x\)</span> 到 <span class="math inline">\(y\)</span> 的最短路上。</p>
+<p>对于 <span class="math inline">\(on_{x,y}(z)\)</span> 可以先求出 <span class="math inline">\(x\)</span> 到其他点的最短路，然后按照最短路从小到大把点排序。接下来依次考虑每个点 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(v\)</span> 的入边们，如果有一条权值为 <span class="math inline">\(w\)</span> 的从边 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 边，并且 <span class="math inline">\(dist(x,u)+w=dist(v)\)</span>，那么 <span class="math inline">\(on_{x,v} = on_{x,v} \text{ | } on_{x,u}\)</span>。这样就可以 <span class="math inline">\(O(\frac{n^2m}{w})\)</span> 的复杂度求出所有的 <span class="math inline">\(on_{x,y}\)</span>。</p>
+<p>之后再枚举 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span>，判断 <span class="math inline">\(f_x \text{ AND } g_y \text{ AND } on_{x, y}\)</span> 是否为空即可。同时也维护好 <span class="math inline">\(f_x\)</span> 和 <span class="math inline">\(g_y\)</span> 的值，复杂度是 <span class="math inline">\(O(\frac{n^3}{w})\)</span>。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zimpha" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zimpha.github.io/">
+      <button type="submit" class="submit icon-search glyphicon glyphicon-search"></button>
+</form>
+    </section>
+    <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/" class="list-group-item">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</a>
+      
+      <a href="https://zimpha.github.io/resource/translation/xxvii-poi/" class="list-group-item">XXVII POI Chinese Translation</a>
+      
+      <a href="https://zimpha.github.io/resource/translation/" class="list-group-item">Translation</a>
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/" class="list-group-item">Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</a>
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/" class="list-group-item">Petrozavodsk Summer 2015. Day 4. Moscow IPT Contest</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      
+      <a href="https://zimpha.github.io/tags/inclusion-exclusion-principle" class="taglink">inclusion-exclusion-principle</a>
+      
+      
+      
+      <a href="https://zimpha.github.io/tags/math" class="taglink">math</a>
+      
+      
+    </div>
+  </section>
+  
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LINKS</div>
+    </div>
+    <ol class="list-group">
+      
+      <a href="http://www.cnblogs.com/clrs97/" class="list-group-item">Claris</a>
+      
+      <a href="http://min-25.hatenablog.com/" class="list-group-item">Min_25</a>
+      
+      <a href="https://blog.csdn.net/skywalkert/" class="list-group-item">skywalkert</a>
+      
+    </ol>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; zimpha&#39;s blog</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
