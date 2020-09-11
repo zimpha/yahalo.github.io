@@ -258,10 +258,10 @@
 <p>接下来考虑 <span class="math inline">\(|S_1 \cap S_2 \cap S_3|\)</span>。</p>
 <p>和上面一样，我们做同样的转化 <span class="math inline">\(s_2^\prime=s_1 \text{ XOR }s_2,s_3^\prime=s_1 \text{ XOR }s_3\)</span>。变成求有多少串 <span class="math inline">\(s\)</span> 满足：有不超过 <span class="math inline">\(r_i\)</span> 个 <code>1</code> 且和 <span class="math inline">\(s_i^\prime\)</span> 不同位置不超过 <span class="math inline">\(r_j\)</span> 个。</p>
 <p>令 <span class="math inline">\(c_{00},c_{01},c_{10},c_{11}\)</span>，分别表示 <span class="math inline">\(s_2^\prime\)</span> 和 <span class="math inline">\(s_3^\prime\)</span> 对应位置分别是 <code>0</code> 或者 <code>1</code> 的位置个数。同样，需要把然后我们要把不超过 <span class="math inline">\(r_1\)</span> 个 <code>1</code> 分 <span class="math inline">\(a\)</span> 个到 <code>00</code> 那，<span class="math inline">\(b\)</span> 个到 <code>01</code> 那，<span class="math inline">\(c\)</span> 个到 <code>10</code> 那，<span class="math inline">\(d\)</span> 个到 <code>11</code> 那。然后可以列出以下不等式</p>
-<p><span class="math display">\[\begin{aligned} a \le c_{00}, b \le c_{01}, c \le c_{10}, d \le c_{11} \\ a+b+c+d \le r_1 \\ a+b+c_{10}-c+c_{11}-d \le r_1 \\ a+c_{01}-b+c+c_{11}-d \le r_2 \end{aligned}
+<p><span class="math display">\[\begin{aligned} a \le c_{00},\quad b \le c_{01},\quad c \le c_{10},\quad d \le c_{11} \\ a+b+c+d \le r_1 \\ a+b+c_{10}-c+c_{11}-d \le r_1 \\ a+c_{01}-b+c+c_{11}-d \le r_2 \end{aligned}
 \]</span></p>
 <p>稍微化简整理下可以得到</p>
-<p><span class="math display">\[\begin{aligned} a \le c_{00}, b \le c_{01}, c \le c_{10}, d \le c_{11} \\ a+b \le \min(r_1-c_{10}-c_{11}+c+d, r_0-(c+d)) \\ a-b \le r_2-c_{01}-c_{11}+d-c \end{aligned}
+<p><span class="math display">\[\begin{aligned} a \le c_{00},\quad b \le c_{01},\quad c \le c_{10},\quad d \le c_{11} \\ a+b \le \min(r_1-c_{10}-c_{11}+c+d, r_0-(c+d)) \\ a-b \le r_2-c_{01}-c_{11}+d-c \end{aligned}
 \]</span></p>
 <p>变成了一个二维数点问题。由于坐标范围都是 <span class="math inline">\(O(n)\)</span> 的，可以用 <span class="math inline">\(O(n^2)\)</span> 的暴力去做。</p>
 <h2 id="f-family-photo">F. Family photo</h2>
@@ -395,6 +395,8 @@
     </div>
     <div class="list-group">
       
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/" class="list-group-item">Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</a>
+      
       <a href="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/" class="list-group-item">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</a>
       
       <a href="https://zimpha.github.io/resource/translation/xxvii-poi/" class="list-group-item">XXVII POI Chinese Translation</a>
@@ -402,8 +404,6 @@
       <a href="https://zimpha.github.io/resource/translation/" class="list-group-item">Translation</a>
       
       <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/" class="list-group-item">Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</a>
-      
-      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/" class="list-group-item">Petrozavodsk Summer 2015. Day 4. Moscow IPT Contest</a>
       
     </div>
   </section>

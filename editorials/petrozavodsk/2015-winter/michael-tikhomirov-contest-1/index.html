@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.75.0@zimpha" />
+
+
+
+<link rel="canonical" href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1 - zimpha&#39;s blog</title>
+    
+<meta name="description" content="&lt;h2 id=&#34;a-aarelia-mountains&#34;&gt;A. Aarelia Mountains&lt;/h2&gt;&lt;p&gt;题意：有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(h_1,h_2,\dots,h_n\)&lt;/span&gt;。你想让这些数非递减，也就是对于任意 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;，都有 &lt;span class=&#34;math inline&#34;&gt;\(h_i \le h_{i&#43;1}\)&lt;/span&gt;。有 &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; 个操作，第 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 个操作可以选择一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; 的区间，都加上 &lt;span class=&#34;math inline&#34;&gt;\(t_i\)&lt;/span&gt;，代价为 &lt;span class=&#34;math inline&#34;&gt;\(c_i\)&lt;/span&gt;。最后每个数可以是负数，求出最小代价。&lt;/p&gt;">
+
+<meta property="og:title" content="Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1 - zimpha&#39;s blog">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/">
+<meta property="og:image" content="https://zimpha.github.io/images/default.png">
+<meta property="og:site_name" content="zimpha&#39;s blog">
+<meta property="og:description" content="&lt;h2 id=&#34;a-aarelia-mountains&#34;&gt;A. Aarelia Mountains&lt;/h2&gt;&lt;p&gt;题意：有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(h_1,h_2,\dots,h_n\)&lt;/span&gt;。你想让这些数非递减，也就是对于任意 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;，都有 &lt;span class=&#34;math inline&#34;&gt;\(h_i \le h_{i&#43;1}\)&lt;/span&gt;。有 &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; 个操作，第 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 个操作可以选择一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; 的区间，都加上 &lt;span class=&#34;math inline&#34;&gt;\(t_i\)&lt;/span&gt;，代价为 &lt;span class=&#34;math inline&#34;&gt;\(c_i\)&lt;/span&gt;。最后每个数可以是负数，求出最小代价。&lt;/p&gt;">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="zimpha&#39;s blog">
+<meta name="twitter:url" content="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/">
+<meta name="twitter:title" content="Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1 - zimpha&#39;s blog">
+<meta name="twitter:description" content="&lt;h2 id=&#34;a-aarelia-mountains&#34;&gt;A. Aarelia Mountains&lt;/h2&gt;&lt;p&gt;题意：有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(h_1,h_2,\dots,h_n\)&lt;/span&gt;。你想让这些数非递减，也就是对于任意 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;，都有 &lt;span class=&#34;math inline&#34;&gt;\(h_i \le h_{i&#43;1}\)&lt;/span&gt;。有 &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; 个操作，第 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 个操作可以选择一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; 的区间，都加上 &lt;span class=&#34;math inline&#34;&gt;\(t_i\)&lt;/span&gt;，代价为 &lt;span class=&#34;math inline&#34;&gt;\(c_i\)&lt;/span&gt;。最后每个数可以是负数，求出最小代价。&lt;/p&gt;">
+<meta name="twitter:image" content="https://zimpha.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/zimpha.github.io\/"
+    },
+    "headline": "Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1 - zimpha\u0027s blog",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/zimpha.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2020-09-11T15:42:44JST",
+    "dateModified": "2020-09-11T15:42:44JST",
+    "author": {
+      "@type": "Person",
+      "name": "zimpha\u0027s blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "zimpha\u0027s blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/zimpha.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "\u003ch2 id=\u0022a-aarelia-mountains\u0022\u003eA. Aarelia Mountains\u003c\/h2\u003e\n\u003cp\u003e题意：有 \u003cspan class=\u0022math inline\u0022\u003e\\(n\\)\u003c\/span\u003e 个数 \u003cspan class=\u0022math inline\u0022\u003e\\(h_1,h_2,\\dots,h_n\\)\u003c\/span\u003e。你想让这些数非递减，也就是对于任意 \u003cspan class=\u0022math inline\u0022\u003e\\(i\\)\u003c\/span\u003e，都有 \u003cspan class=\u0022math inline\u0022\u003e\\(h_i \\le h_{i\u002b1}\\)\u003c\/span\u003e。有 \u003cspan class=\u0022math inline\u0022\u003e\\(m\\)\u003c\/span\u003e 个操作，第 \u003cspan class=\u0022math inline\u0022\u003e\\(i\\)\u003c\/span\u003e 个操作可以选择一个长度为 \u003cspan class=\u0022math inline\u0022\u003e\\(l_i\\)\u003c\/span\u003e 的区间，都加上 \u003cspan class=\u0022math inline\u0022\u003e\\(t_i\\)\u003c\/span\u003e，代价为 \u003cspan class=\u0022math inline\u0022\u003e\\(c_i\\)\u003c\/span\u003e。最后每个数可以是负数，求出最小代价。\u003c\/p\u003e"
+  }
+</script>
+
+
+    <link href="https://zimpha.github.io/css/styles.css" rel="stylesheet">
+    
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$','$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    
+      window.addEventListener('load', (event) => {
+          document.querySelectorAll("mjx-container").forEach(function(x){
+            x.parentElement.classList += 'has-jax'})
+        });
+    
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://zimpha.github.io/">zimpha&#39;s blog</a>
+          </div>
+
+          <div id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/about/">About</a></li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/algonotes/">Algorithm Notes</a></li>
+                  
+                  <li><a href="/resource/problems">Problem Settings</a></li>
+                  
+                  <li><a href="/resource/translation/">Transalation</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/tools/generator">Generator</a></li>
+                  
+                  <li><a href="/tools/algorithmic-library">Algorithmic Library</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Editorials <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a href="/editorials/project-euler">Project Euler</a></li>
+                  
+                  <li><a href="/editorials/opencup">Open Cup</a></li>
+                  
+                  <li><a href="/editorials/petrozavodsk">Petrozavodsk Training Camp</a></li>
+                  
+                </ul>
+              </li>
+              
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="/">Home</a></li>
+              
+            </ul>
+            
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://zimpha.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://zimpha.github.io/editorials/" itemprop="url"><span itemprop="title">editorials</span></a></li>
+        
+        <li class="active">Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <h1 class="title">Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</h1>
+    
+    <ul class="p-facts">
+        <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-09-11T15:42:44JST">2020-09-11</time></li>
+        <li>来源: <a href=""></a></li>
+        
+        
+
+        
+      </ul>
+  </header>
+
+  
+
+  <div class="article-body"><h2 id="a-aarelia-mountains">A. Aarelia Mountains</h2>
+<p>题意：有 <span class="math inline">\(n\)</span> 个数 <span class="math inline">\(h_1,h_2,\dots,h_n\)</span>。你想让这些数非递减，也就是对于任意 <span class="math inline">\(i\)</span>，都有 <span class="math inline">\(h_i \le h_{i+1}\)</span>。有 <span class="math inline">\(m\)</span> 个操作，第 <span class="math inline">\(i\)</span> 个操作可以选择一个长度为 <span class="math inline">\(l_i\)</span> 的区间，都加上 <span class="math inline">\(t_i\)</span>，代价为 <span class="math inline">\(c_i\)</span>。最后每个数可以是负数，求出最小代价。</p>
+<p><span class="math inline">\(1 \le n, m \le 200, 0 \le h_i \le 10^6, 1 \le c_i \le 10^6, 1 \le l_i \le n, t_i \in \{-1, 1\}\)</span></p>
+<p>题解：令 <span class="math inline">\(a_i=h_i-h_{i-1}\)</span>，显然一个长度为 <span class="math inline">\(l\)</span> 的操作，就是把某个 <span class="math inline">\(a_i\)</span> 减去 <span class="math inline">\(t\)</span>，<span class="math inline">\(a_{i+l}\)</span> 加上 <span class="math inline">\(t\)</span>。显然，是从正的 <span class="math inline">\(a_i\)</span> 到某个负的 <span class="math inline">\(a_j\)</span> 比较优。</p>
+<p>于是可以建立费用流模型，源点到所有正的 <span class="math inline">\(a_i\)</span> 连边，所有负的 <span class="math inline">\(a_j\)</span> 到汇点连边。如果负的 <span class="math inline">\(a_j\)</span> 满流的话就是有解，否则无解。</p>
+<h2 id="b-bar-duck">B. Bar &ldquo;Duck&rdquo;</h2>
+<p>题意：长度为 <span class="math inline">\(L\)</span> 的线段，上面有 <span class="math inline">\(n\)</span> 个障碍物，第 <span class="math inline">\(i\)</span> 个在 <span class="math inline">\(x_i\)</span>，质量为 <span class="math inline">\(m_i\)</span>。你可以给第 <span class="math inline">\(i\)</span> 个障碍物一个初始速度 <span class="math inline">\(v_i\)</span>，然后选择匀速往左或者往右，消耗能量为 <span class="math inline">\(\frac{m_iv_i^2}{2}\)</span>。</p>
+<p>问在 <span class="math inline">\(T\)</span> 时间内，总能量不超过 <span class="math inline">\(E\)</span> 的情况下，最长的无障碍物子段的长度。</p>
+<p><span class="math inline">\(1 \le n \le 10^5, 1 \le L, T, E \le 10^6, 0 < x_i < L, 1 \le m_i \le 10^3\)</span></p>
+<p>题解：二分答案 <span class="math inline">\(d\)</span>，考虑如何判定。假设这个没有障碍物的区间左端点是 <span class="math inline">\(z\)</span>，那么在区间 <span class="math inline">\([z, z+\frac{d}{2}]\)</span> 里的障碍物显然都要往左走，在区间 <span class="math inline">\([z+\frac{d}{2}, z+d]\)</span> 里的障碍物都要往右走。</p>
+<p>可以发现 <span class="math inline">\(z\)</span> 的关键点有 <span class="math inline">\(x_i\)</span>，<span class="math inline">\(x_i-\frac{d}{2}\)</span> 和 <span class="math inline">\(x_i-d\)</span>。把关键点拿出来排序，那么如果 <span class="math inline">\(z\)</span> 在相邻两个关键点对应的区间里，<span class="math inline">\([z, z+\frac{d}{2}]\)</span> 和 <span class="math inline">\([z+\frac{d}{2}, z+d]\)</span> 里的障碍物集合是一样的。</p>
+<p>于是对于每个这样的区间，都可以列出一个一元二次方程，求一下最值即可。</p>
+<p>关键点可以通过归并的方式合并，这样就可以做到线性判定。</p>
+<h2 id="c-collections-in-containers">C. Collections In Containers</h2>
+<p>题意：给你一个 <span class="math inline">\(n\)</span> 个 <span class="math inline">\(d\)</span> 维的向量集合，满足，如果存在向量 <span class="math inline">\(a_1, a_2, ..., a_d\)</span>，那么对于任意 <span class="math inline">\(b\)</span>，满足 <span class="math inline">\(0 \leq b_i \leq a_i\)</span> 都存在。</p>
+<p>给出一个长度为 <span class="math inline">\(n\)</span> 的数组 <span class="math inline">\(c_1,c_2,\dots,c_n\)</span>。你需要找到一个长度为 <span class="math inline">\(n\)</span> 的排列 <span class="math inline">\(p\)</span> 和 <span class="math inline">\(q\)</span>，使得 <span class="math inline">\(a_{p_i,j} + a_{q_i,j} \le c_j\)</span>。</p>
+<p><span class="math inline">\(1 \le nd \le 10^5, 0 \le c_i \le 10^9, 0 \le v_{i,j} \le c_j\)</span></p>
+<p>题解：题目给定的 <span class="math inline">\(c\)</span> 其实没有多大用处，因为我们总是可以构造出一个 <span class="math inline">\(c_j = \max_i(a_{i,j})\)</span> 时候的解。</p>
+<p>可以发现，题目给出的限制很强，我们任意去掉一维后这个性质还是满足的。其实题目给出的限制就是说集合是一个凸集。</p>
+<p>考虑按照维数递归构造答案，假设我们需要构造满足前 <span class="math inline">\(k\)</span> 维的答案。把所有向量按照第 <span class="math inline">\(k\)</span> 维归类，值一样的归为同一类。那么对于同一类，我们可以递归搞出一个符合前 <span class="math inline">\(k-1\)</span> 维的解。接下来考虑如果使得第 <span class="math inline">\(k\)</span> 维也满足条件。</p>
+<p>假设第 <span class="math inline">\(k\)</span> 维的最大值为 <span class="math inline">\(m_k\)</span>，那么对于 <span class="math inline">\(2 a_{i,k} \le m_k\)</span> 的，肯定是满足条件的，因此我们需要调整 <span class="math inline">\(2 a_{i,k} > m_k\)</span> 的。对于这种 <span class="math inline">\(a_{i,k}\)</span>，肯定存在另一个 <span class="math inline">\(a_{j,k}=m_k-a_{i,k}\)</span>，使得 <span class="math inline">\(a_{i,1..k-1} = a_{j,1..k-1}\)</span>。只需要交换它俩的匹配就可以使 <span class="math inline">\(a_{i,k}\)</span> 满足条件。</p>
+<p>对于一个 <span class="math inline">\(i\)</span> 求出对应的 <span class="math inline">\(j\)</span> 的话，可以使用字符串 hash 来加速判定。</p>
+<h2 id="d-1d-spreadsheet">D. 1D Spreadsheet</h2>
+<p>题意：有 <span class="math inline">\(n\)</span> 个格子，一开始第 <span class="math inline">\(i\)</span> 个格子包含一个数 <span class="math inline">\(a_i\)</span>。有 <span class="math inline">\(q\)</span> 个操作，</p>
+<ul>
+<li>令格子 <span class="math inline">\(i\)</span> 包含数 <span class="math inline">\(x\)</span></li>
+<li>令格子 <span class="math inline">\(i\)</span> 指向格子 <span class="math inline">\(j\)</span></li>
+<li>求出格子 <span class="math inline">\(l\)</span> 到格子 <span class="math inline">\(r\)</span> 的权值和</li>
+</ul>
+<p>如果一个格子包含一个数，那么这个格子的权值为这个数；否则这个格子的权值为它指向的格子的权值。保证不会出现循环指向。</p>
+<p><span class="math inline">\(1 \le n, q \le 2 \times 10^5, -10^4 \le a_i, x \le 10^4, 1 \le i, j \le n, 1 \le l \le r \le n\)</span></p>
+<p>题解：考虑把操作分块，每 <span class="math inline">\(L\)</span> 次操作重建格子的指向关系和权值。对于一个询问操作，我们只需要关心最近的 <span class="math inline">\(O(L)\)</span> 个修改操作。</p>
+<p>把这些操作涉及到的格子拿出来，记为关键点。那么我们可以先基于未修改的权值，求出一个答案来。由于这些关键点都被修改过了，那么需要减去这些关键点对答案的贡献，就是对应子树里面有多少节点在区间 <span class="math inline">\([l, r]\)</span> 里。同时我们也可以在 <span class="math inline">\(O(L)\)</span> 时间处理出，这 <span class="math inline">\(O(L)\)</span> 个关键点现在的权值是多少。把新的权值乘上子树里面合法节点个数加回贡献即可。</p>
+<p>令 <span class="math inline">\(L = \sqrt{n \log n}\)</span> 的话，复杂度是 <span class="math inline">\(O(n \sqrt{n \log n})\)</span>。</p>
+<h2 id="e-even-separation">E. Even Separation</h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 个点 <span class="math inline">\(m\)</span> 条边的无向图。你需要把点分成两组，使得删掉连接不同组的边之后，每个点的度数都是偶数。</p>
+<p><span class="math inline">\(1 \le n \le 500, 0 \le m \le \frac{n(n-1)}{2}\)</span></p>
+<p>题解：考虑用 <span class="math inline">\(x_i=0/1\)</span> 表示每个点属于哪个组，<span class="math inline">\(deg_i\)</span> 表示第 <span class="math inline">\(i\)</span> 个点当前的度数。可以发现，</p>
+<ul>
+<li>如果 <span class="math inline">\(deg_i\)</span> 是偶数，那么 <span class="math inline">\(\sum_{j \in N(i)} x_j \equiv 0 \pmod 2\)</span></li>
+<li>如果 <span class="math inline">\(deg_i\)</span> 是奇数，那么有 <span class="math inline">\(\sum_{j \in N(i)} x_j \equiv \overline{x_i} \pmod 2\)</span>，即 <span class="math inline">\(x_i + \sum_{j \in N(i)} x_j \equiv 1 \pmod 2\)</span></li>
+</ul>
+<p>于是，我们得到了一个异或方程组，高斯消元解一下就好了。</p>
+<h2 id="f-fibonaccis-nightmare">F. Fibonacci&rsquo;s Nightmare</h2>
+<p>题意：考虑这样一个随机序列：<span class="math inline">\(a_0 = 1\)</span>，<span class="math inline">\(a_n\)</span> 是随机选出来的 <span class="math inline">\(a_i\)</span> 和 <span class="math inline">\(a_j\)</span> (<span class="math inline">\(0 \le i, j \le n - 1\)</span>)的和。</p>
+<p>你需要求出 <span class="math inline">\(a_n\)</span> 的方差。</p>
+<p><span class="math inline">\(0 \le n \le 10^6\)</span></p>
+<p>题解：考虑方差的公式 <span class="math inline">\(Var(X)=E(X^2) - E^2(X)\)</span>，我们仅需要求出 <span class="math inline">\(a^2_n\)</span> 和 <span class="math inline">\(a_n\)</span> 的期望值。</p>
+<p>先考虑 <span class="math inline">\(a_n\)</span> 的期望值，根据期望的线性性，显然有</p>
+<p><span class="math display">\[E(a_n) = \frac{\sum\limits_{i=0}^{n-1}\sum\limits_{j=0}^{n-1} E(a_i)+E(a_j)}{n^2}=\frac{2\sum\limits_{i=0}^{n-1}E(a_i)}{n}
+\]</span></p>
+<p>最终其实可以发现，<span class="math inline">\(E(a_n)=n+1\)</span>。</p>
+<p>接下来考虑 <span class="math inline">\(E(a^2_n)\)</span>，显然有</p>
+<p><span class="math display">\[\begin{aligned}
+E(a^2_n) &=& \frac{\sum\limits_{i=0}^{n-1}\sum\limits_{j=0}^{n-1} E((a_i+a_j)^2)}{n^2} \\
+&=& \frac{\sum\limits_{i=0}^{n-1}\sum\limits_{j=0}^{n-1} E(a_i^2+a_j^2+2a_ia_j)}{n^2} \\
+&=& \frac{2 \sum\limits_{i=0}^{n-1}E(a_i^2)}{n}+\frac{2E((\sum\limits_{i=0}^{n-1}a_i))^2}{n^2}
+\end{aligned}
+\]</span></p>
+<p>我们需要求出 <span class="math inline">\(E((\sum\limits_{i=0}^{n}a_i)^2)\)</span>，可以拆成 <span class="math inline">\((a_n+\sum\limits_{i=0}^{n-1}a_i)^2\)</span>，化简下得到</p>
+<p><span class="math display">\[E((\sum\limits_{i=0}^{n}a_i)^2)=E(a_n^2)+E((\sum\limits_{i=0}^{n-1}a_i)^2)+E(a_n(\sum_{i=0}^{n-1}a_i))
+\]</span></p>
+<p>继续把 <span class="math inline">\(a_n\)</span> 拆掉的话，最终可以得到</p>
+<p><span class="math display">\[E((\sum\limits_{i=0}^{n}a_i)^2)=E(a_n^2)+\frac{(4+n)\cdot E((\sum_{i=0}^{n-1}a_i)^2)}{n}
+\]</span></p>
+<p>递推就可以算出答案了。</p>
+<h2 id="g-guess-the-string">G. Guess The String</h2>
+<p>题意：交互题。有一个长度不超过 <span class="math inline">\(500\)</span> 的字符串 <span class="math inline">\(s\)</span>，仅有小写字母组成。每次你可以询问一个串 <span class="math inline">\(t\)</span> 是不是 <span class="math inline">\(s\)</span> 的子序列。所有询问中 <span class="math inline">\(t\)</span> 的总长不能超过 <span class="math inline">\(6 \cdot 10^5\)</span>。</p>
+<p>题解：先问出每个字符出现的次数，然后每次拿出两个最短的字符串合并。假设当前是 <span class="math inline">\(z\)</span>，还剩 <span class="math inline">\(x\)</span> 和 <span class="math inline">\(y\)</span> 没有合并，就查一查 <span class="math inline">\(z+x[0]+y\)</span> 或者 <span class="math inline">\(z+y[0]+x\)</span> 是不是子序列就可以确定下一个字符是 <span class="math inline">\(x[0]\)</span> 还是 <span class="math inline">\(y[0]\)</span>。</p>
+<h2 id="h-hilberts-maze">H. Hilbert&rsquo;s Maze</h2>
+<p>题意：给出一个 <span class="math inline">\(k\)</span> 阶的 Hilbert&rsquo;s Maze，一个起点 <span class="math inline">\((x_s,y_s)\)</span> 和终点 <span class="math inline">\((x_t, y_t)\)</span>。求出起点到终点的最短路。</p>
+<p><span class="math inline">\(0 \le k \le 30, 1 \le x_s, y_s, x_t, y_t \le 2^{k+1}-1\)</span></p>
+<p>题解：对于每个点，我们先构造出一条从 <span class="math inline">\(T_0\)</span> 怎么演变到 <span class="math inline">\(T_k\)</span> 的路径。这条路径只需要记录：当前从这四条边的哪个位置出来以及到这个位置经过了多少距离。</p>
+<p>对于两条这样的路径，我们可以找到他们的公共前缀，从这个位置开始，距离就可以独立计算了。因此，我们仅需要计算在这个公共前缀处，我们从一个点到另一个点的距离。</p>
+<p>这个基本上可以分成三部分：外面正方形的轮廓线；上面的 <span class="math inline">\(1 \times 2^k\)</span> 的小区域；下面的 <span class="math inline">\(T\)</span> 型区域。对于后两者，我们最终都是要走到外轮廓的，除非两个点属于同一个区域。</p>
+<h2 id="i-infinite-binary-embedding">I. Infinite Binary Embedding</h2>
+<p>题意：给定一棵 <span class="math inline">\(n\)</span> 个节点的满二叉树 <span class="math inline">\(T\)</span> 和一棵无穷满二叉树 <span class="math inline">\(I\)</span>。问有多少个从 <span class="math inline">\(T\)</span> 的结点到 <span class="math inline">\(I\)</span> 的结点的单射 <span class="math inline">\(f\)</span>, 使得</p>
+<ul>
+<li>若 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(T\)</span> 中的叶子，则 <span class="math inline">\(f(v)\)</span> 在 <span class="math inline">\(I\)</span> 中的深度为 <span class="math inline">\(h_v\)</span></li>
+<li>若 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(T\)</span> 中 <span class="math inline">\(u\)</span> 的左孩子，则 <span class="math inline">\(f(v)\)</span> 在 <span class="math inline">\(I\)</span> 中是以 <span class="math inline">\(f(u)\)</span> 的左孩子为根的子树中的一个结点</li>
+<li>若 <span class="math inline">\(v\)</span> 是 <span class="math inline">\(T\)</span> 中 <span class="math inline">\(u\)</span> 的右孩子，则 <span class="math inline">\(f(v)\)</span> 在 <span class="math inline">\(I\)</span> 中是以 <span class="math inline">\(f(u)\)</span> 的右孩子为根的子树中的一个结点</li>
+</ul>
+<p><span class="math inline">\(1 \le n \le 2000, 0 \le h_v \le 10^9\)</span></p>
+<p>题解：令 <span class="math inline">\(dp(v, x)\)</span> 表示 <span class="math inline">\(T\)</span> 中以 <span class="math inline">\(v\)</span> 为根的子树，<span class="math inline">\(f(v)\)</span> 在 <span class="math inline">\(I\)</span> 中深度至少为 <span class="math inline">\(x\)</span> 的方案数。显然，我们就是要求出 <span class="math inline">\(dp(1, 0)\)</span>。</p>
+<p>可以发现，<span class="math inline">\(f(v)\)</span> 在 <span class="math inline">\(I\)</span> 的哪个深度为 <span class="math inline">\(h_v\)</span> 的位置上并不重要，因为所有子树都是对称的。考虑如下的递推式</p>
+<p><span class="math display">\[dp(v, x) = 
+\begin{cases}
+2^{h_v} & v \text{ is leaf }, x \le h_v \\ 
+\sum_{x \le y \le h_v}\frac{dp(lson(v), y+1)}{2^{y+1}} \cdot \frac{dp(rson(v), y+1)}{2^{y+1}} \cdot 2^y & \text{otherwise}
+\end{cases}
+\]</span></p>
+<p>可以发现，如果我们令 <span class="math inline">\(dp(v, x) = \sum_{i} a_i \cdot 2^{ix}\)</span>，那么我们就可以很方便的维护上面的转移式子。</p>
+<p>对于一个 <span class="math inline">\(v\)</span>，最大的 <span class="math inline">\(i\)</span>，使得 <span class="math inline">\(a_i\)</span> 非零，只和 <span class="math inline">\(v\)</span> 的子树大小有关。因此可以在 <span class="math inline">\(O(n^2)\)</span> 做好转移。</p>
+<h2 id="j-jitterbug">J. Jitterbug</h2>
+<p>题意：给出 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(b\)</span>，构造一个 <span class="math inline">\(n\)</span> 个点的图，使得从 <span class="math inline">\(1\)</span> 到 <span class="math inline">\(n\)</span> 的期望步数是 <span class="math inline">\(b\)</span>。</p>
+<p><span class="math inline">\(n = 200, b = 10^6\)</span></p>
+<p>题解：先构造 <span class="math inline">\(100\)</span> 个点的团，然后构造 <span class="math inline">\(100\)</span> 个点的链，接上即可。</p></div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+  </footer>
+
+</article>
+
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zimpha" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://zimpha.github.io/">
+      <button type="submit" class="submit icon-search glyphicon glyphicon-search"></button>
+</form>
+    </section>
+    <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/" class="list-group-item">Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</a>
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/" class="list-group-item">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</a>
+      
+      <a href="https://zimpha.github.io/resource/translation/xxvii-poi/" class="list-group-item">XXVII POI Chinese Translation</a>
+      
+      <a href="https://zimpha.github.io/resource/translation/" class="list-group-item">Translation</a>
+      
+      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/" class="list-group-item">Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      
+      <a href="https://zimpha.github.io/tags/inclusion-exclusion-principle" class="taglink">inclusion-exclusion-principle</a>
+      
+      
+      
+      <a href="https://zimpha.github.io/tags/math" class="taglink">math</a>
+      
+      
+    </div>
+  </section>
+  
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LINKS</div>
+    </div>
+    <ol class="list-group">
+      
+      <a href="http://www.cnblogs.com/clrs97/" class="list-group-item">Claris</a>
+      
+      <a href="http://min-25.hatenablog.com/" class="list-group-item">Min_25</a>
+      
+      <a href="https://blog.csdn.net/skywalkert/" class="list-group-item">skywalkert</a>
+      
+    </ol>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; zimpha&#39;s blog</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
