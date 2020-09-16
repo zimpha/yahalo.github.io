@@ -6,10 +6,26 @@
     <description>Recent content on zimpha&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Sep 2020 15:42:44 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2020 14:45:04 +0800</lastBuildDate>
     
 	<atom:link href="https://zimpha.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest</title>
+      <link>https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/</link>
+      <pubDate>Wed, 16 Sep 2020 14:45:04 +0800</pubDate>
+      
+      <guid>https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/</guid>
+      <description>&lt;h2 id=&#34;a-tree-puzzlehttpswwwe-olympcomenproblems6447&#34;&gt;&lt;a href=&#34;https://www.e-olymp.com/en/problems/6447&#34;&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;题意：一棵高度为 &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，节点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x+1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一开始选择一个点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;
+&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;给出一个序列：&lt;span class=&#34;math inline&#34;&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)&lt;/span&gt;。如果 &lt;span class=&#34;math inline&#34;&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</title>
@@ -17,7 +33,7 @@
       <pubDate>Fri, 11 Sep 2020 15:42:44 +0800</pubDate>
       
       <guid>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/</guid>
-      <description>&lt;h2 id=&#34;a-aarelia-mountains&#34;&gt;A. Aarelia Mountains&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;a-aarelia-mountainshttpswwwacmicpcnetproblem19208&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19208&#34;&gt;A. Aarelia Mountains&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;题意：有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(h_1,h_2,\dots,h_n\)&lt;/span&gt;。你想让这些数非递减，也就是对于任意 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;，都有 &lt;span class=&#34;math inline&#34;&gt;\(h_i \le h_{i+1}\)&lt;/span&gt;。有 &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; 个操作，第 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 个操作可以选择一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; 的区间，都加上 &lt;span class=&#34;math inline&#34;&gt;\(t_i\)&lt;/span&gt;，代价为 &lt;span class=&#34;math inline&#34;&gt;\(c_i\)&lt;/span&gt;。最后每个数可以是负数，求出最小代价。&lt;/p&gt;</description>
     </item>
     
