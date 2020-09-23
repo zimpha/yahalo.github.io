@@ -1,188 +1,151 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>zimpha&#39;s blog</title>
-    <link>https://zimpha.github.io/</link>
-    <description>Recent content on zimpha&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 14:45:04 +0800</lastBuildDate>
-    
-	<atom:link href="https://zimpha.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest</title>
-      <link>https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/</link>
-      <pubDate>Wed, 16 Sep 2020 14:45:04 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/</guid>
-      <description>&lt;h2 id=&#34;a-tree-puzzlehttpswwwe-olympcomenproblems6447&#34;&gt;&lt;a href=&#34;https://www.e-olymp.com/en/problems/6447&#34;&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;题意：一棵高度为 &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，节点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x+1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;
+<channel>
+<title>zimpha's blog</title>
+<link>https://zimpha.github.io/</link>
+<description>Recent content on zimpha's blog</description>
+<generator>Hugo -- gohugo.io</generator>
+<language>en-us</language>
+<lastBuildDate>Wed, 16 Sep 2020 14:45:04 +0800</lastBuildDate>
+<atom:link href="https://zimpha.github.io/index.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest</title>
+<link>https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st+nnsu-contest/</link>
+<pubDate>Wed, 16 Sep 2020 14:45:04 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st+nnsu-contest/</guid>
+<description>&lt;h2 id="a-tree-puzzlehttpswwwe-olympcomenproblems6447"&gt;&lt;a href="https://www.e-olymp.com/en/problems/6447"&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;题意：一棵高度为 &lt;span class="math inline"&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class="math inline"&gt;\(1\)&lt;/span&gt;，节点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class="math inline"&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class="math inline"&gt;\(2x+1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;一开始选择一个点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;
-&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;
+&lt;li&gt;一开始选择一个点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;
+&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;给出一个序列：&lt;span class=&#34;math inline&#34;&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)&lt;/span&gt;。如果 &lt;span class=&#34;math inline&#34;&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;给出一个序列：&lt;span class="math inline"&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)&lt;/span&gt;。如果 &lt;span class="math inline"&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class="math inline"&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</title>
-      <link>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/</link>
-      <pubDate>Fri, 11 Sep 2020 15:42:44 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/</guid>
-      <description>&lt;h2 id=&#34;a-aarelia-mountainshttpswwwacmicpcnetproblem19208&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19208&#34;&gt;A. Aarelia Mountains&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;题意：有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(h_1,h_2,\dots,h_n\)&lt;/span&gt;。你想让这些数非递减，也就是对于任意 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;，都有 &lt;span class=&#34;math inline&#34;&gt;\(h_i \le h_{i+1}\)&lt;/span&gt;。有 &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; 个操作，第 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 个操作可以选择一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(l_i\)&lt;/span&gt; 的区间，都加上 &lt;span class=&#34;math inline&#34;&gt;\(t_i\)&lt;/span&gt;，代价为 &lt;span class=&#34;math inline&#34;&gt;\(c_i\)&lt;/span&gt;。最后每个数可以是负数，求出最小代价。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</title>
-      <link>https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/</link>
-      <pubDate>Wed, 02 Sep 2020 01:07:21 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/</guid>
-      <description>&lt;h2 id=&#34;a-raid&#34;&gt;A. Raid&lt;/h2&gt;
-&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个数 &lt;span class=&#34;math inline&#34;&gt;\(a_1,a_2,\dots,a_n\)&lt;/span&gt;，对于每个 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(1 \le k \le n\)&lt;/span&gt;)，你要从中选出一个长度为 &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)&lt;/span&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>XXVII POI Chinese Translation</title>
-      <link>https://zimpha.github.io/resource/translation/xxvii-poi/</link>
-      <pubDate>Sat, 22 Aug 2020 12:47:25 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/resource/translation/xxvii-poi/</guid>
-      <description>&lt;p&gt;本文是 XXVII POI (2019/2020 年度) 的中文翻译。今年受新冠疫情影响，Stage III 被取消了，因此只有 Stage I 和 Stage II 的题目。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Translation</title>
-      <link>https://zimpha.github.io/resource/translation/</link>
-      <pubDate>Sat, 22 Aug 2020 12:46:07 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/resource/translation/</guid>
-      <description>&lt;p&gt;这里主要汇集了本站对一些小语种国家算法竞赛题的翻译，主要是波兰，日本，韩国。下面是一些目录：&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</title>
-      <link>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</link>
-      <pubDate>Thu, 13 Aug 2020 20:22:52 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</guid>
-      <description>&lt;h2 id=&#34;a-ladderhttpswwwacmicpcnetproblem19179&#34;&gt;&lt;a href=&#34;https://www.acmicpc.net/problem/19179&#34;&gt;A. Ladder&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;题意：给出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个木棍，长度分别为 &lt;span class=&#34;math inline&#34;&gt;\(d_1,d_2,\dots,d_n\)&lt;/span&gt;。你需要 &lt;span class=&#34;math inline&#34;&gt;\(k+2\)&lt;/span&gt; 个木棍，其中两个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，&lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; 个长度恰好为 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;。你可以削断已有的木棍，求是否可能。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Petrozavodsk Summer 2015. Day 4. Moscow IPT Contest</title>
-      <link>https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/</link>
-      <pubDate>Thu, 13 Aug 2020 03:22:34 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/</guid>
-      <description>&lt;h2 id=&#34;a-rectangle-query&#34;&gt;A. Rectangle Query&lt;/h2&gt;
-&lt;p&gt;题意：强制在线。有 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 个点 &lt;span class=&#34;math inline&#34;&gt;\((x_i, y_i)\)&lt;/span&gt;。给出 &lt;span class=&#34;math inline&#34;&gt;\(q\)&lt;/span&gt; 个询问，每次求出 &lt;span class=&#34;math inline&#34;&gt;\(x_1 \le x_i \le x_2, y_1 \le y_i \le y_2\)&lt;/span&gt; 的所有点中本质不同的 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 坐标和 &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; 坐标个数。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Problem 1. Multiples of 3 and 5</title>
-      <link>https://zimpha.github.io/editorials/project-euler/001/</link>
-      <pubDate>Thu, 13 Aug 2020 02:59:38 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/project-euler/001/</guid>
-      <description>&lt;p&gt;题意：给出一个整数 &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt;，求出 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; 以下所有是 &lt;span class=&#34;math inline&#34;&gt;\(3\)&lt;/span&gt; 或者 &lt;span class=&#34;math inline&#34;&gt;\(5\)&lt;/span&gt; 的倍数的数之和。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Competitive Programming Problem Settings</title>
-      <link>https://zimpha.github.io/resource/problems/</link>
-      <pubDate>Sat, 08 Aug 2020 18:37:52 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/resource/problems/</guid>
-      <description>Coming Soon&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Algorithmic Library</title>
-      <link>https://zimpha.github.io/tools/algorithmic-library/</link>
-      <pubDate>Sat, 08 Aug 2020 18:35:58 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/tools/algorithmic-library/</guid>
-      <description>Coming Soon&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Generator</title>
-      <link>https://zimpha.github.io/tools/generator/</link>
-      <pubDate>Sat, 08 Aug 2020 18:32:51 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/tools/generator/</guid>
-      <description>Coming Soon&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Petrozavodsk</title>
-      <link>https://zimpha.github.io/editorials/petrozavodsk/</link>
-      <pubDate>Sat, 08 Aug 2020 18:27:38 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/petrozavodsk/</guid>
-      <description>&lt;p&gt;Petrozavodsk Programming Camp 是俄罗斯每年定期举办的一个训练营，在每年8月举办 Petrozavodsk Summer Camp 训练营，次年1月举办 Winter Camp。每次训练营共有 9 天比赛，比赛题目基本上来自参加学校或者选手无偿提供，或者 Snark 通过各种交易（比如杭电多校，牛客多校，Japan Alumni Group，区域赛等等）从世界各地获取。&lt;/p&gt;
+</item>
+<item>
+<title>Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</title>
+<link>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/</link>
+<pubDate>Fri, 11 Sep 2020 15:42:44 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/</guid>
+<description>&lt;h2 id="a-aarelia-mountainshttpswwwacmicpcnetproblem19208"&gt;&lt;a href="https://www.acmicpc.net/problem/19208"&gt;A. Aarelia Mountains&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;题意：有 &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; 个数 &lt;span class="math inline"&gt;\(h_1,h_2,\dots,h_n\)&lt;/span&gt;。你想让这些数非递减，也就是对于任意 &lt;span class="math inline"&gt;\(i\)&lt;/span&gt;，都有 &lt;span class="math inline"&gt;\(h_i \le h_{i+1}\)&lt;/span&gt;。有 &lt;span class="math inline"&gt;\(m\)&lt;/span&gt; 个操作，第 &lt;span class="math inline"&gt;\(i\)&lt;/span&gt; 个操作可以选择一个长度为 &lt;span class="math inline"&gt;\(l_i\)&lt;/span&gt; 的区间，都加上 &lt;span class="math inline"&gt;\(t_i\)&lt;/span&gt;，代价为 &lt;span class="math inline"&gt;\(c_i\)&lt;/span&gt;。最后每个数可以是负数，求出最小代价。&lt;/p&gt;</description>
+</item>
+<item>
+<title>Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</title>
+<link>https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/</link>
+<pubDate>Wed, 02 Sep 2020 01:07:21 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/</guid>
+<description>&lt;h2 id="a-raid"&gt;A. Raid&lt;/h2&gt;
+&lt;p&gt;题意：给出 &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; 个数 &lt;span class="math inline"&gt;\(a_1,a_2,\dots,a_n\)&lt;/span&gt;，对于每个 &lt;span class="math inline"&gt;\(k\)&lt;/span&gt; (&lt;span class="math inline"&gt;\(1 \le k \le n\)&lt;/span&gt;)，你要从中选出一个长度为 &lt;span class="math inline"&gt;\(k\)&lt;/span&gt; 的子序列，使得逆序对最少。输出最小的逆序对个数和方案数。&lt;/p&gt;
+&lt;p&gt;&lt;span class="math inline"&gt;\(1 \le n \le 40, 1 \le a_i \le n, \forall i \ne j, a_i \ne a_j\)&lt;/span&gt;&lt;/p&gt;</description>
+</item>
+<item>
+<title>XXVII POI Chinese Translation</title>
+<link>https://zimpha.github.io/resource/translation/xxvii-poi/</link>
+<pubDate>Sat, 22 Aug 2020 12:47:25 +0800</pubDate>
+<guid>https://zimpha.github.io/resource/translation/xxvii-poi/</guid>
+<description>&lt;p&gt;本文是 XXVII POI (2019/2020 年度) 的中文翻译。今年受新冠疫情影响，Stage III 被取消了，因此只有 Stage I 和 Stage II 的题目。&lt;/p&gt;</description>
+</item>
+<item>
+<title>Translation</title>
+<link>https://zimpha.github.io/resource/translation/</link>
+<pubDate>Sat, 22 Aug 2020 12:46:07 +0800</pubDate>
+<guid>https://zimpha.github.io/resource/translation/</guid>
+<description>&lt;p&gt;这里主要汇集了本站对一些小语种国家算法竞赛题的翻译，主要是波兰，日本，韩国。下面是一些目录：&lt;/p&gt;</description>
+</item>
+<item>
+<title>Petrozavodsk Winter 2015. Day 6. Jagiellonian U Contest</title>
+<link>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</link>
+<pubDate>Thu, 13 Aug 2020 20:22:52 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/petrozavodsk/2015-winter/jagiellonian-u-contest/</guid>
+<description>&lt;h2 id="a-ladderhttpswwwacmicpcnetproblem19179"&gt;&lt;a href="https://www.acmicpc.net/problem/19179"&gt;A. Ladder&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;题意：给出 &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; 个木棍，长度分别为 &lt;span class="math inline"&gt;\(d_1,d_2,\dots,d_n\)&lt;/span&gt;。你需要 &lt;span class="math inline"&gt;\(k+2\)&lt;/span&gt; 个木棍，其中两个长度恰好为 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt;，&lt;span class="math inline"&gt;\(k\)&lt;/span&gt; 个长度恰好为 &lt;span class="math inline"&gt;\(y\)&lt;/span&gt;。你可以削断已有的木棍，求是否可能。&lt;/p&gt;</description>
+</item>
+<item>
+<title>Petrozavodsk Summer 2015. Day 4. Moscow IPT Contest</title>
+<link>https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/</link>
+<pubDate>Thu, 13 Aug 2020 03:22:34 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/petrozavodsk/2015-summer/moscow-ipt-contest/</guid>
+<description>&lt;h2 id="a-rectangle-query"&gt;A. Rectangle Query&lt;/h2&gt;
+&lt;p&gt;题意：强制在线。有 &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; 个点 &lt;span class="math inline"&gt;\((x_i, y_i)\)&lt;/span&gt;。给出 &lt;span class="math inline"&gt;\(q\)&lt;/span&gt; 个询问，每次求出 &lt;span class="math inline"&gt;\(x_1 \le x_i \le x_2, y_1 \le y_i \le y_2\)&lt;/span&gt; 的所有点中本质不同的 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 坐标和 &lt;span class="math inline"&gt;\(y\)&lt;/span&gt; 坐标个数。&lt;/p&gt;</description>
+</item>
+<item>
+<title>Problem 1. Multiples of 3 and 5</title>
+<link>https://zimpha.github.io/editorials/project-euler/001/</link>
+<pubDate>Thu, 13 Aug 2020 02:59:38 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/project-euler/001/</guid>
+<description>&lt;p&gt;题意：给出一个整数 &lt;span class="math inline"&gt;\(n = 1000\)&lt;/span&gt;，求出 &lt;span class="math inline"&gt;\(n\)&lt;/span&gt; 以下所有是 &lt;span class="math inline"&gt;\(3\)&lt;/span&gt; 或者 &lt;span class="math inline"&gt;\(5\)&lt;/span&gt; 的倍数的数之和。&lt;/p&gt;</description>
+</item>
+<item>
+<title>Competitive Programming Problem Settings</title>
+<link>https://zimpha.github.io/resource/problems/</link>
+<pubDate>Sat, 08 Aug 2020 18:37:52 +0800</pubDate>
+<guid>https://zimpha.github.io/resource/problems/</guid>
+<description>Coming Soon&amp;hellip;</description>
+</item>
+<item>
+<title>Algorithmic Library</title>
+<link>https://zimpha.github.io/tools/algorithmic-library/</link>
+<pubDate>Sat, 08 Aug 2020 18:35:58 +0800</pubDate>
+<guid>https://zimpha.github.io/tools/algorithmic-library/</guid>
+<description>Coming Soon&amp;hellip;</description>
+</item>
+<item>
+<title>Generator</title>
+<link>https://zimpha.github.io/tools/generator/</link>
+<pubDate>Sat, 08 Aug 2020 18:32:51 +0800</pubDate>
+<guid>https://zimpha.github.io/tools/generator/</guid>
+<description>Coming Soon&amp;hellip;</description>
+</item>
+<item>
+<title>Petrozavodsk</title>
+<link>https://zimpha.github.io/editorials/petrozavodsk/</link>
+<pubDate>Sat, 08 Aug 2020 18:27:38 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/petrozavodsk/</guid>
+<description>&lt;p&gt;Petrozavodsk Programming Camp 是俄罗斯每年定期举办的一个训练营，在每年8月举办 Petrozavodsk Summer Camp 训练营，次年1月举办 Winter Camp。每次训练营共有 9 天比赛，比赛题目基本上来自参加学校或者选手无偿提供，或者 Snark 通过各种交易（比如杭电多校，牛客多校，Japan Alumni Group，区域赛等等）从世界各地获取。&lt;/p&gt;
 &lt;p&gt;比赛题目质量很高，难度也非常大，但是题解却几乎没有，对训练后补题其实非常不友好。因此，我会在这里陆续总结相关比赛的题解，希望能够对选手训练有所帮助。&lt;/p&gt;
 &lt;p&gt;下面是这些题解对应的链接：&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Opencup</title>
-      <link>https://zimpha.github.io/editorials/opencup/</link>
-      <pubDate>Sat, 08 Aug 2020 18:26:58 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/opencup/</guid>
-      <description>Coming Soon&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Project Euler Editorial</title>
-      <link>https://zimpha.github.io/editorials/project-euler/</link>
-      <pubDate>Sat, 08 Aug 2020 18:24:44 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/editorials/project-euler/</guid>
-      <description>&lt;p&gt;This book aims at providing solutions for this site &lt;a href=&#34;https://projecteuler.net/&#34;&gt;Project Euler&lt;/a&gt; and sharing interesting knowledge from Project Euler Forum.&lt;/p&gt;
+</item>
+<item>
+<title>Opencup</title>
+<link>https://zimpha.github.io/editorials/opencup/</link>
+<pubDate>Sat, 08 Aug 2020 18:26:58 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/opencup/</guid>
+<description>Coming Soon&amp;hellip;</description>
+</item>
+<item>
+<title>Project Euler Editorial</title>
+<link>https://zimpha.github.io/editorials/project-euler/</link>
+<pubDate>Sat, 08 Aug 2020 18:24:44 +0800</pubDate>
+<guid>https://zimpha.github.io/editorials/project-euler/</guid>
+<description>&lt;p&gt;This book aims at providing solutions for this site &lt;a href="https://projecteuler.net/"&gt;Project Euler&lt;/a&gt; and sharing interesting knowledge from Project Euler Forum.&lt;/p&gt;
 &lt;p&gt;This book will only include solutions for problem in the archives. Besides, the solution for those problems solved by less than one hundred people will not published.&lt;/p&gt;
-&lt;p&gt;Most of the Chinese translations of come from this site &lt;a href=&#34;http://pe-cn.github.io/&#34;&gt;Project Euler | 欧拉计划&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Most of the Chinese translations of come from this site &lt;a href="http://pe-cn.github.io/"&gt;Project Euler | 欧拉计划&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Hope you enjoy solving problems in Project Euler.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&amp;ldquo;Project Euler exists to encourage, challenge, and develop the skills and enjoyment of anyone with an interest in the fascinating world of mathematics.&amp;rdquo;&lt;/p&gt;
 &lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://zimpha.github.io/about/</link>
-      <pubDate>Sat, 08 Aug 2020 18:23:44 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/about/</guid>
-      <description>Coming Soon&amp;hellip;</description>
-    </item>
-    
-    <item>
-      <title>Zeckendorf Arithmetic</title>
-      <link>https://zimpha.github.io/algonotes/zeckendorf-arithmetic/</link>
-      <pubDate>Sat, 08 Aug 2020 16:35:55 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/algonotes/zeckendorf-arithmetic/</guid>
-      <description>&lt;p&gt;本文主要介绍了如何使用斐波那契数列来表示整数，也就是 &lt;a href=&#34;https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem&#34;&gt;Zeckendorf representation&lt;/a&gt;，以及如何用 &lt;code&gt;Zeckendorf representation&lt;/code&gt; 做整数的基本运算。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Matroid</title>
-      <link>https://zimpha.github.io/algonotes/matroid/</link>
-      <pubDate>Fri, 07 Aug 2020 21:33:52 +0800</pubDate>
-      
-      <guid>https://zimpha.github.io/algonotes/matroid/</guid>
-      <description>&lt;p&gt;本文主要介绍了拟阵相关的一些概念，一些详细的说明和算法的证明：&lt;a href=&#34;https://zhenweiliu.gitee.io/blog/2020/02/15/combinatorial-optimization-matroid/&#34;&gt;link 1&lt;/a&gt;，&lt;a href=&#34;https://codeforces.com/blog/entry/69287&#34;&gt;link 2&lt;/a&gt;。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
+</item>
+<item>
+<title>About</title>
+<link>https://zimpha.github.io/about/</link>
+<pubDate>Sat, 08 Aug 2020 18:23:44 +0800</pubDate>
+<guid>https://zimpha.github.io/about/</guid>
+<description>Coming Soon&amp;hellip;</description>
+</item>
+<item>
+<title>Zeckendorf Arithmetic</title>
+<link>https://zimpha.github.io/algonotes/zeckendorf-arithmetic/</link>
+<pubDate>Sat, 08 Aug 2020 16:35:55 +0800</pubDate>
+<guid>https://zimpha.github.io/algonotes/zeckendorf-arithmetic/</guid>
+<description>&lt;p&gt;本文主要介绍了如何使用斐波那契数列来表示整数，也就是 &lt;a href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem"&gt;Zeckendorf representation&lt;/a&gt;，以及如何用 &lt;code&gt;Zeckendorf representation&lt;/code&gt; 做整数的基本运算。&lt;/p&gt;</description>
+</item>
+<item>
+<title>Matroid</title>
+<link>https://zimpha.github.io/algonotes/matroid/</link>
+<pubDate>Fri, 07 Aug 2020 21:33:52 +0800</pubDate>
+<guid>https://zimpha.github.io/algonotes/matroid/</guid>
+<description>&lt;p&gt;本文主要介绍了拟阵相关的一些概念，一些详细的说明和算法的证明：&lt;a href="https://zhenweiliu.gitee.io/blog/2020/02/15/combinatorial-optimization-matroid/"&gt;link 1&lt;/a&gt;，&lt;a href="https://codeforces.com/blog/entry/69287"&gt;link 2&lt;/a&gt;。&lt;/p&gt;</description>
+</item>
+</channel>
 </rss>

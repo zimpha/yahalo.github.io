@@ -1,39 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-<meta name="pinterest" content="nopin">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.75.0@zimpha" />
-
-
-
-<link rel="canonical" href="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/">
-
-
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest - zimpha&#39;s blog</title>
-    
-<meta name="description" content="&lt;h2 id=&#34;a-tree-puzzlehttpswwwe-olympcomenproblems6447&#34;&gt;&lt;a href=&#34;https://www.e-olymp.com/en/problems/6447&#34;&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：一棵高度为 &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，节点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x&#43;1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;一开始选择一个点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;给出一个序列：&lt;span class=&#34;math inline&#34;&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b &#43; c) \pmod p\)&lt;/span&gt;。如果 &lt;span class=&#34;math inline&#34;&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;">
-
-<meta property="og:title" content="Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest - zimpha&#39;s blog">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/">
-<meta property="og:image" content="https://zimpha.github.io/images/default.png">
-<meta property="og:site_name" content="zimpha&#39;s blog">
-<meta property="og:description" content="&lt;h2 id=&#34;a-tree-puzzlehttpswwwe-olympcomenproblems6447&#34;&gt;&lt;a href=&#34;https://www.e-olymp.com/en/problems/6447&#34;&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：一棵高度为 &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，节点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x&#43;1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;一开始选择一个点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;给出一个序列：&lt;span class=&#34;math inline&#34;&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b &#43; c) \pmod p\)&lt;/span&gt;。如果 &lt;span class=&#34;math inline&#34;&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;">
-<meta property="og:locale" content="ja_JP">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="zimpha&#39;s blog">
-<meta name="twitter:url" content="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/">
-<meta name="twitter:title" content="Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest - zimpha&#39;s blog">
-<meta name="twitter:description" content="&lt;h2 id=&#34;a-tree-puzzlehttpswwwe-olympcomenproblems6447&#34;&gt;&lt;a href=&#34;https://www.e-olymp.com/en/problems/6447&#34;&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：一棵高度为 &lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class=&#34;math inline&#34;&gt;\(1\)&lt;/span&gt;，节点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class=&#34;math inline&#34;&gt;\(2x&#43;1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;一开始选择一个点 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;给出一个序列：&lt;span class=&#34;math inline&#34;&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b &#43; c) \pmod p\)&lt;/span&gt;。如果 &lt;span class=&#34;math inline&#34;&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;">
-<meta name="twitter:image" content="https://zimpha.github.io/images/default.png">
-
-
+<head>
+<meta charset="utf-8"/>
+<meta content="nopin" name="pinterest"/>
+<meta content="width=device-width,minimum-scale=1,initial-scale=1" name="viewport"/>
+<meta content="Hugo 0.75.0@zimpha" name="generator"/>
+<link href="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st+nnsu-contest/" rel="canonical"/>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css" rel="stylesheet"/>
+<title>Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest - zimpha's blog</title>
+<meta content='&lt;h2 id="a-tree-puzzlehttpswwwe-olympcomenproblems6447"&gt;&lt;a href="https://www.e-olymp.com/en/problems/6447"&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：一棵高度为 &lt;span class="math inline"&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class="math inline"&gt;\(1\)&lt;/span&gt;，节点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class="math inline"&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class="math inline"&gt;\(2x+1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;一开始选择一个点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;给出一个序列：&lt;span class="math inline"&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)&lt;/span&gt;。如果 &lt;span class="math inline"&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class="math inline"&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;' name="description"/>
+<meta content="Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest - zimpha's blog" property="og:title"/>
+<meta content="article" property="og:type"/>
+<meta content="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st+nnsu-contest/" property="og:url"/>
+<meta content="https://zimpha.github.io/images/default.png" property="og:image"/>
+<meta content="zimpha's blog" property="og:site_name"/>
+<meta content='&lt;h2 id="a-tree-puzzlehttpswwwe-olympcomenproblems6447"&gt;&lt;a href="https://www.e-olymp.com/en/problems/6447"&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：一棵高度为 &lt;span class="math inline"&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class="math inline"&gt;\(1\)&lt;/span&gt;，节点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class="math inline"&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class="math inline"&gt;\(2x+1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;一开始选择一个点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;给出一个序列：&lt;span class="math inline"&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)&lt;/span&gt;。如果 &lt;span class="math inline"&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class="math inline"&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;' property="og:description"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="zimpha's blog" name="twitter:site"/>
+<meta content="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st+nnsu-contest/" name="twitter:url"/>
+<meta content="Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest - zimpha's blog" name="twitter:title"/>
+<meta content='&lt;h2 id="a-tree-puzzlehttpswwwe-olympcomenproblems6447"&gt;&lt;a href="https://www.e-olymp.com/en/problems/6447"&gt;A. Tree Puzzle&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;题意：一棵高度为 &lt;span class="math inline"&gt;\(N\)&lt;/span&gt; 的满二叉树，根节点标号是 &lt;span class="math inline"&gt;\(1\)&lt;/span&gt;，节点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的左儿子是 &lt;span class="math inline"&gt;\(2x\)&lt;/span&gt;，右儿子是 &lt;span class="math inline"&gt;\(2x+1\)&lt;/span&gt;。每个点都有一个状态，用 &lt;code&gt;0&lt;/code&gt; 和 &lt;code&gt;1&lt;/code&gt; 表示。有这样一个操作：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;一开始选择一个点 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt;，翻转它的状态&lt;/li&gt;&lt;li&gt;如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 &lt;span class="math inline"&gt;\(x\)&lt;/span&gt; 的初始状态是 &lt;code&gt;0&lt;/code&gt;，挑左儿子，否则挑右儿子。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;给出一个序列：&lt;span class="math inline"&gt;\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)&lt;/span&gt;。如果 &lt;span class="math inline"&gt;\(x_i \ge T\)&lt;/span&gt;，那么节点 &lt;span class="math inline"&gt;\(i\)&lt;/span&gt; 一开始的状态是 &lt;code&gt;1&lt;/code&gt;，否则是 &lt;code&gt;0&lt;/code&gt;。&lt;/p&gt;&lt;p&gt;求出把所有节点状态都改成 &lt;code&gt;0&lt;/code&gt; 的最小操作次数。&lt;/p&gt;' name="twitter:description"/>
+<meta content="https://zimpha.github.io/images/default.png" name="twitter:image"/>
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -68,11 +58,8 @@
     "description": "\u003ch2 id=\u0022a-tree-puzzlehttpswwwe-olympcomenproblems6447\u0022\u003e\u003ca href=\u0022https:\/\/www.e-olymp.com\/en\/problems\/6447\u0022\u003eA. Tree Puzzle\u003c\/a\u003e\u003c\/h2\u003e\n\u003cp\u003e题意：一棵高度为 \u003cspan class=\u0022math inline\u0022\u003e\\(N\\)\u003c\/span\u003e 的满二叉树，根节点标号是 \u003cspan class=\u0022math inline\u0022\u003e\\(1\\)\u003c\/span\u003e，节点 \u003cspan class=\u0022math inline\u0022\u003e\\(x\\)\u003c\/span\u003e 的左儿子是 \u003cspan class=\u0022math inline\u0022\u003e\\(2x\\)\u003c\/span\u003e，右儿子是 \u003cspan class=\u0022math inline\u0022\u003e\\(2x\u002b1\\)\u003c\/span\u003e。每个点都有一个状态，用 \u003ccode\u003e0\u003c\/code\u003e 和 \u003ccode\u003e1\u003c\/code\u003e 表示。有这样一个操作：\u003c\/p\u003e\n\u003cul\u003e\n\u003cli\u003e一开始选择一个点 \u003cspan class=\u0022math inline\u0022\u003e\\(x\\)\u003c\/span\u003e，翻转它的状态\u003c\/li\u003e\n\u003cli\u003e如果这个点不是叶子，那么挑一个它的儿子继续操作：如果 \u003cspan class=\u0022math inline\u0022\u003e\\(x\\)\u003c\/span\u003e 的初始状态是 \u003ccode\u003e0\u003c\/code\u003e，挑左儿子，否则挑右儿子。\u003c\/li\u003e\n\u003c\/ul\u003e\n\u003cp\u003e给出一个序列：\u003cspan class=\u0022math inline\u0022\u003e\\(x_a=1,\\quad x_i=(x_{i-1} \\cdot b \u002b c) \\pmod p\\)\u003c\/span\u003e。如果 \u003cspan class=\u0022math inline\u0022\u003e\\(x_i \\ge T\\)\u003c\/span\u003e，那么节点 \u003cspan class=\u0022math inline\u0022\u003e\\(i\\)\u003c\/span\u003e 一开始的状态是 \u003ccode\u003e1\u003c\/code\u003e，否则是 \u003ccode\u003e0\u003c\/code\u003e。\u003c\/p\u003e\n\u003cp\u003e求出把所有节点状态都改成 \u003ccode\u003e0\u003c\/code\u003e 的最小操作次数。\u003c\/p\u003e"
   }
 </script>
-
-
-    <link href="https://zimpha.github.io/css/styles.css" rel="stylesheet">
-    
-    <script>
+<link href="https://zimpha.github.io/css/styles.css" rel="stylesheet"/>
+<script>
       MathJax = {
         tex: {
           inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -91,132 +78,82 @@
         });
     
     </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script type="text/javascript" id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  </head>
-
-  <body>
-    
-    
-    
-
-    <header class="l-header">
-      <nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://zimpha.github.io/">zimpha&#39;s blog</a>
-          </div>
-
-          <div id="navbar" class="collapse navbar-collapse">
-            
-            <ul class="nav navbar-nav navbar-right">
-              
-              <li><a href="/about/">About</a></li>
-              
-            </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-              
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  
-                  <li><a href="/algonotes/">Algorithm Notes</a></li>
-                  
-                  <li><a href="/resource/problems">Problem Settings</a></li>
-                  
-                  <li><a href="/resource/translation/">Transalation</a></li>
-                  
-                </ul>
-              </li>
-              
-            </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-              
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  
-                  <li><a href="/tools/generator">Generator</a></li>
-                  
-                  <li><a href="/tools/algorithmic-library">Algorithmic Library</a></li>
-                  
-                </ul>
-              </li>
-              
-            </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-              
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Editorials <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  
-                  <li><a href="/editorials/project-euler">Project Euler</a></li>
-                  
-                  <li><a href="/editorials/opencup">Open Cup</a></li>
-                  
-                  <li><a href="/editorials/petrozavodsk">Petrozavodsk Training Camp</a></li>
-                  
-                </ul>
-              </li>
-              
-            </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-              
-              <li><a href="/">Home</a></li>
-              
-            </ul>
-            
-          </div>
-
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <div class="container">
-        
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header class="l-header">
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="navbar-header">
+<button aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="https://zimpha.github.io/">zimpha's blog</a>
+</div>
+<div class="collapse navbar-collapse" id="navbar">
+<ul class="nav navbar-nav navbar-right">
+<li><a href="/about/">About</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">Resources <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="/algonotes/">Algorithm Notes</a></li>
+<li><a href="/resource/problems">Problem Settings</a></li>
+<li><a href="/resource/translation/">Transalation</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">Tools <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="/tools/generator">Generator</a></li>
+<li><a href="/tools/algorithmic-library">Algorithmic Library</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">Editorials <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="/editorials/project-euler">Project Euler</a></li>
+<li><a href="/editorials/opencup">Open Cup</a></li>
+<li><a href="/editorials/petrozavodsk">Petrozavodsk Training Camp</a></li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li><a href="/">Home</a></li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<div class="container">
 <div class="row">
-  <div class="col-md-8">
-
-    <nav class="p-crumb">
-      <ol class="breadcrumb">
-        <li><a href="https://zimpha.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-        
-        <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://zimpha.github.io/editorials/" itemprop="url"><span itemprop="title">editorials</span></a></li>
-        
-        <li class="active">Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest</li>
-      </ol>
-    </nav>
-
-    <article class="single">
-  <header>
-    <h1 class="title">Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest</h1>
-    
-    <ul class="p-facts">
-        <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-09-16T14:45:04JST">2020-09-16</time></li>
-        <li>来源: <a href=""></a></li>
-        
-        
-
-        
-      </ul>
-  </header>
-
-  
-
-  <div class="article-body"><h2 id="a-tree-puzzlehttpswwwe-olympcomenproblems6447"><a href="https://www.e-olymp.com/en/problems/6447">A. Tree Puzzle</a></h2>
+<div class="col-md-8">
+<nav class="p-crumb">
+<ol class="breadcrumb">
+<li><a href="https://zimpha.github.io/"><i aria-hidden="true" class="fa fa-home"></i></a></li>
+<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="https://zimpha.github.io/editorials/" itemprop="url"><span itemprop="title">editorials</span></a></li>
+<li class="active">Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest</li>
+</ol>
+</nav>
+<article class="single">
+<header>
+<h1 class="title">Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest</h1>
+<ul class="p-facts">
+<li><i aria-hidden="true" class="fa fa-calendar"></i><time datetime="2020-09-16T14:45:04JST">2020-09-16</time></li>
+<li>来源: <a href=""></a></li>
+</ul>
+</header>
+<div class="article-body"><h2 id="a-tree-puzzlehttpswwwe-olympcomenproblems6447"><a href="https://www.e-olymp.com/en/problems/6447">A. Tree Puzzle</a></h2>
 <p>题意：一棵高度为 <span class="math inline">\(N\)</span> 的满二叉树，根节点标号是 <span class="math inline">\(1\)</span>，节点 <span class="math inline">\(x\)</span> 的左儿子是 <span class="math inline">\(2x\)</span>，右儿子是 <span class="math inline">\(2x+1\)</span>。每个点都有一个状态，用 <code>0</code> 和 <code>1</code> 表示。有这样一个操作：</p>
 <ul>
 <li>一开始选择一个点 <span class="math inline">\(x\)</span>，翻转它的状态</li>
@@ -224,20 +161,20 @@
 </ul>
 <p>给出一个序列：<span class="math inline">\(x_a=1,\quad x_i=(x_{i-1} \cdot b + c) \pmod p\)</span>。如果 <span class="math inline">\(x_i \ge T\)</span>，那么节点 <span class="math inline">\(i\)</span> 一开始的状态是 <code>1</code>，否则是 <code>0</code>。</p>
 <p>求出把所有节点状态都改成 <code>0</code> 的最小操作次数。</p>
-<p><span class="math inline">\(1 \le N \le 60, 0 \le a,c < p, 1 \le b < p, 2 \le p \le 10^6, 0 < T < p\)</span>，保证 <span class="math inline">\(p\)</span> 是质数。</p>
+<p><span class="math inline">\(1 \le N \le 60, 0 \le a,c &lt; p, 1 \le b &lt; p, 2 \le p \le 10^6, 0 &lt; T &lt; p\)</span>，保证 <span class="math inline">\(p\)</span> 是质数。</p>
 <p>题解：考虑暴力的 dp 做法，令 <span class="math inline">\(dp(u, 0/1)\)</span> 表示操作完之后节点 <span class="math inline">\(u\)</span> 状态是 <code>0</code> 或者 <code>1</code> 的操作最小次数。可以发现，可以自底向上贪心的操作每一个点。有如下的转移方程：</p>
 <p><span class="math display">\[dp(u,0)=\begin{cases}
-dp(a,0) + dp(b,0) & w(u) = 0 \\
-dp(a,0) + dp(b,1) + 1 & w(u) = 1
+dp(a,0) + dp(b,0) &amp; w(u) = 0 \\
+dp(a,0) + dp(b,1) + 1 &amp; w(u) = 1
 \end{cases}
 \]</span></p>
 <p><span class="math display">\[dp(u,1)=\begin{cases}
-dp(a,1) + dp(b,1) + 1 & w(u) = 0 \\
-dp(a,0) + dp(b,1) & w(u) = 1
+dp(a,1) + dp(b,1) + 1 &amp; w(u) = 0 \\
+dp(a,0) + dp(b,1) &amp; w(u) = 1
 \end{cases}
 \]</span></p>
 <p>其中 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 分别是 <span class="math inline">\(u\)</span> 的左右儿子。</p>
-<p>可以发现，对于每一层，所有 <span class="math inline">\(w(u)\)</span> 一样的转移方式都是一样的。我们可以先找出序列 <span class="math inline">\(\{x_i\}\)</span> 的循环节 <span class="math inline">\(M\)</span>。只需要以这个循环节里的数当做 <span class="math inline">\(u\)</span> 来记录 dp 值即可。假设 <span class="math inline">\(x(u)=t\ (0 \le t < M)\)</span>，那么 <span class="math inline">\(x(a)=(2t+1) \bmod M\)</span> 并且 <span class="math inline">\(x(b)=(2t+2) \bmod M\)</span>。</p>
+<p>可以发现，对于每一层，所有 <span class="math inline">\(w(u)\)</span> 一样的转移方式都是一样的。我们可以先找出序列 <span class="math inline">\(\{x_i\}\)</span> 的循环节 <span class="math inline">\(M\)</span>。只需要以这个循环节里的数当做 <span class="math inline">\(u\)</span> 来记录 dp 值即可。假设 <span class="math inline">\(x(u)=t\ (0 \le t &lt; M)\)</span>，那么 <span class="math inline">\(x(a)=(2t+1) \bmod M\)</span> 并且 <span class="math inline">\(x(b)=(2t+2) \bmod M\)</span>。</p>
 <p>最终输出 <span class="math inline">\(dp(1,0,0)\)</span> 就是答案。</p>
 <h2 id="b-xoring-machinehttpswwwe-olympcomenproblems6448"><a href="https://www.e-olymp.com/en/problems/6448">B. Xoring Machine</a></h2>
 <p>题意：对于一个长度为 <span class="math inline">\(N\)</span> 的序列 <span class="math inline">\(x_1,x_2,\dots,x_N\)</span>，考虑如下两种操作：</p>
@@ -253,7 +190,7 @@ dp(a,0) + dp(b,1) & w(u) = 1
 <p>题意：给出一个长度为 <span class="math inline">\(N\)</span> 的序列 <span class="math inline">\(a_1,a_2,\dots,a_N\)</span>。每次可以选择两个相邻的正整数，同时减去 <span class="math inline">\(1\)</span>。求出最终序列的可能方案数，对 <span class="math inline">\(10^9+7\)</span> 取模。</p>
 <p><span class="math inline">\(1 \le N \le 10^5, 1 \le a_i \le 300\)</span></p>
 <p>题解：假设 <span class="math inline">\(b_1,b_2,\dots,b_n\)</span> 是最终的序列，那么肯定要满足 <span class="math inline">\(b_i \cdot b_{i-1} = 0\)</span>。令 <span class="math inline">\(f(i, j)\)</span> 表示考虑了前 <span class="math inline">\(i\)</span> 个数，最终 <span class="math inline">\(b_i=j\)</span> 的方案数，<span class="math inline">\(g(i,j)\)</span> 表示考虑了前 <span class="math inline">\(i\)</span> 个数，最终 <span class="math inline">\(b_i=0\)</span>，且需要第 <span class="math inline">\(i+1\)</span> 个数消耗 <span class="math inline">\(j\)</span> 的方案数。</p>
-<p>我们很容易得到，<span class="math inline">\(f(i,j)=f(i-1,a[i]-j)+g(i-1,a[i]-j)\)</span> 和 <span class="math inline">\(g(i,j)=\sum_{k > a[i] - j} f(i - 1, j)\)</span>。</p>
+<p>我们很容易得到，<span class="math inline">\(f(i,j)=f(i-1,a[i]-j)+g(i-1,a[i]-j)\)</span> 和 <span class="math inline">\(g(i,j)=\sum_{k &gt; a[i] - j} f(i - 1, j)\)</span>。</p>
 <p>最终答案就是 <span class="math inline">\(g(n,0)+\sum_{j} f(n,j)\)</span>。</p>
 <h2 id="d-treehttpswwwe-olympcomenproblems6450"><a href="https://www.e-olymp.com/en/problems/6450">D. Tree</a></h2>
 <p>题意：给出 <span class="math inline">\(N\)</span> 个点的树，第 <span class="math inline">\(i\)</span> 个点颜色为 <span class="math inline">\(c_i\)</span>，总共有 <span class="math inline">\(C\)</span> 种不同颜色。有 <span class="math inline">\(Q\)</span> 个操作：</p>
@@ -280,11 +217,11 @@ dp(a,0) + dp(b,1) & w(u) = 1
 <h2 id="g-abacaba-matchinghttpswwwe-olympcomenproblems6453"><a href="https://www.e-olymp.com/en/problems/6453">G. ABACABA Matching</a></h2>
 <p>题意：对于一个 <span class="math inline">\(26\)</span> 个字母的排列 <span class="math inline">\(p_1,p_2,\dots,p_{26}\)</span>。定义</p>
 <p><span class="math display">\[\begin{aligned}
-S_1 &=&  p_1 \\
-S_2  &=&  S_1  +  p_2  +  S_1 \\
-S_3  &=&  S_2  +  p_3  +  S_2 \\
-&\dots& \\
-S_{26}  &=&  S_{25}  +  p_{26}  +  S_{25}
+S_1 &amp;=&amp;  p_1 \\
+S_2  &amp;=&amp;  S_1  +  p_2  +  S_1 \\
+S_3  &amp;=&amp;  S_2  +  p_3  +  S_2 \\
+&amp;\dots&amp; \\
+S_{26}  &amp;=&amp;  S_{25}  +  p_{26}  +  S_{25}
 \end{aligned}
 \]</span></p>
 <p>给出一个字符串 <span class="math inline">\(T\)</span>，找到一个字母排列，使得能够通过修改最少的字符使得 <span class="math inline">\(T\)</span> 是的 <span class="math inline">\(S_{26}\)</span> 的子串。</p>
@@ -293,7 +230,7 @@ S_{26}  &=&  S_{25}  +  p_{26}  +  S_{25}
 <p>对于 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(S_{26}\)</span> 中出现位置，我们肯定可以找到一个回文中心，并且我们把这个中心放在 <span class="math inline">\(2^{25}\)</span> 处（也是 <span class="math inline">\(p_{26}\)</span> 唯一在的位置）肯定是不影响答案计算的。</p>
 <p>我们不妨枚举 <span class="math inline">\(T_o\)</span> 在回文中心，那么可以发现对于位置 <span class="math inline">\(i\)</span>，它应该填上的字符是 <span class="math inline">\(p_{ctz(|i-o|) + 1}\)</span>，我们可以处理出一个数组 <span class="math inline">\(cnt(x,y)\)</span> 表示应该填 <span class="math inline">\(p_x\)</span> 的位置上现在有多少个 <span class="math inline">\(p_y\)</span>。有了这个数组，我们只需要跑一个二分图最小权匹配，就可以知道最终的最优排列。</p>
 <p>然后注意到，如果 <span class="math inline">\(|i-o| \equiv 0 \pmod{2^t}\)</span> 并且 <span class="math inline">\(|i-o| \not\equiv 0 \pmod{2^{t+1}}\)</span>，那么位置 <span class="math inline">\(i\)</span> 应该填 <span class="math inline">\(p_{t+1}\)</span>。</p>
-<p>因此，我们对于每个 <span class="math inline">\(t\)</span>，都应该处理出一个数组 <span class="math inline">\(sum(t, e, x)\)</span> 表示有多少 <span class="math inline">\(i\)</span> 满足 <span class="math inline">\(i \equiv e \pmod{2^t}\)</span> 并且 <span class="math inline">\(T_e = c\)</span>。那么 <span class="math inline">\(cnt(x,y)=sum(x, o \bmod 2^t,c)-sum(x + 1, o \bmod 2^{t+1},c)\)</span>。</p>
+<p>因此，我们对于每个 <span class="math inline">\(t\)</span>，都应该处理出一个数组 <span class="math inline">\(sum(t, e, x)\)</span> 表示有多少 <span class="math inline">\(i\)</span> 满足 <span class="math inline">\(i \equiv e \pmod{2^t}\)</span> 并且 <span class="math inline">\(T_e = x\)</span>。那么 <span class="math inline">\(cnt(x,y)=sum(x, o \bmod 2^t,y)-sum(x + 1, o \bmod 2^{t+1},y)\)</span>。</p>
 <h2 id="h-intervalshttpswwwe-olympcomenproblems6454"><a href="https://www.e-olymp.com/en/problems/6454">H. Intervals</a></h2>
 <p>题意：给出 <code>0</code> 到 <code>9</code> 里面哪些数位是好的，一个好的数仅由好的数位组成。给出 <span class="math inline">\(N\)</span> 个区间 <span class="math inline">\([l_i, R_i]\)</span>，要求从每个区间里选出一个数，然后加起来。求加起来数是好的的方案数，对 <span class="math inline">\(10^9+7\)</span> 取模。</p>
 <p><span class="math inline">\(1 \le N \le 7, 0 \le L_i \le R_i \le 10^{10}\)</span></p>
@@ -319,18 +256,10 @@ S_{26}  &=&  S_{25}  +  p_{26}  +  S_{25}
 <p>题意：给出 <span class="math inline">\(N\)</span> 个点 <span class="math inline">\(M\)</span> 条边的有向图和一个起点 <span class="math inline">\(R\)</span>。令 <span class="math inline">\(C_0\)</span> 是起点 <span class="math inline">\(R\)</span> 能够到达的点集。令 <span class="math inline">\(C(e)\)</span> 是删掉边 <span class="math inline">\(e\)</span> 之后，<span class="math inline">\(R\)</span> 能够到达的点集。一条边 <span class="math inline">\(e\)</span> 是 <em>redundant</em> 当且仅当 <span class="math inline">\(C_0=C(e)\)</span>。求出所有 <em>redundant</em> 的边。</p>
 <p><span class="math inline">\(1 \le N \le 10^5, 1 \le M \le 200000, 1 \le R \le N\)</span></p>
 <p>题解：对于每条边 <span class="math inline">\(i\)</span>，新建一个点 <span class="math inline">\(i+n\)</span>，从 <span class="math inline">\(a_i\)</span> 到 <span class="math inline">\(i+n\)</span> 连边，<span class="math inline">\(i+n\)</span> 到 <span class="math inline">\(b_i\)</span> 连边。对于这样一个新的有向图，我们需要求出以 <span class="math inline">\(R\)</span> 为根的 Dominator Tree。那些无法被 <span class="math inline">\(R\)</span> 遍历到或者作为叶节点的边就是 <em>redundant</em> 的边。</p></div>
-
-  <footer class="article-footer">
-    
-    
-    
-    
-  </footer>
-
+<footer class="article-footer">
+</footer>
 </article>
-
-    
-    <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -349,102 +278,65 @@ S_{26}  &=&  S_{25}  +  p_{26}  +  S_{25}
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    
-    
-    
-  </div>
-
-  <div class="col-md-4">
-    
-<aside class="l-sidebar">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://zimpha.github.io/">
-      <button type="submit" class="submit icon-search glyphicon glyphicon-search"></button>
-</form>
-    </section>
-    <section class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title">LATESTS</div>
-    </div>
-    <div class="list-group">
-      
-      <a href="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st&#43;nnsu-contest/" class="list-group-item">Petrozavodsk Summer 2013. Day 2. Moscow SU ST &#43; NNSU Contest</a>
-      
-      <a href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/" class="list-group-item">Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</a>
-      
-      <a href="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/" class="list-group-item">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</a>
-      
-      <a href="https://zimpha.github.io/resource/translation/xxvii-poi/" class="list-group-item">XXVII POI Chinese Translation</a>
-      
-      <a href="https://zimpha.github.io/resource/translation/" class="list-group-item">Translation</a>
-      
-    </div>
-  </section>
-
-  
-  <section class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title">TAG</div>
-    </div>
-    <div class="list-group">
-      
-      
-      <a href="https://zimpha.github.io/tags/inclusion-exclusion-principle" class="taglink">inclusion-exclusion-principle</a>
-      
-      
-      
-      <a href="https://zimpha.github.io/tags/math" class="taglink">math</a>
-      
-      
-    </div>
-  </section>
-  
-
-  
-  <section class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title">LINKS</div>
-    </div>
-    <ol class="list-group">
-      
-      <a href="http://www.cnblogs.com/clrs97/" class="list-group-item">Claris</a>
-      
-      <a href="http://min-25.hatenablog.com/" class="list-group-item">Min_25</a>
-      
-      <a href="https://blog.csdn.net/skywalkert/" class="list-group-item">skywalkert</a>
-      
-    </ol>
-  </section>
-  
-
-</aside>
-
-
-  </div>
+<a class="dsq-brlink" href="https://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-
-      </div>
-    </main>
-
-    <footer class="l-footer">
-      <div class="container">
-        <p><span class="h-logo">&copy; zimpha&#39;s blog</span></p>
-        <aside>
-          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
-          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
-        </aside>
-      </div>
-    </footer>
-
-    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-  </body>
+<div class="col-md-4">
+<aside class="l-sidebar">
+<section class="widget">
+<form _lpchecked="1" accept-charset="utf-8" action="//www.google.com/search" id="search" method="get" target="_blank">
+<input maxlength="20" name="q" placeholder="Search" type="text"/>
+<input name="sitesearch" type="hidden" value="https://zimpha.github.io/"/>
+<button class="submit icon-search glyphicon glyphicon-search" type="submit"></button>
+</form>
+</section>
+<section class="panel panel-default">
+<div class="panel-heading">
+<div class="panel-title">LATESTS</div>
+</div>
+<div class="list-group">
+<a class="list-group-item" href="https://zimpha.github.io/editorials/petrozavodsk/2013-summer/moscow-su-st+nnsu-contest/">Petrozavodsk Summer 2013. Day 2. Moscow SU ST + NNSU Contest</a>
+<a class="list-group-item" href="https://zimpha.github.io/editorials/petrozavodsk/2015-winter/michael-tikhomirov-contest-1/">Petrozavodsk Winter 2015. Day 9. Michael Tikhomirov Contest 1</a>
+<a class="list-group-item" href="https://zimpha.github.io/editorials/petrozavodsk/2020-summer/warsaw-u-contest/">Petrozavodsk Summer 2020. Day 1. Warsaw U Contest</a>
+<a class="list-group-item" href="https://zimpha.github.io/resource/translation/xxvii-poi/">XXVII POI Chinese Translation</a>
+<a class="list-group-item" href="https://zimpha.github.io/resource/translation/">Translation</a>
+</div>
+</section>
+<section class="panel panel-default">
+<div class="panel-heading">
+<div class="panel-title">TAG</div>
+</div>
+<div class="list-group">
+<a class="taglink" href="https://zimpha.github.io/tags/inclusion-exclusion-principle">inclusion-exclusion-principle</a>
+<a class="taglink" href="https://zimpha.github.io/tags/math">math</a>
+</div>
+</section>
+<section class="panel panel-default">
+<div class="panel-heading">
+<div class="panel-title">LINKS</div>
+</div>
+<ol class="list-group">
+<a class="list-group-item" href="http://www.cnblogs.com/clrs97/">Claris</a>
+<a class="list-group-item" href="http://min-25.hatenablog.com/">Min_25</a>
+<a class="list-group-item" href="https://blog.csdn.net/skywalkert/">skywalkert</a>
+</ol>
+</section>
+</aside>
+</div>
+</div>
+</div>
+</main>
+<footer class="l-footer">
+<div class="container">
+<p><span class="h-logo">© zimpha's blog</span></p>
+<aside>
+<p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+<p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+</aside>
+</div>
+</footer>
+<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
 </html>
-
